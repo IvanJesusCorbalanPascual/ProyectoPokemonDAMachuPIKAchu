@@ -32,6 +32,7 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -41,9 +42,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.layout.StackPane?>
 
-<VBox prefHeight="518.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menuController.java">
+<VBox xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="478.0" prefWidth="868.0" VBox.vgrow="ALWAYS">
       <children>
@@ -52,99 +52,105 @@
             <Font size="18.0" />
           </font>
         </Label>
-            <ImageView id="labelEntrenador" fitHeight="540.0" fitWidth="943.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
+            <ImageView id="labelEntrenador" fx:id="imgFondo" fitHeight="540.0" fitWidth="943.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
                <image>
                   <Image url="@../Imagenes/fondoMenu.jpg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+            </ImageView>
+            <ImageView fx:id="logoPokemon" fitHeight="105.0" fitWidth="225.0" layoutX="366.0" layoutY="13.0" onMouseClicked="#arriba" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Imagenes/pokeLogo.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </ImageView>
-            <ImageView fitHeight="105.0" fitWidth="225.0" layoutX="366.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Imagenes/pokeLogo.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-            </ImageView>
-            <Button id="btnCentroPokemon" layoutX="126.0" layoutY="114.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="270.0" text="Centro Pokémon" textAlignment="CENTER">
+            <Button id="btnCentroPokemon" fx:id="btnCentroPokemon" layoutX="126.0" layoutY="114.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="270.0" text="Centro Pokémon" textAlignment="CENTER">
                <font>
                   <Font name="Lucida Console" size="26.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="CLOSED_HAND" />
+                  <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Button id="btnEquipo" layoutX="178.0" layoutY="204.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="166.0" text="Equipo" textAlignment="CENTER">
+            <Button id="btnEquipo" fx:id="btnEquipo" layoutX="178.0" layoutY="204.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="166.0" text="Equipo" textAlignment="CENTER">
                <font>
                   <Font name="Lucida Console" size="26.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="CLOSED_HAND" />
+                  <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Button id="btnCrianza" layoutX="178.0" layoutY="300.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="166.0" text="Crianza" textAlignment="CENTER">
+            <Button id="btnCrianza" fx:id="btnCrianza" layoutX="178.0" layoutY="300.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="166.0" text="Crianza" textAlignment="CENTER">
                <font>
                   <Font name="Lucida Console" size="26.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="CLOSED_HAND" />
+                  <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Label id="labelEntrenador" layoutX="178.0" layoutY="24.0" text="Label" />
-            <Button id="btnSalir" layoutX="842.0" layoutY="457.0" mnemonicParsing="false" text="Salir">
+            <Label id="labelEntrenador" fx:id="lblEntrenador" layoutX="178.0" layoutY="24.0" text="Label" />
+            <Button id="btnSalir" fx:id="btnSalir" layoutX="841.0" layoutY="463.0" mnemonicParsing="false" onAction="#salir" text="Salir">
                <font>
                   <Font name="Lucida Console" size="18.0" />
                </font>
-            </Button>
-            <Button id="btnCombate" layoutX="600.0" layoutY="204.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="166.0" text="Combate" textAlignment="CENTER">
                <cursor>
-                  <Cursor fx:constant="CLOSED_HAND" />
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </Button>
+            <Button id="btnCombate" fx:id="btnCombate" layoutX="600.0" layoutY="204.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="166.0" text="Combate" textAlignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
                </cursor>
                <font>
                   <Font name="Lucida Console" size="26.0" />
                </font>
             </Button>
-            <Button id="btnEntrenamiento" layoutX="548.0" layoutY="114.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="270.0" text="Entrenamiento" textAlignment="CENTER">
+            <Button id="btnEntrenamiento" fx:id="btnEntrenamiento" layoutX="548.0" layoutY="114.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="270.0" text="Entrenamiento" textAlignment="CENTER">
                <font>
                   <Font name="Lucida Console" size="26.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="CLOSED_HAND" />
+                  <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Button id="btnEntrenador" layoutX="600.0" layoutY="300.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="166.0" text="Captura" textAlignment="CENTER">
+            <Button id="btnEntrenador" fx:id="btnCaptura" layoutX="600.0" layoutY="300.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="166.0" text="Captura" textAlignment="CENTER">
                <font>
                   <Font name="Lucida Console" size="26.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="CLOSED_HAND" />
+                  <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Label id="labelEntrenador" layoutX="178.0" layoutY="58.0" text="Label" />
-            <Button id="btnTienda" layoutX="178.0" layoutY="394.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="166.0" text="Tienda" textAlignment="CENTER">
+            <Label id="labelPokedolares" fx:id="lblPokedolares" layoutX="178.0" layoutY="58.0" text="Label" />
+            <Button id="btnTienda" fx:id="btnTienda" layoutX="178.0" layoutY="394.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="166.0" text="Tienda" textAlignment="CENTER">
                <font>
                   <Font name="Lucida Console" size="26.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="CLOSED_HAND" />
+                  <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Button id="btnCrianza" layoutX="600.0" layoutY="394.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="166.0" text="Pokédex" textAlignment="CENTER">
+            <Button id="btnCrianza" fx:id="btnPokedex" layoutX="600.0" layoutY="394.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="166.0" text="Pokédex" textAlignment="CENTER">
                <font>
                   <Font name="Lucida Console" size="26.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="CLOSED_HAND" />
+                  <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Text layoutX="56.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrenador: " textAlignment="CENTER">
+            <Text id="lblEntrenador" fx:id="txtEntrenador" layoutX="56.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrenador: " textAlignment="CENTER">
                <font>
                   <Font name="Segoe UI Black" size="18.0" />
                </font>
             </Text>
-            <Text layoutX="50.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pokedolares: " textAlignment="CENTER">
+            <Text id="lblPokedolares" fx:id="txtPokedolares" layoutX="50.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pokedolares: " textAlignment="CENTER">
                <font>
                   <Font name="Segoe UI Black" size="18.0" />
                </font>

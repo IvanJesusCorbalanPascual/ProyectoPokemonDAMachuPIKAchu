@@ -10,8 +10,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
     	Parent root = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));//Cambiar por login.fxml cuando esté creado
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 400, 300));
+        primaryStage.setTitle("Hello World"); // El titulo de la ventana
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
         
     }

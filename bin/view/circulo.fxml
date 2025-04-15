@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="controller.circuloController"
+            prefHeight="400.0" prefWidth="600.0">
+
+   <children>
+      <Circle fx:id="Circulo" fill="#1f93ff" layoutX="300.0" layoutY="187.0" radius="64.0" stroke="BLACK" strokeType="INSIDE" />
+      
+      <Button fx:id="btnIzquierda" layoutX="46.0" layoutY="174.0" mnemonicParsing="false" text="Izquierda" onAction="#izquierda"/>
+      
+      <Button fx:id="btnArriba" layoutX="274.0" layoutY="32.0" mnemonicParsing="false" text="Arriba" onAction="#arriba"/>
+      
+      <Button fx:id="btnAbajo" layoutX="274.0" layoutY="341.0" mnemonicParsing="false" text="Abajo" onAction="#abajo"/>
+      
+      <Button fx:id="btnDerecha" layoutX="517.0" layoutY="174.0" mnemonicParsing="false" text="Derecha" onAction="#derecha"/>
+   </children>
+</AnchorPane>

@@ -7,16 +7,22 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-    	Parent root = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));//Cambiar por login.fxml cuando esté creado
-        primaryStage.setTitle("Hello World"); // El titulo de la ventana
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
-        
-    }
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		Parent root = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));// Cambiar por login.fxml cuando esté
+																					// creado
+		primaryStage.setTitle("Hello World"); // El titulo de la ventana
+		primaryStage.setScene(new Scene(root)); // Dimensiones de la ventana
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+		/*
+		 * LoginController controller = loader .getController();
+		 * controler.setStage(primaryStage);
+		 */
+		primaryStage.show();
+
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
 }

@@ -4,20 +4,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" 
-            xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="controller.circuloController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.circuloController">
 
    <children>
-      <Circle fx:id="Circulo" fill="#1f93ff" layoutX="300.0" layoutY="187.0" radius="64.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="Circulo" fill="#1f93ff" layoutX="300.0" layoutY="200.0" radius="64.0" stroke="BLACK" strokeType="INSIDE" />
       
-      <Button fx:id="btnIzquierda" layoutX="46.0" layoutY="174.0" mnemonicParsing="false" text="Izquierda" onAction="#izquierda"/>
+      <Button fx:id="btnIzquierda" layoutX="45.0" layoutY="187.0" mnemonicParsing="false" onAction="#izquierda" text="Izquierda" />
       
-      <Button fx:id="btnArriba" layoutX="274.0" layoutY="32.0" mnemonicParsing="false" text="Arriba" onAction="#arriba"/>
+      <Button fx:id="btnArriba" layoutX="274.0" layoutY="32.0" mnemonicParsing="false" onAction="#arriba" text="Arriba" />
       
-      <Button fx:id="btnAbajo" layoutX="274.0" layoutY="341.0" mnemonicParsing="false" text="Abajo" onAction="#abajo"/>
+      <Button fx:id="btnAbajo" layoutX="274.0" layoutY="341.0" mnemonicParsing="false" onAction="#abajo" text="Abajo" />
       
-      <Button fx:id="btnDerecha" layoutX="517.0" layoutY="174.0" mnemonicParsing="false" text="Derecha" onAction="#derecha"/>
+      <Button fx:id="btnDerecha" layoutX="517.0" layoutY="187.0" mnemonicParsing="false" onAction="#derecha" text="Derecha" />
    </children>
 </AnchorPane>

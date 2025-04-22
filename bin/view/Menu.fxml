@@ -71,7 +71,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </ImageView>
-            <Button id="btnCentroPokemon" fx:id="btnCentroPokemon" layoutX="126.0" layoutY="114.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="270.0" text="Centro Pokémon" textAlignment="CENTER">
+            <Button id="btnCentroPokemon" fx:id="btnCentroPokemon" layoutX="126.0" layoutY="114.0" mnemonicParsing="false" onAction="#abrirCentroPokemon" prefHeight="62.0" prefWidth="270.0" text="Centro Pokémon" textAlignment="CENTER">
                <font>
                   <Font name="Lucida Console" size="26.0" />
                </font>
@@ -79,7 +79,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Button id="btnEquipo" fx:id="btnEquipo" layoutX="178.0" layoutY="204.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="166.0" text="Equipo" textAlignment="CENTER">
+            <Button id="btnEquipo" fx:id="btnEquipo" layoutX="178.0" layoutY="204.0" mnemonicParsing="false" onAction="#abrirEquipo" prefHeight="62.0" prefWidth="166.0" text="Equipo" textAlignment="CENTER">
                <font>
                   <Font name="Lucida Console" size="26.0" />
                </font>
@@ -87,7 +87,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Button id="btnCrianza" fx:id="btnCrianza" layoutX="178.0" layoutY="300.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="166.0" text="Crianza" textAlignment="CENTER">
+            <Button id="btnCrianza" fx:id="btnCrianza" layoutX="178.0" layoutY="300.0" mnemonicParsing="false" onAction="#abrirCrianza" prefHeight="62.0" prefWidth="166.0" text="Crianza" textAlignment="CENTER">
                <font>
                   <Font name="Lucida Console" size="26.0" />
                </font>
@@ -104,7 +104,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Button id="btnCombate" fx:id="btnCombate" layoutX="600.0" layoutY="204.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="166.0" text="Combate" textAlignment="CENTER">
+            <Button id="btnCombate" fx:id="btnCombate" layoutX="600.0" layoutY="204.0" mnemonicParsing="false" onAction="#abrirCombate" prefHeight="62.0" prefWidth="166.0" text="Combate" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
@@ -112,7 +112,7 @@
                   <Font name="Lucida Console" size="26.0" />
                </font>
             </Button>
-            <Button id="btnEntrenamiento" fx:id="btnEntrenamiento" layoutX="548.0" layoutY="114.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="270.0" text="Entrenamiento" textAlignment="CENTER">
+            <Button id="btnEntrenamiento" fx:id="btnEntrenamiento" layoutX="548.0" layoutY="114.0" mnemonicParsing="false" onAction="#abrirEntrenamiento" prefHeight="62.0" prefWidth="270.0" text="Entrenamiento" textAlignment="CENTER">
                <font>
                   <Font name="Lucida Console" size="26.0" />
                </font>
@@ -120,7 +120,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Button id="btnEntrenador" fx:id="btnCaptura" layoutX="600.0" layoutY="300.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="166.0" text="Captura" textAlignment="CENTER">
+            <Button id="btnEntrenador" fx:id="btnCaptura" layoutX="600.0" layoutY="300.0" mnemonicParsing="false" onAction="#abrirCaptura" prefHeight="62.0" prefWidth="166.0" text="Captura" textAlignment="CENTER">
                <font>
                   <Font name="Lucida Console" size="26.0" />
                </font>
@@ -129,7 +129,7 @@
                </cursor>
             </Button>
             <Label id="labelPokedolares" fx:id="lblPokedolares" layoutX="178.0" layoutY="58.0" text="Label" />
-            <Button id="btnTienda" fx:id="btnTienda" layoutX="178.0" layoutY="394.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="166.0" text="Tienda" textAlignment="CENTER">
+            <Button id="btnTienda" fx:id="btnTienda" layoutX="178.0" layoutY="394.0" mnemonicParsing="false" onAction="#abrirTienda" prefHeight="62.0" prefWidth="166.0" text="Tienda" textAlignment="CENTER">
                <font>
                   <Font name="Lucida Console" size="26.0" />
                </font>
@@ -137,7 +137,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Button id="btnCrianza" fx:id="btnPokedex" layoutX="600.0" layoutY="394.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="166.0" text="Pokédex" textAlignment="CENTER">
+            <Button id="btnCrianza" fx:id="btnPokedex" layoutX="600.0" layoutY="394.0" mnemonicParsing="false" onAction="#abrirPokedex" prefHeight="62.0" prefWidth="166.0" text="Pokédex" textAlignment="CENTER">
                <font>
                   <Font name="Lucida Console" size="26.0" />
                </font>

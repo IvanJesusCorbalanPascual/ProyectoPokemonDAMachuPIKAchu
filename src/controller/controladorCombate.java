@@ -1,7 +1,12 @@
 package controller;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -13,6 +18,7 @@ public class controladorCombate {
 
 	private Stage primaryStage;
 
+	// -- BOTONES DE ATAQUE --
 	@FXML
 	private Button attackBtn1;
 
@@ -25,8 +31,11 @@ public class controladorCombate {
 	@FXML
 	private Button attackBtn4;
 
+	// -- FONDO DE LA ESCENA --
 	@FXML
 	private ImageView backgroundImg;
+	
+	// -- BARRAS DE VIDA Y NOMBRES --
 
 	@FXML
 	private ProgressBar enemyHealthBar;
@@ -42,7 +51,8 @@ public class controladorCombate {
 
 	@FXML
 	private Label playerNameLabel;
-
+	
+	// -- IMÁGENES Y BOTONES DE SONIDO
 	@FXML
 	private ImageView playerPokemonImage;
 
@@ -58,12 +68,18 @@ public class controladorCombate {
 	@FXML
 	private Button rivalpokemonSoundButton;
 
+	// -- OTROS ELEMENTOS --
+
+    @FXML
+    private Button salirBtn;
+    
 	@FXML
 	private Button switchCombatPokemon;
 
 	@FXML
 	private AnchorPane textCombatLog;
-
+	
+	// -- EVENTOS DE BOTONES DE ATAQUE --	
 	@FXML
 	void onAttack1(ActionEvent event) {
 
@@ -83,7 +99,24 @@ public class controladorCombate {
 	void onAttack4(ActionEvent event) {
 
 	}
-
+	
+	// -- MÉTODO PARA VOLVER AL MENÚ PRINCIPAL --
+    @FXML
+    void onExit(ActionEvent event) {
+    	try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Menu.fxml"));
+            Parent root = loader.load();
+            MenuController controller = loader.getController();
+            controller.setPrimaryStage(primaryStage);
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Menú Principal");
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
+    }
+	
+	// Método para inicializar en la ventana principal el controlador
 	public void init(Stage Stage) {
 		this.primaryStage = Stage;
 	}
@@ -92,6 +125,7 @@ public class controladorCombate {
 		
 	}
 	
+	// - GETTERS Y SETTERS
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}

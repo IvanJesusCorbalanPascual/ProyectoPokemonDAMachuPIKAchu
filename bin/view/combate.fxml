@@ -32,7 +32,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="rivalpokemonSoundButton" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="39.0">
+      <Button fx:id="rivalpokemonSoundButton" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="39.0" style="-fx-background-color: #c4a484; -fx-background-radius: 20; -fx-border-radius: 21; -fx-border-width: 2; -fx-border-color: black;">
          <graphic>
             <ImageView fx:id="enemySoundButton" fitHeight="100.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -52,21 +52,36 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="attackBtn1" mnemonicParsing="false" onAction="#onAttack1" prefHeight="60.0" prefWidth="434.0" text="Ataque 1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+            <Button fx:id="attackBtn1" mnemonicParsing="false" onAction="#onAttack1" prefHeight="60.0" prefWidth="434.0" style="-fx-background-color: lightgreen; -fx-border-color: black;" text="Ataque 1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Button>
-            <Button fx:id="attackBtn2" mnemonicParsing="false" onAction="#onAttack2" prefHeight="60.0" prefWidth="434.0" text="Ataque 2" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin></Button>
-            <Button fx:id="attackBtn3" mnemonicParsing="false" onAction="#onAttack3" prefHeight="60.0" prefWidth="434.0" text="Ataque 3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
-            <Button fx:id="attackBtn4" mnemonicParsing="false" onAction="#onAttack4" prefHeight="60.0" prefWidth="434.0" text="Ataque 4" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
-            <Button fx:id="switchCombatPokemon" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onAttack3" prefHeight="40.0" prefWidth="605.0" text="Cambiar Pokémon" translateY="6.5" GridPane.rowIndex="2">
+            <Button fx:id="attackBtn2" mnemonicParsing="false" onAction="#onAttack2" prefHeight="60.0" prefWidth="434.0" style="-fx-background-color: lightgreen; -fx-border-color: black;" text="Ataque 2" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Button fx:id="attackBtn3" mnemonicParsing="false" onAction="#onAttack3" prefHeight="60.0" prefWidth="434.0" style="-fx-background-color: lightgreen; -fx-border-color: black;" text="Ataque 3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Button fx:id="attackBtn4" mnemonicParsing="false" onAction="#onAttack4" prefHeight="60.0" prefWidth="434.0" style="-fx-background-color: lightgreen; -fx-border-color: black;" text="Ataque 4" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Button fx:id="switchCombatPokemon" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onAttack3" prefHeight="40.0" prefWidth="605.0" style="-fx-background-color: lightblue; -fx-border-color: black; -fx-border-width: 2;" text="Cambiar Pokémon" translateY="6.5" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
             </Button>
          </children>
       </GridPane>
@@ -75,17 +90,17 @@
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="playerPokemonImage" fitHeight="206.0" fitWidth="200.0" layoutX="118.0" layoutY="146.0">
+      <ImageView fx:id="playerPokemonImage" fitHeight="187.0" fitWidth="200.0" layoutX="124.0" layoutY="147.0">
          <image>
             <Image url="@../Imagenes/Pokemon/Back/10.png" />
          </image>
       </ImageView>
-      <ScrollPane layoutX="452.0" layoutY="1.0" prefHeight="200.0" prefWidth="151.0">
+      <ScrollPane layoutX="452.0" layoutY="1.0" prefHeight="200.0" prefWidth="151.0" style="-fx-border-color: black; -fx-border-width: 2;">
         <content>
           <AnchorPane fx:id="textCombatLog" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="154.0" translateX="1.0" />
         </content>
       </ScrollPane>
-      <Button fx:id="playerPokemonSoundButton1" layoutX="20.0" layoutY="243.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="39.0">
+      <Button fx:id="playerPokemonSoundButton1" layoutX="20.0" layoutY="243.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="39.0" style="-fx-background-color: #c4a484; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 20; -fx-background-radius: 21;">
          <graphic>
             <ImageView fx:id="playerSoundButton" fitHeight="100.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -94,5 +109,16 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button fx:id="salirBtn" layoutX="360.0" layoutY="16.0" mnemonicParsing="false" onAction="#onExit" prefHeight="40.0" prefWidth="83.0" style="-fx-background-color: #FF6961; -fx-background-radius: 21; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 20;" text="Salir">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="24.0">
+               <image>
+                  <Image url="@../../../Users/sergi/Downloads/cerrar-sesion.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
    </children>
 </AnchorPane>

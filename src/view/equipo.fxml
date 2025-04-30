@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControladorEquipo">
+   <children>
+      <ImageView fx:id="fondoEquipo" fitHeight="444.0" fitWidth="603.0">
+         <image>
+            <Image url="@../../../Users/sergi/Downloads/fondo_equipo_603x444.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="104.0" layoutY="362.0" prefHeight="54.0" prefWidth="274.0" text="Elije un Pokémon.">
+         <font>
+            <Font name="Verdana Bold" size="26.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imgPoke1" fitHeight="116.0" fitWidth="126.0">
+         <image>
+            <Image url="@../Imagenes/Pokemon/Front/1.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nombrePoke1" layoutX="98.0" layoutY="31.0" prefHeight="26.0" prefWidth="158.0" text="Pokémon" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imgPoke3" fitHeight="116.0" fitWidth="126.0" layoutY="106.0">
+         <image>
+            <Image url="@../Imagenes/Pokemon/Front/100.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgPoke2" fitHeight="116.0" fitWidth="126.0" layoutX="308.0">
+         <image>
+            <Image url="@../Imagenes/Pokemon/Front/10.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgPoke4" fitHeight="116.0" fitWidth="126.0" layoutX="308.0" layoutY="106.0">
+         <image>
+            <Image url="@../Imagenes/Pokemon/Front/1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgPoke5" fitHeight="116.0" fitWidth="126.0" layoutY="205.0">
+         <image>
+            <Image url="@../Imagenes/Pokemon/Front/1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgPoke6" fitHeight="116.0" fitWidth="126.0" layoutX="308.0" layoutY="205.0">
+         <image>
+            <Image url="@../Imagenes/Pokemon/Front/1.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nombrePoke3" layoutX="98.0" layoutY="125.0" prefHeight="38.0" prefWidth="158.0" text="Pokémon" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="nombrePoke5" layoutX="98.0" layoutY="224.0" prefHeight="38.0" prefWidth="158.0" text="Pokémon" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="nombrePoke2" layoutX="403.0" layoutY="31.0" prefHeight="26.0" prefWidth="158.0" text="Pokémon" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="nombrePoke4" layoutX="403.0" layoutY="131.0" prefHeight="26.0" prefWidth="158.0" text="Pokémon" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="18.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="vidaPoke1" layoutX="98.0" layoutY="58.0" prefHeight="12.0" prefWidth="150.0" progress="0.58" style="-fx-accent: #4CAF50;" />
+      <ProgressBar fx:id="vidaPoke3" layoutX="98.0" layoutY="157.0" prefHeight="12.0" prefWidth="150.0" progress="0.0" style="-fx-accent: #4CAF50;" />
+      <ProgressBar fx:id="vidaPoke2" layoutX="403.0" layoutY="58.0" prefHeight="12.0" prefWidth="150.0" progress="0.0" style="-fx-accent: #4CAF50;" />
+      <ProgressBar fx:id="vidaPoke4" layoutX="403.0" layoutY="158.0" prefHeight="12.0" prefWidth="150.0" progress="0.0" style="-fx-accent: #4CAF50;" />
+      <ProgressBar fx:id="vidaPoke5" layoutX="98.0" layoutY="263.0" prefHeight="12.0" prefWidth="150.0" progress="0.0" style="-fx-accent: #4CAF50;" translateY="-3.0" />
+      <ProgressBar fx:id="enemyHealthBar121" layoutX="403.0" layoutY="260.0" prefHeight="12.0" prefWidth="150.0" progress="0.0" style="-fx-accent: #4CAF50;" />
+      <Label fx:id="vidaPoke6" layoutX="403.0" layoutY="224.0" prefHeight="38.0" prefWidth="158.0" text="Pokémon" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="vidaTxtPoke1" layoutX="158.0" layoutY="70.0" prefHeight="26.0" prefWidth="83.0" text="0 / 0 HP" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="vidaTxtPoke2" layoutX="465.0" layoutY="70.0" prefHeight="26.0" prefWidth="83.0" text="0 / 0 HP" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="vidaTxtPoke3" layoutX="158.0" layoutY="169.0" prefHeight="26.0" prefWidth="83.0" text="0 / 0 HP" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="vidaTxtPoke4" layoutX="465.0" layoutY="169.0" prefHeight="26.0" prefWidth="83.0" text="0 / 0 HP" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="vidaTxtPoke5" layoutX="158.0" layoutY="272.0" prefHeight="26.0" prefWidth="83.0" text="0 / 0 HP" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="vidaTxtPoke6" layoutX="465.0" layoutY="272.0" prefHeight="26.0" prefWidth="83.0" text="0 / 0 HP" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="btnMoverCaja2" fitHeight="54.0" fitWidth="76.0" layoutX="535.0" layoutY="79.0" onMouseClicked="#btnMoverCaja2Click" onMouseEntered="#btnMoverCaja2Enter" onMouseExited="#btnMoverCaja2Exit" style="-fx-cursor: hand; -fx-opacity: 1.0;">
+         <image>
+            <Image url="@../../../Users/sergi/Downloads/fondo_boton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnMoverCaja1" fitHeight="54.0" fitWidth="76.0" layoutX="235.0" layoutY="79.0" onMouseClicked="#btnMoverCaja1Click" onMouseEntered="#btnMoverCaja1Enter" onMouseExited="#btnMoverCaja1Exit" style="-fx-cursor: hand; -fx-opacity: 1.0;" styleClass="image-boton">
+         <image>
+            <Image url="@../../../Users/sergi/Downloads/fondo_boton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnMoverCaja4" fitHeight="54.0" fitWidth="76.0" layoutX="535.0" layoutY="181.0" onMouseClicked="#btnMoverCaja4Click" onMouseEntered="#btnMoverCaja4Enter" onMouseExited="#btnMoverCaja4Exit" style="-fx-cursor: hand; -fx-opacity: 1.0;">
+         <image>
+            <Image url="@../../../Users/sergi/Downloads/fondo_boton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnMoverCaja6" fitHeight="54.0" fitWidth="76.0" layoutX="535.0" layoutY="285.0" onMouseClicked="#btnMoverCaja6Click" onMouseEntered="#btnMoverCaja6Enter" onMouseExited="#btnMoverCaja6Exit" style="-fx-cursor: hand; -fx-opacity: 1.0;">
+         <image>
+            <Image url="@../../../Users/sergi/Downloads/fondo_boton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnMoverCaja3" fitHeight="54.0" fitWidth="76.0" layoutX="235.0" layoutY="178.0" onMouseClicked="#btnMoverCaja3Click" onMouseEntered="#btnMoverCaja3Enter" onMouseExited="#btnMoverCaja3Exit" style="-fx-cursor: hand; -fx-opacity: 1.0;">
+         <image>
+            <Image url="@../../../Users/sergi/Downloads/fondo_boton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnMoverCaja5" fitHeight="54.0" fitWidth="76.0" layoutX="235.0" layoutY="285.0" onMouseClicked="#btnMoverCaja5Click" onMouseEntered="#btnMoverCaja5Enter" onMouseExited="#btnMoverCaja5Exit" style="-fx-cursor: hand; -fx-opacity: 1.0;">
+         <image>
+            <Image url="@../../../Users/sergi/Downloads/fondo_boton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnVolver" fitHeight="89.0" fitWidth="90.0" layoutX="508.0" layoutY="-18.0" onMouseClicked="#btnVolverClick" onMouseEntered="#btnVolverEnter" onMouseExited="#btnVolverExit" style="-fx-cursor: hand; -fx-opacity: 1.0;">
+         <image>
+            <Image url="@../../../Users/sergi/Downloads/fondo_boton_volver.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnVerCaja" fitHeight="140.0" fitWidth="139.0" layoutX="469.0" layoutY="318.0" onMouseClicked="#btnVerCajaClick" onMouseEntered="#btnVerCajaEnter" onMouseExited="#btnVerCajaExit" style="-fx-cursor: hand; -fx-opacity: 1.0;">
+         <image>
+            <Image url="@../../../Users/sergi/Downloads/fondo_boton_caja.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

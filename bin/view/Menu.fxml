@@ -155,6 +155,16 @@
                   <Font name="Segoe UI Black" size="18.0" />
                </font>
             </Text>
+            <ImageView fitHeight="92.0" fitWidth="110.0" layoutX="834.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Users/IvanJ/OneDrive/Escritorio/fotitos%20pokemon/Pokeball.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="83.0" fitWidth="110.0" layoutX="15.0" layoutY="421.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Users/IvanJ/OneDrive/Escritorio/fotitos%20pokemon/Pokeball.png" />
+               </image>
+            </ImageView>
       </children>
     </AnchorPane>
   </children>

@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
@@ -114,6 +115,8 @@ public class ControladorEquipo {
 	@FXML
 	private Label vidaTxtPoke6;
 
+	private Stage primaryStage;
+
 	@FXML
 	void btnMoverCaja1Click(MouseEvent event) {
 
@@ -220,7 +223,19 @@ public class ControladorEquipo {
 	}
 
 	@FXML
-	void btnVerCajaClick(MouseEvent event) {
+	void btnVerCajaClick(MouseEvent event) throws IOException {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/caja.fxml"));
+			Parent root = loader.load();
+
+			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 

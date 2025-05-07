@@ -20,14 +20,14 @@
             <Image url="@../Imagenes/FondoCombatePokemon.png" />
          </image>
       </ImageView>
-      <ProgressBar fx:id="enemyHealthBar" layoutX="109.0" layoutY="86.0" prefHeight="15.0" prefWidth="140.0" progress="0.0" />
-      <ProgressBar fx:id="playerHealthBar" layoutX="436.0" layoutY="254.0" prefHeight="15.0" prefWidth="140.0" progress="0.0" />
-      <Label fx:id="enemyNameLabel" layoutX="61.0" layoutY="62.0" prefHeight="18.0" prefWidth="98.0" text="Pokemon">
+      <ProgressBar fx:id="enemyHealthBar" layoutX="109.0" layoutY="86.0" prefHeight="14.0" prefWidth="150.0" progress="0.38" style="-fx-accent: #4CAF50;" />
+      <ProgressBar fx:id="playerHealthBar" layoutX="436.0" layoutY="254.0" prefHeight="14.0" prefWidth="140.0" progress="0.18" style="-fx-accent: #4CAF50;" />
+      <Label fx:id="enemyNameLabel" layoutX="61.0" layoutY="62.0" prefHeight="18.0" prefWidth="98.0" text="Pokémon">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="playerNameLabel" layoutX="387.0" layoutY="228.0" prefHeight="18.0" prefWidth="98.0" text="Pokemon">
+      <Label fx:id="playerNameLabel" layoutX="387.0" layoutY="228.0" prefHeight="18.0" prefWidth="98.0" text="Pokémon">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

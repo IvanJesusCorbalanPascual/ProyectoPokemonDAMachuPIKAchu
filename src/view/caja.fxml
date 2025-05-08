@@ -8,27 +8,27 @@
    <children>
       <ImageView fx:id="fondoCaja" fitHeight="451.0" fitWidth="603.0" layoutY="-7.0">
          <image>
-            <Image url="@../../../Users/sergi/Downloads/fondo_caja.png" />
+            <Image url="@../Imagenes/fondo/fondo_caja.png" />
          </image>
       </ImageView>
       <ImageView fx:id="btnMover" fitHeight="173.0" fitWidth="200.0" layoutX="220.0" layoutY="302.0" onMouseClicked="#btnMoverClick" onMouseEntered="#btnMoverEnter" onMouseExited="#btnMoverExit" style="-fx-cursor: hand; -fx-opacity: 1.0;">
          <image>
-            <Image url="@../../../Users/sergi/Downloads/boton_mover.png" />
+            <Image url="@../Imagenes/boton/boton_mover.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="139.0" fitWidth="246.0" layoutX="-5.0" layoutY="316.0">
          <image>
-            <Image url="@../../../Users/sergi/Downloads/boton_equipo.png" />
+            <Image url="@../Imagenes/boton/boton_equipo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="btnVolver" fitHeight="157.0" fitWidth="222.0" layoutX="393.0" layoutY="307.0" onMouseClicked="#btnVolverClick" onMouseEntered="#btnVolverEnter" onMouseExited="#btnVolverExit" style="-fx-cursor: hand; -fx-opacity: 1.0;">
          <image>
-            <Image url="@../../../Users/sergi/Downloads/ChatGPT%20Image%206%20may%202025,%2010_07_07.png" />
+            <Image url="@../Imagenes/boton/btnVolverCaja.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="btnEquipo" fitHeight="186.0" fitWidth="237.0" layoutX="-5.0" layoutY="293.0" onMouseClicked="#btnEquipoClick" onMouseEntered="#btnEquipoEnter" onMouseExited="#btnEquipoExit" style="-fx-cursor: hand; -fx-opacity: 1.0;">
+      <ImageView fx:id="btnEquipo" fitHeight="186.0" fitWidth="246.0" layoutX="-5.0" layoutY="293.0" onMouseClicked="#btnEquipoClick" onMouseEntered="#btnEquipoEnter" onMouseExited="#btnEquipoExit" style="-fx-cursor: hand; -fx-opacity: 1.0;">
          <image>
-            <Image url="@../../../Users/sergi/Downloads/boton_equipo%20(2).png" />
+            <Image url="@../Imagenes/boton/boton_equipo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="imgPoke1" layoutX="41.0" layoutY="75.0" style="-fx-cursor: hand;">

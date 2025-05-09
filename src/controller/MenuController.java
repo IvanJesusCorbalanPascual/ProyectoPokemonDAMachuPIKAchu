@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -134,8 +135,7 @@ public class MenuController {
 
 	@FXML
 	public void salir(ActionEvent event) {
-		// MenuController.show(); (LuisRe lo hizo)
-		// this.stage.close(); (LuisRe lo hizo)
+		Platform.exit();
 	}
 
 	public Stage getPrimaryStage() {

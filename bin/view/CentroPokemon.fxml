@@ -49,48 +49,39 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" text="Drag components from Library here…" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
-          <font>
-            <Font size="18.0" />
-          </font>
-        </Label>
-            <ImageView fx:id="btnCurarPokemon" fitHeight="594.0" fitWidth="726.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btnCurarPokemon" fitHeight="611.0" fitWidth="1040.0" layoutX="14.0" layoutY="-16.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../imagenes/imagen.png" />
+                  <Image url="@../imagenes/imgCentroPokemon.png" />
                </image>
             </ImageView>
-            <Button layoutX="251.0" layoutY="462.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="200.0">
-               <graphic>
-                  <ImageView fitHeight="78.0" fitWidth="216.0" onDragDetected="#curarPokemons" onMouseClicked="#curarPokemons" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../imagenes/btnCurarPokemons.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <ImageView fitHeight="79.0" fitWidth="272.0" layoutX="250.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="413.0" fitWidth="470.0" layoutX="357.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../imagenes/centroPokemon.png" />
+                  <Image url="@../imagenes/enfermeraJoy.png" />
                </image>
             </ImageView>
-            <Label fx:id="lbl5" layoutX="188.0" layoutY="336.0" text="Label" />
-            <Label fx:id="lbl4" layoutX="481.0" layoutY="263.0" text="Label" />
-            <Label fx:id="lbl2" layoutX="481.0" layoutY="168.0" text="Label" />
-            <Label fx:id="lbl3" layoutX="188.0" layoutY="254.0" text="Label" />
-            <Label fx:id="lbl1" layoutX="188.0" layoutY="168.0" text="Label" />
-            <Label fx:id="lbl6" layoutX="481.0" layoutY="336.0" text="Label" />
-            <ProgressBar fx:id="bar6" layoutX="395.0" layoutY="373.0" prefWidth="200.0" progress="0.0" />
-            <ProgressBar fx:id="bar1" layoutX="102.0" layoutY="206.0" prefWidth="200.0" progress="0.0" />
-            <ProgressBar fx:id="bar5" layoutX="102.0" layoutY="373.0" prefWidth="200.0" progress="0.0" />
-            <ProgressBar fx:id="bar3" layoutX="102.0" layoutY="294.0" prefWidth="200.0" progress="0.0" />
-            <ProgressBar fx:id="bar4" layoutX="395.0" layoutY="294.0" prefWidth="200.0" progress="0.0" />
-            <ProgressBar fx:id="bar2" layoutX="395.0" layoutY="206.0" prefWidth="200.0" progress="0.0" />
-            <Button fx:id="btnSalir" layoutX="636.0" layoutY="540.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="52.0" text="Salir">
+            <ImageView fx:id="btnCurarPokemons" fitHeight="107.0" fitWidth="404.0" layoutX="302.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/txtCentroPokemon.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lbl5" layoutX="188.0" layoutY="409.0" text="Label" />
+            <Label fx:id="lbl4" layoutX="750.0" layoutY="301.0" text="Label" />
+            <Label fx:id="lbl2" layoutX="748.0" layoutY="195.0" text="Label" />
+            <Label fx:id="lbl3" layoutX="188.0" layoutY="301.0" text="Label" />
+            <Label fx:id="lbl1" layoutX="188.0" layoutY="195.0" text="Label" />
+            <Label fx:id="lbl6" layoutX="750.0" layoutY="409.0" text="Label" />
+            <ProgressBar fx:id="bar6" layoutX="662.0" layoutY="438.0" prefWidth="200.0" progress="0.0" />
+            <ProgressBar fx:id="bar1" layoutX="102.0" layoutY="222.0" prefWidth="200.0" progress="0.0" />
+            <ProgressBar fx:id="bar5" layoutX="102.0" layoutY="438.0" prefWidth="200.0" progress="0.0" />
+            <ProgressBar fx:id="bar3" layoutX="102.0" layoutY="327.0" prefWidth="200.0" progress="0.0" />
+            <ProgressBar fx:id="bar4" layoutX="662.0" layoutY="327.0" prefWidth="200.0" progress="0.0" />
+            <ProgressBar fx:id="bar2" layoutX="664.0" layoutY="222.0" prefWidth="200.0" progress="0.0" />
+            <Button fx:id="btnSalir" layoutX="891.0" layoutY="532.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="52.0" text="Salir">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Text layoutX="285.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enfermera Joy">
+            <Text layoutX="216.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enfermera Joy">
                <font>
                   <Font name="Candara Bold" size="22.0" />
                </font>
@@ -116,6 +107,26 @@
                   </LinearGradient>
                </fill>
             </Text>
+            <ImageView fitHeight="107.0" fitWidth="121.0" layoutX="155.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/señalCentroPokemon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="107.0" fitWidth="120.0" layoutX="750.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/menu/centroPokemon.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnCurarPokemons" layoutX="381.0" layoutY="483.0" mnemonicParsing="false" onAction="#curarPokemons" prefHeight="63.0" prefWidth="245.0" style="-fx-background-color: #ff5b5d; -fx-background-radius: 25px; -fx-border-radius: 25px;" text="Curar Pokemons" textFill="WHITE">
+               <font>
+                  <Font name="Monospaced Regular" size="24.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="78.0" fitWidth="216.0" layoutX="396.0" layoutY="486.0" onDragDetected="#curarPokemons" onMouseClicked="#curarPokemons" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/imgCurarPokemons.png" />
+               </image>
+            </ImageView>
       </children>
     </AnchorPane>
   </children>

@@ -95,7 +95,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Label id="labelEntrenador" fx:id="lblEntrenador" layoutX="178.0" layoutY="24.0" text="Label" />
+            <Label id="labelEntrenador" fx:id="lblEntrenador" layoutX="105.0" layoutY="54.0" text="Label" />
             <Button id="btnSalir" fx:id="btnSalir" layoutX="841.0" layoutY="463.0" mnemonicParsing="false" onAction="#salir" style="-fx-effect: innershadow(gaussian, rgba(0,0,0,0.5), 10, 0.5, 0, 0);" text="Salir">
                <font>
                   <Font name="Lucida Console" size="18.0" />
@@ -128,7 +128,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Label id="labelPokedolares" fx:id="lblPokedolares" layoutX="178.0" layoutY="58.0" text="Label" />
+            <Label id="labelPokedolares" fx:id="lblPokedolares" layoutX="795.0" layoutY="54.0" text="Label" />
             <Button id="btnTienda" fx:id="btnTienda" layoutX="192.0" layoutY="394.0" mnemonicParsing="false" onAction="#abrirTienda" prefHeight="62.0" prefWidth="166.0" style="-fx-background-color: #FFD93D; -fx-background-radius: 50px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 10, 0.5, 2, 2);" text="Tienda" textAlignment="CENTER">
                <font>
                   <Font name="Lucida Console" size="26.0" />
@@ -145,12 +145,12 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Text id="lblEntrenador" layoutX="56.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrenador: " textAlignment="CENTER">
+            <Text id="lblEntrenador" layoutX="70.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrenador" textAlignment="CENTER">
                <font>
                   <Font name="Segoe UI Black" size="18.0" />
                </font>
             </Text>
-            <Text id="lblPokedolares" layoutX="50.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pokedolares: " textAlignment="CENTER">
+            <Text id="lblPokedolares" layoutX="754.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pokedolares" textAlignment="CENTER">
                <font>
                   <Font name="Segoe UI Black" size="18.0" />
                </font>

@@ -20,7 +20,7 @@ public class Main extends Application {
         primaryStage.setTitle("Menu");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-        /*Image image = new Image(getClass().getResourceAsStream("/imagenes/pokeball.png"));
+        /*Image image = new Image(getClass().getResourceAsStream("/imagenes/pokeball.png")); // intento de cambiar el icono del programa	
         primaryStage.getIcons().add(image);*/
     }
 

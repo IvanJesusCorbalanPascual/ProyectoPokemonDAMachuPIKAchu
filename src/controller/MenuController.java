@@ -81,7 +81,7 @@ public class MenuController {
 	    stage.setScene(scene);
 	    stage.setTitle("Captura");
 
-	    capturaController controller = loader.getController();
+	    CapturaController controller = loader.getController();
 	    controller.init(primaryStage);
 	    controller.setPrimaryStage(primaryStage);
 

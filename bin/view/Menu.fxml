@@ -53,19 +53,19 @@
           </font>
         </Label>
             <ImageView id="labelEntrenador" fx:id="imgFondo" fitHeight="540.0" fitWidth="943.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
-               <image>
-                  <Image url="@../Imagenes/fondoMenu.jpg" />
-               </image>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
                <viewport>
                   <Rectangle2D />
                </viewport>
+               <image>
+                  <Image url="@../Imagenes/fondo/fondoMenu.jpg" />
+               </image>
             </ImageView>
             <ImageView fx:id="logoPokemon" accessibleRole="BUTTON" fitHeight="105.0" fitWidth="225.0" layoutX="366.0" layoutY="13.0" onMouseClicked="#arriba" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Imagenes/pokeLogo.png" />
+                  <Image url="@../Imagenes/otros/pokeLogo.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
@@ -157,12 +157,12 @@
             </Text>
             <ImageView fitHeight="92.0" fitWidth="110.0" layoutX="834.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Users/IvanJ/OneDrive/Escritorio/fotitos%20pokemon/Pokeball.png" />
+                  <Image url="@../Imagenes/otros/pokeball.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="83.0" fitWidth="110.0" layoutX="15.0" layoutY="421.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Users/IvanJ/OneDrive/Escritorio/fotitos%20pokemon/Pokeball.png" />
+                  <Image url="@../Imagenes/otros/pokeball.png" />
                </image>
             </ImageView>
       </children>

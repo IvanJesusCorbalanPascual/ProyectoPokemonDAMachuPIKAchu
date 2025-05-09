@@ -17,7 +17,7 @@
    <children>
       <ImageView fx:id="backgroundImg" fitHeight="434.0" fitWidth="610.0" layoutX="-6.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Imagenes/FondoCombatePokemon.png" />
+            <Image url="@../Imagenes/fondo/fondo_combate.png" />
          </image>
       </ImageView>
       <ProgressBar fx:id="enemyHealthBar" layoutX="109.0" layoutY="86.0" prefHeight="14.0" prefWidth="150.0" progress="0.38" style="-fx-accent: #4CAF50;" />
@@ -36,7 +36,7 @@
          <graphic>
             <ImageView fx:id="enemySoundButton" fitHeight="100.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Imagenes/Sonido.png" />
+                  <Image url="@../Imagenes/otros/Sonido.png" />
                </image>
             </ImageView>
          </graphic>
@@ -104,7 +104,7 @@
          <graphic>
             <ImageView fx:id="playerSoundButton" fitHeight="100.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Imagenes/Sonido.png" />
+                  <Image url="@../Imagenes/otros/Sonido.png" />
                </image>
             </ImageView>
          </graphic>

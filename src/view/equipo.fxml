@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="444.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControladorEquipo">
+<AnchorPane prefHeight="458.0" prefWidth="611.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControladorEquipo">
    <children>
-      <ImageView fx:id="fondoEquipo" fitHeight="444.0" fitWidth="603.0">
+      <ImageView fx:id="fondoEquipo" fitHeight="458.0" fitWidth="611.0">
          <image>
             <Image url="@../Imagenes/fondo/fondo_equipo.png" />
          </image>
@@ -150,7 +150,7 @@
             <Image url="@../Imagenes/boton/fondo_boton_volver.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="btnVerCaja" fitHeight="140.0" fitWidth="139.0" layoutX="469.0" layoutY="318.0" onMouseClicked="#btnVerCajaClick" onMouseEntered="#btnVerCajaEnter" onMouseExited="#btnVerCajaExit" style="-fx-cursor: hand; -fx-opacity: 1.0;">
+      <ImageView fx:id="btnVerCaja" fitHeight="116.0" fitWidth="136.0" layoutX="477.0" layoutY="339.0" onMouseClicked="#btnVerCajaClick" onMouseEntered="#btnVerCajaEnter" onMouseExited="#btnVerCajaExit" style="-fx-cursor: hand; -fx-opacity: 1.0;">
          <image>
             <Image url="@../Imagenes/boton/fondo_boton_caja.png" />
          </image>

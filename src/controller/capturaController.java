@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class capturaController {
 
@@ -76,4 +77,23 @@ public class capturaController {
 
     }
 
+    private Stage primaryStage;
+
+    public void init(Stage stage) {
+        this.primaryStage = stage;
+    }
+
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
+
+    @FXML
+    public void initialize() {
+        // Aquí puedes inicializar cosas si lo necesitas
+    }
 }
+

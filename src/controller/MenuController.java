@@ -73,35 +73,41 @@ public class MenuController {
 
 	@FXML
 	void abrirCaptura(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/captura.fxml"));
-		Parent root = loader.load();
-		
-		Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.setTitle("Combate");
-		controladorCombate controller = loader.getController();
-		controller.init(primaryStage);
-		controller.setPrimaryStage(primaryStage);
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/captura.fxml"));
+	    Parent root = loader.load();
 
-		primaryStage.show();
+	    Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+	    Scene scene = new Scene(root);
+	    stage.setScene(scene);
+	    stage.setTitle("Captura");
+
+	    capturaController controller = loader.getController();
+	    controller.init(primaryStage);
+	    controller.setPrimaryStage(primaryStage);
+
+	    primaryStage.show();
 	}
+
 
 	@FXML
 	void abrirCentroPokemon(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/CentroPokemon.fxml"));
-		Parent root = loader.load();
-		
-		Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.setTitle("Combate");
-		controladorCombate controller = loader.getController();
-		controller.init(primaryStage);
-		controller.setPrimaryStage(primaryStage);
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/CentroPokemon.fxml"));
+	    Parent root = loader.load();
 
-		primaryStage.show();
+	    Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+	    Scene scene = new Scene(root);
+	    stage.setScene(scene);
+	    stage.setTitle("Centro Pokémon");
+
+	    CentroPokemonController controller = loader.getController();
+	    controller.init(primaryStage);
+	    controller.setPrimaryStage(primaryStage);
+
+	    primaryStage.show();
 	}
+
+
+
 
 	@FXML
 	void abrirCombate(ActionEvent event) throws IOException {
@@ -113,6 +119,7 @@ public class MenuController {
 		stage.setScene(scene);
 		stage.setTitle("Combate");
 		controladorCombate controller = loader.getController();
+		
 		controller.init(primaryStage);
 		controller.setPrimaryStage(primaryStage);
 

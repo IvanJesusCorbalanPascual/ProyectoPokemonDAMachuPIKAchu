@@ -51,58 +51,18 @@
             <Font size="18.0" />
           </font>
         </Label>
-            <ImageView fitHeight="500.0" fitWidth="765.0" layoutY="-9.0">
+            <ImageView fitHeight="506.0" fitWidth="778.0" layoutY="-9.0">
                <image>
-                  <Image url="@../imagenes/captura.png" />
+                  <Image url="@../imagenes/fondo/fondo_captura.png" />
                </image>
             </ImageView>
             <Label fx:id="lblPokemonGenerado" layoutX="357.0" layoutY="328.0" text="Catherpie" />
             <ImageView fx:id="pokeball" fitHeight="48.0" fitWidth="47.0" layoutX="358.0" layoutY="369.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../imagenes/pokeball.png" />
+                  <Image url="@../imagenes/otros/pokeball.png" />
                </image>
             </ImageView>
             <Text layoutX="273.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NºPokepollas:" />
-            <ImageView fitHeight="48.0" fitWidth="53.0" layoutX="573.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/gifBulbasaur.gif" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="93.0" fitWidth="96.0" layoutX="62.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/gifJolteon.gif" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="77.0" fitWidth="93.0" layoutX="684.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/gifPikachu.gif" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="77.0" fitWidth="67.0" layoutX="529.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/gifDragonite.gif" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="56.0" fitWidth="43.0" layoutX="684.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/gifSquirtle.gif" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="77.0" fitWidth="67.0" layoutX="617.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/gifCharmander.gif" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="93.0" fitWidth="77.0" layoutX="52.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/gifGrowlithe.gif" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="124.0" fitWidth="107.0" layoutX="251.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/gifLatias.gif" />
-               </image>
-            </ImageView>
             <Button id="btnSalir" fx:id="btnSalir" layoutX="673.0" layoutY="448.0" mnemonicParsing="false" onAction="#salir" onMouseDragEntered="#btnSalirEntered" onMouseDragExited="#btnSalirSalir" style="-fx-effect: innershadow(gaussian, rgba(0,0,0,0.5), 10, 0.5, 0, 0);" text="Salir">
                <font>
                   <Font name="Lucida Console" size="18.0" />
@@ -113,7 +73,7 @@
             </Button>
             <ImageView fx:id="imgGenerar" fitHeight="39.0" fitWidth="87.0" layoutX="387.0" layoutY="431.0" onMouseClicked="#generar" onMouseEntered="#imgGenerarEntered" onMouseExited="#imgGenerarExit" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand; -fx-opacity: 1.0;">
                <image>
-                  <Image url="@../imagenes/imgGenerar.png" />
+                  <Image url="@../imagenes/boton/imgGenerar.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
@@ -121,7 +81,7 @@
             </ImageView>
             <ImageView fx:id="imgCapturar" fitHeight="39.0" fitWidth="93.0" layoutX="294.0" layoutY="431.0" onMouseClicked="#capturar" onMouseEntered="#imgCapturarEntered" onMouseExited="#imgCapturarExit" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../imagenes/imgCapturar.png" />
+                  <Image url="@../imagenes/boton/imgCapturar.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
@@ -134,6 +94,41 @@
             </ImageView>
             <Text layoutX="420.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" />
             <Label fx:id="numPokeballs" layoutX="442.0" layoutY="384.0" text="Label" />
+            <ImageView fitHeight="60.0" fitWidth="78.0" layoutX="596.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/Pokemon/gifDragonite.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="97.0" fitWidth="110.0" layoutX="225.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/Pokemon/gifLatias.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="103.0" fitWidth="116.0" layoutX="75.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/Pokemon/gifJolteon.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="78.0" layoutX="689.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/Pokemon/gifPikachu.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="78.0" layoutX="553.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/Pokemon/gifBulbasaur.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="87.0" fitWidth="93.0" layoutX="596.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/Pokemon/gifCharmander.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="78.0" layoutX="673.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/Pokemon/gifSquirtle.gif" />
+               </image>
+            </ImageView>
       </children>
     </AnchorPane>
   </children>

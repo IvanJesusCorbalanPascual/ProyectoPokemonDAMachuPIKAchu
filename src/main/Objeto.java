@@ -1,4 +1,4 @@
-package model;
+package main;
 
 public class Objeto {
     private String nombre;

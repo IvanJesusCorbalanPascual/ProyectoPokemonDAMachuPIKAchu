@@ -1,4 +1,4 @@
-package model;
+package main;
 
 import java.util.*;
 
@@ -6,7 +6,6 @@ public class Pokemon {
 	private int numPokedex; // IMPORTANTE, Creada para la clase Captura, puede dar problemas
 	private String nombre;
 	private String mote;
-	private int numPokedex;
 	private int vitalidad;
 	private int ps;
 	private int psMax;
@@ -131,9 +130,6 @@ public class Pokemon {
 
 	public int getNumPokedex() {
 		return numPokedex;
-	}
-
-	    return numPokedex;
 	}
 
 	public void setNumPokedex(int numPokedex) {

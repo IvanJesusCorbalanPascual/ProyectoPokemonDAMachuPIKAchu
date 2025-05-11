@@ -1,4 +1,4 @@
-package model;
+package main;
 
 public enum Tipo { // enumerador del tipo del pokemon
     NORMAL,

@@ -1,6 +1,7 @@
-package model;
+package main;
 
 import bd.BDConnection;
+
 import java.sql.*;
 
 public class Captura {

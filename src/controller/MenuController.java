@@ -5,6 +5,10 @@ import java.io.IOException;
 import javafx.application.Platform; 
 import javafx.event.ActionEvent; 
 import javafx.fxml.FXML; 
+import bd.BDConnection;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,12 +18,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import main.Entrenador;
 
 public class MenuController {
 
 	private Stage primaryStage;
 
 	private FXMLLoader loader;
+	
+	private Entrenador entrenador;
 
 	@FXML
 	private Button btnCaptura;
@@ -141,6 +148,9 @@ public class MenuController {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/equipo.fxml"));
 			Parent root = loader.load();
+			ControladorEquipo controller = loader.getController();
+			controller.setEntrenador(entrenador);
+			controller.actualizarVista();
 			Stage stage = (Stage) btnEquipo.getScene().getWindow();
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
@@ -174,6 +184,10 @@ public class MenuController {
 	public void setPrimaryStage(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 	}
+	
+	public void setEntrenador(Entrenador entrenador) {
+		this.entrenador = entrenador;
+	}
 
 	public void init(Stage Stage) {
 		this.primaryStage = Stage;
@@ -181,7 +195,9 @@ public class MenuController {
 
 	@FXML
 	public void initialize() {
-
+	    if (this.entrenador == null) {
+	        this.entrenador = new Entrenador(1, "LuisRe");
+	        this.entrenador.cargarPokemonsDesdeBD(BDConnection.getConnection());
+	    }
 	}
-
 }

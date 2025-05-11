@@ -31,122 +31,122 @@
             <Image url="@../Imagenes/boton/boton_equipo.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke1" layoutX="41.0" layoutY="75.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke1" layoutX="41.0" layoutY="75.0" onMouseClicked="#imgPoke1Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke2" layoutX="118.0" layoutY="75.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke2" layoutX="118.0" layoutY="75.0" onContextMenuRequested="#imgPoke2Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke3" layoutX="193.0" layoutY="75.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke3" layoutX="193.0" layoutY="75.0" onMouseClicked="#imgPoke3Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke4" layoutX="272.0" layoutY="75.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke4" layoutX="272.0" layoutY="75.0" onMouseClicked="#imgPoke4Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke5" layoutX="360.0" layoutY="75.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke5" layoutX="360.0" layoutY="75.0" onMouseClicked="#imgPoke5Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke6" layoutX="446.0" layoutY="75.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke6" layoutX="446.0" layoutY="75.0" onMouseClicked="#imgPoke6Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke7" layoutX="37.0" layoutY="126.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke7" layoutX="37.0" layoutY="126.0" onMouseClicked="#imgPoke7Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke8" layoutX="117.0" layoutY="126.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke8" layoutX="117.0" layoutY="126.0" onMouseClicked="#imgPoke8Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke9" layoutX="192.0" layoutY="126.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke9" layoutX="192.0" layoutY="126.0" onMouseClicked="#imgPoke9Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke10" layoutX="271.0" layoutY="126.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke10" layoutX="271.0" layoutY="126.0" onMouseClicked="#imgPoke10Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke11" layoutX="359.0" layoutY="126.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke11" layoutX="359.0" layoutY="126.0" onMouseClicked="#imgPoke11Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke12" layoutX="445.0" layoutY="126.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke12" layoutX="445.0" layoutY="126.0" onMouseClicked="#imgPoke12Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke13" layoutX="39.0" layoutY="180.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke13" layoutX="39.0" layoutY="180.0" onMouseClicked="#imgPoke13Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke14" layoutX="116.0" layoutY="180.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke14" layoutX="116.0" layoutY="180.0" onMouseClicked="#imgPoke14Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke15" layoutX="191.0" layoutY="180.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke15" layoutX="191.0" layoutY="180.0" onMouseClicked="#imgPoke15Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke16" layoutX="270.0" layoutY="180.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke16" layoutX="270.0" layoutY="180.0" onMouseClicked="#imgPoke16Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke17" layoutX="358.0" layoutY="180.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke17" layoutX="358.0" layoutY="180.0" onMouseClicked="#imgPoke17Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke18" layoutX="444.0" layoutY="180.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke18" layoutX="444.0" layoutY="180.0" onMouseClicked="#imgPoke18Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke19" layoutX="39.0" layoutY="232.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke19" layoutX="39.0" layoutY="232.0" onMouseClicked="#imgPoke19Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke20" layoutX="116.0" layoutY="232.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke20" layoutX="116.0" layoutY="232.0" onMouseClicked="#imgPoke20Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke21" layoutX="191.0" layoutY="232.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke21" layoutX="191.0" layoutY="232.0" onMouseClicked="#imgPoke21Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke22" layoutX="270.0" layoutY="232.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke22" layoutX="270.0" layoutY="232.0" onMouseClicked="#imgPoke22Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke23" layoutX="358.0" layoutY="232.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke23" layoutX="358.0" layoutY="232.0" onMouseClicked="#imgPoke23Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke24" layoutX="441.0" layoutY="232.0" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke24" layoutX="441.0" layoutY="232.0" onMouseClicked="#imgPoke24Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>

@@ -16,11 +16,13 @@ import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Captura;
+import model.Entrenador;
 import model.Pokemon;
 
 public class CapturaController {
 	
 	private Pokemon pokemonActual;
+	private Entrenador entrenador;
 
     @FXML
     private Button btnSalir;
@@ -55,21 +57,32 @@ public class CapturaController {
     void btnSalirSalir(MouseDragEvent event) {
 
     }
-
+    int pokeballs = 100;
     @FXML
     void capturar(MouseEvent event) {
-    	
-    	if (pokemonActual == null) return;
+
+        if (pokemonActual == null) return;
+
+        /*if (entrenador.getPokeballs() <= 0) {
+            lblResultado.setText("¡No te quedan Pokéballs!");
+            return;
+        }*/
+
+        // Gasta una Pokéball
+        numPokeballs.setText(""+pokeballs);
+        pokeballs--;
 
         boolean exito = Captura.intentarCaptura();
 
         if (exito) {
-            lblPokemonGenerado.setText("¡Has capturado a " + pokemonActual.getNombre() + "!");
-            // Aquí podrías guardar el Pokémon capturado en una lista o BD
+            lblResultado.setText("¡Has capturado a " + pokemonActual.getNombre() + "!");
+            generar(event);
+            // Aquí puedes guardar el Pokémon capturado
         } else {
-            lblPokemonGenerado.setText("¡" + pokemonActual.getNombre() + " ha escapado!");
+            lblResultado.setText("¡" + pokemonActual.getNombre() + " ha escapado!");
         }
     }
+
 
     @FXML
     void generar(MouseEvent event) {
@@ -146,5 +159,12 @@ public class CapturaController {
     public void initialize() {
     	
     }
-}
+    
+    // Metodo para definir las pokeballs que tiene el entrenador
+    public void setEntrenador(Entrenador entrenador) {
+        this.entrenador = entrenador;
+        numPokeballs.setText("Pokéballs: " + entrenador.getPokeballs());
+    }
 
+
+}

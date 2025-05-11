@@ -5,7 +5,10 @@ import java.util.*;
 public class Pokemon {
 	private String nombre;
 	private String mote;
+	private int numPokedex;
 	private int vitalidad;
+	private int ps;
+	private int psMax;
 	private int ataque;
 	private int defensa;
 	private int ataqueEspecial;
@@ -46,6 +49,8 @@ public class Pokemon {
 		this.defensaEspecial = rand.nextInt(10) + 1;
 		this.velocidad = rand.nextInt(10) + 1;
 		this.estamina = rand.nextInt(10) + 1;
+		this.psMax = this.vitalidad * 10;
+		this.ps = this.psMax;
 	}
 
 	public void subirExperiencia(int expGanada) {
@@ -66,14 +71,18 @@ public class Pokemon {
 		defensaEspecial += rand.nextInt(5) + 1;
 		velocidad += rand.nextInt(5) + 1;
 		estamina += rand.nextInt(5) + 1;
-		if (nivel == 8 || nivel == 16 ||nivel == 32 ) {
-			aprenderMovimiento();
+		if ((nivel == 8 || nivel == 16 || nivel == 32) && !movimientosPosibles.isEmpty()) {
+			Movimiento nuevo = movimientosPosibles.get(0);
+			aprenderMovimiento(nuevo);
 		}
 	}
 
-	private void aprenderMovimiento() {
-		// TODO Auto-generated method stub
-		
+	public void aprenderMovimiento(Movimiento nuevo) {
+	    if (movimientosDisponibles.size() < 4) {
+	        movimientosDisponibles.add(nuevo);
+	    } else {
+	        movimientosDisponibles.set(0, nuevo); // sustituye el primero por simplicidad
+	    }
 	}
 
 	/*
@@ -81,35 +90,163 @@ public class Pokemon {
 	 * (movimientosDisponibles.size() < 4) { movimientosDisponibles.add(nuevo); }
 	 * else { // lógica para intercambiar movimiento, según decisión del usuario } }
 	 */
-	public void setEstado(Estado saludable) {
-		// TODO Auto-generated method stub
-
+	public void setEstado(Estado estado) {
+		this.estado = estado;
 	}
 
+	public Estado getEstado() {
+	    return estado;
+	}
+	
 	public String getNombre() {
-		// TODO Auto-generated method stub
-		return null;
+		return nombre;
 	}
 
 	public int getVitalidad() {
-		// TODO Auto-generated method stub
-		return 0;
+		return vitalidad;
 	}
 
 	public void setVitalidad(int i) {
-		// TODO Auto-generated method stub
+		this.vitalidad = i;
+		this.psMax = i * 10;
+		if (this.ps > psMax) this.ps = psMax;
 
 	}
 
 	public int getAtaque() {
-		// TODO Auto-generated method stub
-		return 0;
+		return ataque;
 	}
 
 	public void setAtaque(int i) {
-		// TODO Auto-generated method stub
+		this.ataque = i;
 
 	}
+
+	public int getNumPokedex() {
+	    return numPokedex;
+	}
+
+	public void setNumPokedex(int numPokedex) {
+	    this.numPokedex = numPokedex;
+	}
+
+	public int getPs() {
+		return ps;
+	}
+
+	public int getPsMax() {
+	    return psMax;
+	}
+	
+	public String getMote() {
+	    return mote != null ? mote : nombre;
+	}
+	
+	public void setMote(String mote) {
+	    this.mote = mote;
+	}
+	
+	public int getNivel() {
+	    return nivel;
+	}
+	
+	public int getExperiencia() {
+	    return experiencia;
+	}
+	
+	public Sexo getSexo() {
+	    return sexo;
+	}
+	
+	public Tipo getTipo1() {
+	    return tipo1;
+	}
+	
+	public Tipo getTipo2() {
+	    return tipo2;
+	}
+	
+	public int getDefensa() {
+	    return defensa;
+	}
+
+	public int getDefensaEspecial() {
+	    return defensaEspecial;
+	}
+
+	public int getVelocidad() {
+	    return velocidad;
+	}
+
+	public int getEstamina() {
+	    return estamina;
+	}
+	
+	public int getFertilidad() {
+	    return fertilidad;
+	}
+
+	public void reducirFertilidad() {
+	    if (fertilidad > 0) fertilidad--;
+	}
+	
+	public boolean estaDebilitado() {
+	    return ps <= 0;
+	}
+
+	public void curar() {
+	    this.ps = this.psMax;
+	    this.estado = Estado.SALUDABLE;
+	}
+	
+	public void recibirDanio(int danio) {
+	    this.ps -= danio;
+	    if (this.ps < 0) this.ps = 0;
+	}
+
+	public boolean estaDisponible() {
+	    return !estaDebilitado() && estado == Estado.SALUDABLE;
+	}
+	
+	public List<Movimiento> getMovimientosDisponibles() {
+	    return movimientosDisponibles;
+	}
+
+	public List<Movimiento> getMovimientosPosibles() {
+	    return movimientosPosibles;
+	}
+	
+	public void setObjeto(Objeto objeto) {
+	    this.objeto = objeto;
+	}
+	
+	public void setDefensa(int defensa) {
+	    this.defensa = defensa;
+	}
+	
+	public void setNivel(int nivel) {
+	    this.nivel = nivel;
+	}
+
+	public void setDefensaEspecial(int defensaEspecial) {
+	    this.defensaEspecial = defensaEspecial;
+	}
+
+	public void setVelocidad(int velocidad) {
+	    this.velocidad = velocidad;
+	}
+
+	public void setEstamina(int estamina) {
+	    this.estamina = estamina;
+	}
+
+	public Objeto getObjeto() {
+	    return objeto;
+	}
+	
+	
+
+	
 
 	// Métodos get/set y otros métodos como atacar, etc., vendrán después
 }

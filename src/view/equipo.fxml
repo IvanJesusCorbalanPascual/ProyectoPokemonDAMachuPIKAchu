@@ -79,38 +79,38 @@
       <ProgressBar fx:id="vidaPoke2" layoutX="403.0" layoutY="58.0" prefHeight="12.0" prefWidth="150.0" progress="0.0" style="-fx-accent: #4CAF50;" />
       <ProgressBar fx:id="vidaPoke4" layoutX="403.0" layoutY="158.0" prefHeight="12.0" prefWidth="150.0" progress="0.0" style="-fx-accent: #4CAF50;" />
       <ProgressBar fx:id="vidaPoke5" layoutX="98.0" layoutY="263.0" prefHeight="12.0" prefWidth="150.0" progress="0.0" style="-fx-accent: #4CAF50;" translateY="-3.0" />
-      <ProgressBar fx:id="enemyHealthBar121" layoutX="403.0" layoutY="260.0" prefHeight="12.0" prefWidth="150.0" progress="0.0" style="-fx-accent: #4CAF50;" />
-      <Label fx:id="vidaPoke6" layoutX="403.0" layoutY="224.0" prefHeight="38.0" prefWidth="158.0" text="Pokémon" textFill="WHITE">
+      <ProgressBar fx:id="vidaPoke6" layoutX="403.0" layoutY="260.0" prefHeight="12.0" prefWidth="150.0" progress="0.0" style="-fx-accent: #4CAF50;" />
+      <Label fx:id="nombrePoke6" layoutX="403.0" layoutY="224.0" prefHeight="38.0" prefWidth="158.0" text="Pokémon" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="vidaTxtPoke1" layoutX="158.0" layoutY="70.0" prefHeight="26.0" prefWidth="83.0" text="0 / 0 HP" textFill="WHITE">
+      <Label fx:id="vidaTxtPoke1" layoutX="135.0" layoutY="67.0" prefHeight="26.0" prefWidth="110.0" text="0 / 0 HP" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="vidaTxtPoke2" layoutX="465.0" layoutY="70.0" prefHeight="26.0" prefWidth="83.0" text="0 / 0 HP" textFill="WHITE">
+      <Label fx:id="vidaTxtPoke2" layoutX="442.0" layoutY="67.0" prefHeight="26.0" prefWidth="110.0" text="0 / 0 HP" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="vidaTxtPoke3" layoutX="158.0" layoutY="169.0" prefHeight="26.0" prefWidth="83.0" text="0 / 0 HP" textFill="WHITE">
+      <Label fx:id="vidaTxtPoke3" layoutX="135.0" layoutY="166.0" prefHeight="26.0" prefWidth="110.0" text="0 / 0 HP" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="vidaTxtPoke4" layoutX="465.0" layoutY="169.0" prefHeight="26.0" prefWidth="83.0" text="0 / 0 HP" textFill="WHITE">
+      <Label fx:id="vidaTxtPoke4" layoutX="442.0" layoutY="166.0" prefHeight="26.0" prefWidth="110.0" text="0 / 0 HP" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="vidaTxtPoke5" layoutX="158.0" layoutY="272.0" prefHeight="26.0" prefWidth="83.0" text="0 / 0 HP" textFill="WHITE">
+      <Label fx:id="vidaTxtPoke5" layoutX="135.0" layoutY="269.0" prefHeight="26.0" prefWidth="110.0" text="0 / 0 HP" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="vidaTxtPoke6" layoutX="465.0" layoutY="272.0" prefHeight="26.0" prefWidth="83.0" text="0 / 0 HP" textFill="WHITE">
+      <Label fx:id="vidaTxtPoke6" layoutX="442.0" layoutY="269.0" prefHeight="26.0" prefWidth="110.0" text="0 / 0 HP" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="16.0" />
          </font>

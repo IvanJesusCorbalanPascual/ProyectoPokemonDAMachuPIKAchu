@@ -18,4 +18,5 @@ public enum Tipo { // enumerador del tipo del pokemon
     DRAGON,
     SINIESTRO,
     ACERO,
+    HADA
 }

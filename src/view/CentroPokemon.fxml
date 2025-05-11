@@ -66,9 +66,6 @@
                <image>
                   <Image url="@../imagenes/boton/imgCurarPokemons.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
             </ImageView>
             <ImageView fitHeight="86.0" fitWidth="143.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>

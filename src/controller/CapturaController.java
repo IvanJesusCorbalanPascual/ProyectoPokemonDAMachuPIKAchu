@@ -10,17 +10,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import model.Captura;
-import model.Pokemon;
 
 public class CapturaController {
-	
-	private Pokemon pokemonActual;
 
     @FXML
     private Button btnSalir;
@@ -34,9 +29,6 @@ public class CapturaController {
     @FXML
     private ImageView imgPokemonGenerado;
 
-    @FXML
-    private Label lblResultado;
-    
     @FXML
     private Label lblPokemonGenerado;
 
@@ -58,39 +50,13 @@ public class CapturaController {
 
     @FXML
     void capturar(MouseEvent event) {
-    	
-    	if (pokemonActual == null) return;
 
-        boolean exito = Captura.intentarCaptura();
-
-        if (exito) {
-            lblPokemonGenerado.setText("¡Has capturado a " + pokemonActual.getNombre() + "!");
-            // Aquí podrías guardar el Pokémon capturado en una lista o BD
-        } else {
-            lblPokemonGenerado.setText("¡" + pokemonActual.getNombre() + " ha escapado!");
-        }
     }
 
     @FXML
     void generar(MouseEvent event) {
-        pokemonActual = Captura.generarPokemonAleatorio();
 
-        if (pokemonActual != null) {
-            lblPokemonGenerado.setText(pokemonActual.getNombre());
-            try {
-                String ruta = getClass().getResource("/imagenes/Pokemon/Front/" + pokemonActual.getNumPokedex() + ".png").toExternalForm();
-                Image imagen = new Image(ruta);
-                imgPokemonGenerado.setImage(imagen);
-            } catch (Exception e) {
-                System.out.println("Imagen no encontrada para el Pokémon número " + pokemonActual.getNumPokedex());
-                e.printStackTrace();
-            }
-        }
-
-        System.out.println("Generado: " + pokemonActual.getNombre() + " (" + pokemonActual.getNumPokedex() + ")");
     }
-
-
 
     @FXML
     void imgCapturarEntered(MouseEvent event) {
@@ -144,7 +110,7 @@ public class CapturaController {
 
     @FXML
     public void initialize() {
-    	
+        // Aquí puedes inicializar cosas si lo necesitas
     }
 }
 

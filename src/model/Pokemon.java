@@ -1,11 +1,11 @@
-package main;
+package model;
 
 import java.util.*;
 
 public class Pokemon {
+	private int numPokedex; // IMPORTANTE, Creada para la clase Captura, puede dar problemas
 	private String nombre;
 	private String mote;
-	private int numPokedex;
 	private int vitalidad;
 	private int ps;
 	private int psMax;
@@ -25,6 +25,7 @@ public class Pokemon {
 	private Objeto objeto;
 	private List<Movimiento> movimientosDisponibles;
 	private List<Movimiento> movimientosPosibles;
+	
 
 	public Pokemon(String nombre, Sexo sexo, Tipo tipo1, Tipo tipo2) {
 		this.nombre = nombre;
@@ -40,6 +41,11 @@ public class Pokemon {
 		generarEstadisticasIniciales();
 	}
 
+	 public Pokemon(int numPokedex, String nombre) {
+	        this.numPokedex = numPokedex;
+	        this.nombre = nombre;
+	    }
+	 
 	private void generarEstadisticasIniciales() { // Genera estadistias aleatorias para el pokemon recien creado
 		Random rand = new Random();
 		this.vitalidad = rand.nextInt(10) + 1;
@@ -245,8 +251,5 @@ public class Pokemon {
 	}
 	
 	
-
-	
-
 	// Métodos get/set y otros métodos como atacar, etc., vendrán después
 }

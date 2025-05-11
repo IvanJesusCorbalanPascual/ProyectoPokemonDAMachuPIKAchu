@@ -13,6 +13,7 @@ public class Entrenador {
     private int pokedollars;
     private int id;
     private List<Objeto> objetos;
+    public int pokeballs = 100;
 
     public Entrenador(int id, String nombre) {
         this.id = id;
@@ -21,6 +22,7 @@ public class Entrenador {
         this.equipoCaja = new ArrayList<>();
         this.pokedollars = 0;
         this.objetos = new ArrayList<>();
+        this.pokeballs = 100;
     }
 
     public void añadirPokemon(Pokemon p) {
@@ -64,6 +66,15 @@ public class Entrenador {
         for (Pokemon p : equipoCaja) {
             System.out.println("- " + p.getNombre());
         }
+    }
+
+    // Getters/Setters si los necesitas
+    public int getPokeballs() {
+        return pokeballs;
+    }
+
+    public void setPokeballs(int pokeballs) {
+        this.pokeballs = pokeballs;
     }
 
     public List<Pokemon> getEquipo() {

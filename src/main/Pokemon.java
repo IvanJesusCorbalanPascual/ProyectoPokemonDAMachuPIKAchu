@@ -5,7 +5,6 @@ import java.util.*;
 public class Pokemon {
 	private String nombre;
 	private String mote;
-	private int numPokedex;
 	private int vitalidad;
 	private int ps;
 	private int psMax;
@@ -40,6 +39,11 @@ public class Pokemon {
 		generarEstadisticasIniciales();
 	}
 
+	public Pokemon(int numPokedex, String nombre) {
+	    this.numPokedex = numPokedex;
+	    this.nombre = nombre;
+	}
+	 
 	private void generarEstadisticasIniciales() { // Genera estadistias aleatorias para el pokemon recien creado
 		Random rand = new Random();
 		this.vitalidad = rand.nextInt(10) + 1;
@@ -244,9 +248,5 @@ public class Pokemon {
 	    return objeto;
 	}
 	
-	
-
-	
-
 	// Métodos get/set y otros métodos como atacar, etc., vendrán después
 }

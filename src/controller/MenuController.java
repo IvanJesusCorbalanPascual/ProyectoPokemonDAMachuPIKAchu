@@ -2,6 +2,9 @@ package controller;
 
 import java.io.IOException;
 
+import javafx.application.Platform; 
+import javafx.event.ActionEvent; 
+import javafx.fxml.FXML; 
 import bd.BDConnection;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -197,6 +200,4 @@ public class MenuController {
 	        this.entrenador.cargarPokemonsDesdeBD(BDConnection.getConnection());
 	    }
 	}
-
-
 }

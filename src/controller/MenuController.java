@@ -19,7 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import main.Entrenador;
+import model.Entrenador;
 
 public class MenuController {
 
@@ -123,6 +123,8 @@ public class MenuController {
 	    controller.setEntrenador(this.entrenador); //  Muy importante
 	    controller.setPrimaryStage((Stage) ((Node) event.getSource()).getScene().getWindow());
 
+	    controller.iniciarCombate(); 
+	    
 	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 	    stage.setScene(new Scene(root));
 	    stage.setTitle("Combate");

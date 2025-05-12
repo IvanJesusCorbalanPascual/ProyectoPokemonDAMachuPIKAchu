@@ -1,4 +1,4 @@
-package main;
+package model;
 
 import java.util.*;
 
@@ -46,7 +46,7 @@ public class Pokemon {
 	    this.nombre = nombre;
 	}
 	 
-	private void generarEstadisticasIniciales() { // Genera estadistias aleatorias para el pokemon recien creado
+	public void generarEstadisticasIniciales() { // Genera estadistias aleatorias para el pokemon recien creado
 		Random rand = new Random();
 		this.vitalidad = rand.nextInt(10) + 1;
 		this.ataque = rand.nextInt(10) + 1;

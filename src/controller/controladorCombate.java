@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,12 +15,17 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import main.Entrenador;
+import model.Captura;
+import model.Entrenador;
+import model.Pokemon;
 
 public class controladorCombate {
 
 	private Stage primaryStage;
 	private Entrenador entrenador;
+	private Pokemon pokemonJugador;
+	private Pokemon pokemonEnemigo;
+	private int turno = 0;
 
 	// -- BOTONES DE ATAQUE --
 	@FXML
@@ -134,6 +140,35 @@ public class controladorCombate {
 		
 	}
 	
+	public void iniciarCombate() {
+	    List<Pokemon> equipo = entrenador.getEquipo();
+	    if (equipo.isEmpty()) return;
+
+	    pokemonJugador = equipo.get(0);
+	    pokemonEnemigo = Captura.generarPokemonAleatorio();
+
+	    actualizarVistaCombate();
+	}
+
+	private void actualizarVistaCombate() {
+		playerNameLabel.setText(pokemonJugador.getNombre() + " (HP: " + pokemonJugador.getPs() + ")");
+		enemyNameLabel.setText(pokemonEnemigo.getNombre() + " (HP: " + pokemonEnemigo.getPs() + ")");
+	    playerHealthBar.setProgress(1.0);
+	    enemyHealthBar.setProgress(1.0);
+
+	    try {
+	        String rutaJugador = getClass().getResource("/imagenes/Pokemon/Front/" + pokemonJugador.getNumPokedex() + ".png").toExternalForm();
+	        playerPokemonImage.setImage(new javafx.scene.image.Image(rutaJugador));
+
+	        String rutaEnemigo = getClass().getResource("/imagenes/Pokemon/Front/" + pokemonEnemigo.getNumPokedex() + ".png").toExternalForm();
+	        rivalPokemonImage.setImage(new javafx.scene.image.Image(rutaEnemigo));
+	    } catch (Exception e) {
+	        System.out.println("Error al cargar imágenes de los Pokémon.");
+	        e.printStackTrace();
+	    }
+	}
+
+	
 	// - GETTERS Y SETTERS
 	public Stage getPrimaryStage() {
 		return primaryStage;
@@ -144,6 +179,8 @@ public class controladorCombate {
 	}
 	
 	public void setEntrenador(Entrenador entrenador) {
-		this.entrenador = entrenador;
+	    this.entrenador = entrenador;
+	    iniciarCombate();
 	}
+
 }

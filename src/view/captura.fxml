@@ -56,14 +56,17 @@
                   <Image url="@../imagenes/fondo/fondo_captura.png" />
                </image>
             </ImageView>
-            <Label fx:id="lblPokemonGenerado" layoutX="357.0" layoutY="328.0" text="Catherpie" />
+            <Label fx:id="lblPokemonGenerado" layoutX="345.0" layoutY="328.0" prefHeight="33.0" prefWidth="97.0">
+               <font>
+                  <Font name="Verdana Bold" size="12.0" />
+               </font></Label>
             <ImageView fx:id="pokeball" fitHeight="48.0" fitWidth="47.0" layoutX="358.0" layoutY="369.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/otros/pokeball.png" />
                </image>
             </ImageView>
             <Text layoutX="273.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NºPokepollas:" />
-            <Button id="btnSalir" fx:id="btnSalir" layoutX="673.0" layoutY="448.0" mnemonicParsing="false" onAction="#salir" onMouseDragEntered="#btnSalirEntered" onMouseDragExited="#btnSalirSalir" style="-fx-effect: innershadow(gaussian, rgba(0,0,0,0.5), 10, 0.5, 0, 0);" text="Salir">
+            <Button id="btnSalir" fx:id="btnSalir" layoutX="673.0" layoutY="448.0" mnemonicParsing="false" onAction="#salir" style="-fx-effect: innershadow(gaussian, rgba(0,0,0,0.5), 10, 0.5, 0, 0);" text="Salir">
                <font>
                   <Font name="Lucida Console" size="18.0" />
                </font>
@@ -71,7 +74,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <ImageView fx:id="imgGenerar" fitHeight="39.0" fitWidth="87.0" layoutX="387.0" layoutY="431.0" onMouseClicked="#generar" onMouseEntered="#imgGenerarEntered" onMouseExited="#imgGenerarExit" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand; -fx-opacity: 1.0;">
+            <ImageView fx:id="imgGenerar" fitHeight="39.0" fitWidth="87.0" layoutX="387.0" layoutY="431.0" onMouseClicked="#generar" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand; -fx-opacity: 1.0;">
                <image>
                   <Image url="@../imagenes/boton/imgGenerar.png" />
                </image>
@@ -79,7 +82,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="imgCapturar" fitHeight="39.0" fitWidth="93.0" layoutX="294.0" layoutY="431.0" onMouseClicked="#capturar" onMouseEntered="#imgCapturarEntered" onMouseExited="#imgCapturarExit" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgCapturar" fitHeight="39.0" fitWidth="93.0" layoutX="294.0" layoutY="431.0" onMouseClicked="#capturar" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/boton/imgCapturar.png" />
                </image>
@@ -87,13 +90,12 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="imgPokemonGenerado" fitHeight="265.0" fitWidth="273.0" layoutX="254.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../imagenes/Pokemon/Front/10.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="imgPokemonGenerado" fitHeight="265.0" fitWidth="273.0" layoutX="254.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true" />
             <Text layoutX="420.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" />
-            <Label fx:id="numPokeballs" layoutX="442.0" layoutY="384.0" text="Label" />
+            <Label fx:id="numPokeballs" layoutX="442.0" layoutY="384.0" text="Label">
+               <font>
+                  <Font name="Verdana Bold" size="12.0" />
+               </font></Label>
             <ImageView fitHeight="60.0" fitWidth="78.0" layoutX="596.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/Pokemon/gifDragonite.gif" />

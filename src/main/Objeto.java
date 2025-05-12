@@ -1,56 +1,64 @@
 package main;
 
 public class Objeto {
-    private String nombre;
-    private String descripcion;
-    private String efecto;
-    private int precio;
+	private String nombre;
+	private int precio;
 
-    public Objeto(String nombre, String descripcion, String efecto, int precio) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.efecto = efecto;
-        this.precio = precio;
-    }
+	public Objeto(String nombre, int precio) {
+		this.nombre = nombre;
+		this.precio = precio;
+	}
 
-    public void aplicar(Pokemon p) {
-        switch (efecto.toLowerCase()) {
-            case "cura":
-                p.setEstado(Estado.SALUDABLE);
-                System.out.println(p.getNombre() + " ha sido curado.");
-                break;
+	public String getNombre() {
+		return nombre;
+	}
 
-            case "cura vida":
-                p.setVitalidad(p.getVitalidad() + 20); // ejemplo, cura 20 HP
-                System.out.println(p.getNombre() + " ha recuperado vitalidad.");
-                break;
+	public int getPrecio() {
+		return precio;
+	}
 
-            case "ataque+":
-                p.setAtaque(p.getAtaque() + 5);
-                System.out.println(p.getNombre()+"aumentó su ataque.");
-                break;
+	// Aplica el efecto dependiendo del objeto
+	public void aplicar(Pokemon p) {
+		switch (nombre.toLowerCase()) {
+		case "pesa":
+			p.setAtaque((int) (p.getAtaque() * 1.2));
+			p.setDefensa((int) (p.getDefensa() * 1.2));
+			p.setVelocidad((int) (p.getVelocidad() * 0.8));
+			break;
 
-            // Posibilidad de añadir más efectos segun sea necesario
+		case "pluma":
+			p.setVelocidad((int) (p.getVelocidad() * 1.3));
+			p.setDefensa((int) (p.getDefensa() * 0.8));
+			p.setDefensaEspecial((int) (p.getDefensaEspecial() * 0.8));
+			break;
 
-            default:
-                System.out.println("Efecto desconocido.");
-                break;
-        }
-    }
+		case "chaleco":
+			p.setDefensa((int) (p.getDefensa() * 1.2));
+			p.setDefensaEspecial((int) (p.getDefensaEspecial() * 1.2));
+			p.setVelocidad((int) (p.getVelocidad() * 0.85));
+			p.setAtaque((int) (p.getAtaque() * 0.85));
+			break;
 
-    public String getNombre() {
-        return nombre;
-    }
+		case "baston":
+			p.setEstamina((int) (p.getEstamina() * 1.2));
+			p.setVelocidad((int) (p.getVelocidad() * 0.85));
+			break;
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+//	    case "pilas":
+//	        p.setRecuperacionEstamina((int) (p.getRecuperacionEstamina() * 1.5));
+//	        p.setDefensaEspecial((int) (p.getDefensaEspecial() * 0.7));
+//	        break;
+//
+//	    case "eter":
+//	        p.restaurarMovimientos(); // Asegúrate de tener este método en la clase Pokémon
+//	        break;
 
-    public String getEfecto() {
-        return efecto;
-    }
+		/*
+		 * case "anillo unico": p.activarInvencibilidad(3); // Método que debes
+		 * implementar para durar 3 turnos p.setAtaque((int) (p.getAtaque() * 10));
+		 * break;
+		 */
+		}
 
-    public int getPrecio() {
-        return precio;
-    }
+	}
 }

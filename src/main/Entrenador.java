@@ -68,31 +68,6 @@ public class Entrenador {
         }
     }
 
-    // Getters/Setters si los necesitas
-    public int getPokeballs() {
-        return pokeballs;
-    }
-
-    public void setPokeballs(int pokeballs) {
-        this.pokeballs = pokeballs;
-    }
-
-    public List<Pokemon> getEquipo() {
-        return equipoPrincipal;
-    }
-
-    public List<Pokemon> getCaja() {
-        return equipoCaja;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
-    }
-
     public void cargarPokemonsDesdeBD(Connection conexion) {
         equipoPrincipal.clear();
         equipoCaja.clear();
@@ -174,9 +149,24 @@ public class Entrenador {
         }
     }
 
+    public void añadirPokeballs(int cantidad) {
+        this.pokeballs += cantidad;
+    }
 
+    // Conexion con la base de datos para guardar las pokeballs que se compran en la tienda
+    public void guardarPokeballsEnBD(Connection conexion) {
+        try {
+            String sql = "UPDATE Entrenadores SET pokeballs = ? WHERE id_entrenador = ?";
+            PreparedStatement stmt = conexion.prepareStatement(sql);
+            stmt.setInt(1, this.pokeballs);
+            stmt.setInt(2, this.id);
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-
+    // Metodo para quitar tildes y evitar errores
     private String quitarTildes(String input) {
         return input
             .replace("Á", "A")
@@ -186,4 +176,70 @@ public class Entrenador {
             .replace("Ú", "U")
             .replace("Ñ", "N");
     }
+    
+ // Getters/Setters si los necesitas
+    public int getPokeballs() {
+        return pokeballs;
+    }
+
+    public void setPokeballs(int pokeballs) {
+        this.pokeballs = pokeballs;
+    }
+
+    public List<Pokemon> getEquipo() {
+        return equipoPrincipal;
+    }
+
+    public List<Pokemon> getCaja() {
+        return equipoCaja;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public List<Pokemon> getEquipoPrincipal() {
+		return equipoPrincipal;
+	}
+
+	public void setEquipoPrincipal(List<Pokemon> equipoPrincipal) {
+		this.equipoPrincipal = equipoPrincipal;
+	}
+
+	public List<Pokemon> getEquipoCaja() {
+		return equipoCaja;
+	}
+
+	public void setEquipoCaja(List<Pokemon> equipoCaja) {
+		this.equipoCaja = equipoCaja;
+	}
+
+	public int getPokedollars() {
+		return pokedollars;
+	}
+
+	public void setPokedollars(int pokedollars) {
+		this.pokedollars = pokedollars;
+	}
+
+	public List<Objeto> getObjetos() {
+		return objetos;
+	}
+
+	public void setObjetos(List<Objeto> objetos) {
+		this.objetos = objetos;
+	}
+
 }

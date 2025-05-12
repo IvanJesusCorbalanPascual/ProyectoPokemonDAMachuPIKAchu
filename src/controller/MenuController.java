@@ -171,8 +171,23 @@ public class MenuController {
 
 	@FXML
 	void abrirTienda(ActionEvent event) {
+	    try {
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/tienda.fxml"));
+	        Parent root = loader.load();
 
+	        TiendaController tiendaController = loader.getController();
+	        tiendaController.init(entrenador, BDConnection.getConnection());
+
+	        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	        Scene scene = new Scene(root);
+	        stage.setScene(scene);
+	        stage.setTitle("Tienda Pokémon");
+	        stage.show();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
 	}
+
 
 	@FXML
 	public void salir(ActionEvent event) {

@@ -43,3 +43,7 @@
 	        return Math.random() < 0.5; // Metodo con 50% de probabilidad de capturar el Pokemon
 	    }
 	}
+
+	            // Paso 2: Obtener el nombre de ese Pokémon con su número
+	                    //return new Pokemon(num, nombre);
+

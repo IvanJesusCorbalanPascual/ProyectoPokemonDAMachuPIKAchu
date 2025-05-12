@@ -3,6 +3,8 @@ package main;
 import java.util.*;
 
 public class Pokemon {
+	private int idPokemon;
+	private int numPokedex;
 	private String nombre;
 	private String mote;
 	private int vitalidad;
@@ -246,6 +248,14 @@ public class Pokemon {
 
 	public Objeto getObjeto() {
 	    return objeto;
+	}
+	
+	public int getIdPokemon() {
+		return idPokemon;
+	}
+
+	public void setIdPokemon(int idPokemon) {
+		this.idPokemon = idPokemon;
 	}
 	
 	// Métodos get/set y otros métodos como atacar, etc., vendrán después

@@ -13,9 +13,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import main.Entrenador;
+
 
 public class CentroPokemonController {
 
+	
 	@FXML
 	private ProgressBar bar1;
 
@@ -76,22 +79,32 @@ public class CentroPokemonController {
 	@FXML
 	private Label pkmlbl6;
 
-	@FXML
-	void salir(ActionEvent event) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/menu.fxml"));
-			Parent root = loader.load();
+	private Entrenador entrenador;
 
-			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
+    public void setEntrenador(Entrenador entrenador) {
+        this.entrenador = entrenador;
+    }
+    
+    @FXML
+    void salir(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/menu.fxml"));
+            Parent root = loader.load();
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+            // Pasamos el entrenador antes de mostrar el menú
+            MenuController menuController = loader.getController();
+            menuController.setEntrenador(this.entrenador);
+            menuController.setPrimaryStage((Stage) ((Node) event.getSource()).getScene().getWindow());
 
-	}
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Menú Principal");
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 	private Stage primaryStage;
 

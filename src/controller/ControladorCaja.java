@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 import java.util.List;
+
+import bd.BDConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -16,6 +18,12 @@ import main.Pokemon;
 
 public class ControladorCaja {
 
+	private Stage primaryStage;
+
+	public void setPrimaryStage(Stage stage) {
+	    this.primaryStage = stage;
+	}
+	
 	@FXML
 	private ImageView btnEquipo;
 
@@ -133,8 +141,12 @@ public class ControladorCaja {
 	        Pokemon p = caja.remove(index);
 	        equipo.add(p);
 	        actualizarVista();
+
+	        // Guardar el cambio en la BD
+	        entrenador.actualizarEquipoEnBD(BDConnection.getConnection());
 	    }
 	}
+
 
 
 	@FXML
@@ -146,6 +158,7 @@ public class ControladorCaja {
 	        // Pasar entrenador al controlador de equipo
 	        ControladorEquipo controladorEquipo = loader.getController();
 	        controladorEquipo.setEntrenador(this.entrenador);
+	        controladorEquipo.setPrimaryStage(this.primaryStage);
 	        controladorEquipo.actualizarVista();
 
 	        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

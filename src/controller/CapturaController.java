@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
@@ -34,6 +35,9 @@ public class CapturaController {
 
     @FXML
     private ImageView imgPokemonGenerado;
+    
+    @FXML
+    private Label lblResultado;
 
     @FXML
     private Label lblPokemonGenerado;
@@ -83,8 +87,23 @@ public class CapturaController {
 
     @FXML
     void generar(MouseEvent event) {
-
+        pokemonActual = Captura.generarPokemonAleatorio();
+ 
+        if (pokemonActual != null) {
+            lblPokemonGenerado.setText(pokemonActual.getNombre());
+            try {
+                String ruta = getClass().getResource("/imagenes/Pokemon/Front/" + pokemonActual.getNumPokedex() + ".png").toExternalForm();
+                Image imagen = new Image(ruta);
+                imgPokemonGenerado.setImage(imagen);
+            } catch (Exception e) {
+                System.out.println("Imagen no encontrada para el Pokémon número " + pokemonActual.getNumPokedex());
+                e.printStackTrace();
+            }
+        }
+ 
+        System.out.println("Generado: " + pokemonActual.getNombre() + " (" + pokemonActual.getNumPokedex() + ")");
     }
+ 
 
     @FXML
     void imgCapturarEntered(MouseEvent event) {
@@ -108,19 +127,26 @@ public class CapturaController {
 
     @FXML
     void salir(ActionEvent event) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/menu.fxml"));
-			Parent root = loader.load();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/menu.fxml"));
+            Parent root = loader.load();
 
-			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
+            // Pasamos el entrenador al controlador del menú
+            MenuController menuController = loader.getController();
+            menuController.setEntrenador(this.entrenador);
+            menuController.setPrimaryStage((Stage) ((Node) event.getSource()).getScene().getWindow());
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Menú Principal");
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     private Stage primaryStage;
 

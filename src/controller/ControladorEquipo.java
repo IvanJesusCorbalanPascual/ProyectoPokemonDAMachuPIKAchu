@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.util.List;
 
+import bd.BDConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -20,10 +21,19 @@ import main.Pokemon;
 
 public class ControladorEquipo {
 
+	private Stage primaryStage;
     private Entrenador entrenador;
 
     public void setEntrenador(Entrenador entrenador) {
         this.entrenador = entrenador;
+    }
+    
+    public void setPrimaryStage(Stage stage) {
+        this.primaryStage = stage;
+    }
+
+    public Stage getPrimaryStage() {
+        return primaryStage;
     }
 
     public void actualizarVista() {
@@ -77,8 +87,12 @@ public class ControladorEquipo {
             Pokemon p = entrenador.getEquipo().remove(index);
             entrenador.getCaja().add(p);
             actualizarVista();
+
+            // Guardar el cambio en la BD
+            entrenador.actualizarEquipoEnBD(BDConnection.getConnection());
         }
     }
+
 
     
     @FXML private ImageView btnMoverCaja1, btnMoverCaja2, btnMoverCaja3, btnMoverCaja4, btnMoverCaja5, btnMoverCaja6;
@@ -91,12 +105,16 @@ public class ControladorEquipo {
     
     @FXML
     void btnVerCajaClick(MouseEvent event) {
-    	try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/caja.fxml"));
             Parent root = loader.load();
+
             ControladorCaja controladorCaja = loader.getController();
             controladorCaja.setEntrenador(this.entrenador);
+
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            controladorCaja.setPrimaryStage(stage); // ← IMPORTANTE
+
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle("Caja Pokémon");
@@ -105,6 +123,7 @@ public class ControladorEquipo {
             e.printStackTrace();
         }
     }
+
     // Botones de mover
     @FXML void btnMoverCaja1Click(MouseEvent e) { moverACaja(0); }
     @FXML void btnMoverCaja2Click(MouseEvent e) { moverACaja(1); }
@@ -144,8 +163,9 @@ public class ControladorEquipo {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/menu.fxml"));
             Parent root = loader.load();
 
+            // Pasar el entrenador al menu controller, muy importante
             MenuController menuController = loader.getController();
-            menuController.setEntrenador(this.entrenador);  
+            menuController.setEntrenador(this.entrenador);
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -157,6 +177,7 @@ public class ControladorEquipo {
             e.printStackTrace();
         }
     }
+
 
 
 

@@ -14,10 +14,12 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import main.Entrenador;
 
 public class controladorCombate {
 
 	private Stage primaryStage;
+	private Entrenador entrenador;
 
 	// -- BOTONES DE ATAQUE --
 	@FXML
@@ -102,22 +104,25 @@ public class controladorCombate {
 	}
 	
 	// -- MÉTODO PARA VOLVER AL MENÚ PRINCIPAL --
-    @FXML
-    void onExit(ActionEvent event) {
+	@FXML
+	void onExit(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/menu.fxml"));
 			Parent root = loader.load();
 
+			// ← ¡IMPORTANTE! Pasamos el entrenador al menú
+			MenuController menuController = loader.getController();
+			menuController.setEntrenador(this.entrenador);
+			menuController.setPrimaryStage((Stage) ((Node) event.getSource()).getScene().getWindow());
+
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
+			stage.setScene(new Scene(root));
 			stage.setTitle("Menú Principal");
 			stage.show();
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 	
 	// Método para inicializar en la ventana principal el controlador
@@ -136,5 +141,9 @@ public class controladorCombate {
 
 	public void setPrimaryStage(Stage primaryStage) {
 		this.primaryStage = primaryStage;
+	}
+	
+	public void setEntrenador(Entrenador entrenador) {
+		this.entrenador = entrenador;
 	}
 }

@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -83,16 +84,15 @@ public class MenuController {
 	    FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/captura.fxml"));
 	    Parent root = loader.load();
 
-	    Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-	    Scene scene = new Scene(root);
-	    stage.setScene(scene);
-	    stage.setTitle("Captura");
-
 	    CapturaController controller = loader.getController();
+	    controller.setEntrenador(this.entrenador); // ← AÑADIDO
 	    controller.init(primaryStage);
 	    controller.setPrimaryStage(primaryStage);
 
-	    primaryStage.show();
+	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	    stage.setScene(new Scene(root));
+	    stage.setTitle("Captura");
+	    stage.show();
 	}
 
 
@@ -101,16 +101,14 @@ public class MenuController {
 	    FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/CentroPokemon.fxml"));
 	    Parent root = loader.load();
 
-	    Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-	    Scene scene = new Scene(root);
-	    stage.setScene(scene);
-	    stage.setTitle("Centro Pokémon");
-
 	    CentroPokemonController controller = loader.getController();
-	    controller.init(primaryStage);
+	    controller.setEntrenador(this.entrenador); // ← AÑADIDO
 	    controller.setPrimaryStage(primaryStage);
 
-	    primaryStage.show();
+	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	    stage.setScene(new Scene(root));
+	    stage.setTitle("Centro Pokémon");
+	    stage.show();
 	}
 
 
@@ -118,20 +116,19 @@ public class MenuController {
 
 	@FXML
 	void abrirCombate(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/combate.fxml"));
-		Parent root = loader.load();
-		
-		Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.setTitle("Combate");
-		controladorCombate controller = loader.getController();
-		
-		controller.init(primaryStage);
-		controller.setPrimaryStage(primaryStage);
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/combate.fxml"));
+	    Parent root = loader.load();
 
-		primaryStage.show();
+	    controladorCombate controller = loader.getController();
+	    controller.setEntrenador(this.entrenador); //  Muy importante
+	    controller.setPrimaryStage((Stage) ((Node) event.getSource()).getScene().getWindow());
+
+	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	    stage.setScene(new Scene(root));
+	    stage.setTitle("Combate");
+	    stage.show(); 
 	}
+
 
 	@FXML
 	void abrirCrianza(ActionEvent event) {
@@ -145,22 +142,25 @@ public class MenuController {
 
 	@FXML
 	void abrirEquipo(ActionEvent event) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/equipo.fxml"));
-			Parent root = loader.load();
-			ControladorEquipo controller = loader.getController();
-			controller.setEntrenador(entrenador);
-			controller.actualizarVista();
-			Stage stage = (Stage) btnEquipo.getScene().getWindow();
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
+	    try {
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/equipo.fxml"));
+	        Parent root = loader.load();
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	        ControladorEquipo controladorEquipo = loader.getController();
+	        controladorEquipo.setEntrenador(this.entrenador);
+	        controladorEquipo.actualizarVista();
 
+	        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+	        Scene scene = new Scene(root);
+	        stage.setScene(scene);
+	        stage.setTitle("Equipo Pokémon");
+	        stage.show();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
 	}
+
+
 
 	@FXML
 	void abrirPokedex(ActionEvent event) {
@@ -174,6 +174,7 @@ public class MenuController {
 
 	@FXML
 	public void salir(ActionEvent event) {
+		this.entrenador.actualizarEquipoEnBD(BDConnection.getConnection());
 		Platform.exit();
 	}
 

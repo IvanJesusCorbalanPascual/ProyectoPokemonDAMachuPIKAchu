@@ -94,6 +94,9 @@ public class Entrenador {
     }
 
     public void cargarPokemonsDesdeBD(Connection conexion) {
+        equipoPrincipal.clear();
+        equipoCaja.clear();
+
         try {
             String sql = "SELECT * FROM pokemon WHERE id_entrenador = ?";
             PreparedStatement stmt = conexion.prepareStatement(sql);
@@ -104,15 +107,14 @@ public class Entrenador {
                 String nombre = rs.getString("nombre");
                 int nivel = rs.getInt("nivel");
                 int numPokedex = rs.getInt("num_pokedex");
-                
+                int equipo = rs.getInt("equipo");
+                int idPokemon = rs.getInt("id_pokemon"); // 🔧 CAMBIO
+
                 String sexoBD = rs.getString("sexo");
                 Sexo sexo = sexoBD.equals("H") ? Sexo.MACHO : Sexo.HEMBRA;
 
                 String tipo1BD = rs.getString("tipo1");
                 String tipo2BD = rs.getString("tipo2");
-
-                System.out.println("Tipo1 leido: '" + tipo1BD + "'");
-                System.out.println("Tipo2 leido: '" + tipo2BD + "'");
 
                 Tipo tipo1 = Tipo.valueOf(quitarTildes(tipo1BD.toUpperCase()));
                 Tipo tipo2 = (tipo2BD != null && !tipo2BD.isEmpty())
@@ -122,17 +124,57 @@ public class Entrenador {
                 Pokemon p = new Pokemon(nombre, sexo, tipo1, tipo2);
                 p.setNivel(nivel);
                 p.setNumPokedex(numPokedex);
+                p.setIdPokemon(idPokemon); // 🔧 CAMBIO
 
-                this.añadirPokemon(p);
+                // Asignar bien según valor de BD
+                if (equipo == 1) {
+                    equipoPrincipal.add(p);
+                } else if (equipo == 2) {
+                    equipoCaja.add(p);  // <- Faltaba esto
+                }
+
+            }
+            
+            while (equipoPrincipal.size() < 6 && !equipoCaja.isEmpty()) {
+                Pokemon p = equipoCaja.remove(0);
+                equipoPrincipal.add(p);
             }
 
-            System.out.println("Pokémon cargados: " + equipoPrincipal.size());
+            System.out.println("Equipo: " + equipoPrincipal.size() + " | Caja: " + equipoCaja.size());
 
         } catch (SQLException | IllegalArgumentException e) {
             System.err.println("Error al cargar Pokémon desde la BD:");
             e.printStackTrace();
         }
     }
+
+    
+    public void actualizarEquipoEnBD(Connection conexion) {
+        try {
+            // Primero, marcar todos los Pokémon del entrenador como sin equipo (0 opcional, lo eliminamos)
+            // Luego actualizamos uno a uno lo correcto
+
+            // Marcar como equipo = 1 (equipo principal)
+        	String updateEquipo = "UPDATE pokemon SET equipo = 1 WHERE id_pokemon = ?";
+        	PreparedStatement stmtEquipo = conexion.prepareStatement(updateEquipo);
+        	for (Pokemon p : equipoPrincipal) {
+        	    stmtEquipo.setInt(1, p.getIdPokemon());
+        	    stmtEquipo.executeUpdate();
+        	}
+
+        	String updateCaja = "UPDATE pokemon SET equipo = 2 WHERE id_pokemon = ?";
+        	PreparedStatement stmtCaja = conexion.prepareStatement(updateCaja);
+        	for (Pokemon p : equipoCaja) {
+        	    stmtCaja.setInt(1, p.getIdPokemon());
+        	    stmtCaja.executeUpdate();
+        	}
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 
     private String quitarTildes(String input) {

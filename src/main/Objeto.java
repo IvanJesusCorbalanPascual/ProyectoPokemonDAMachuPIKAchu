@@ -30,7 +30,7 @@ public class Objeto {
                 System.out.println(p.getNombre()+"aumentó su ataque.");
                 break;
 
-            // Puedes añadir más efectos según necesites
+            // Posibilidad de añadir más efectos segun sea necesario
 
             default:
                 System.out.println("Efecto desconocido.");

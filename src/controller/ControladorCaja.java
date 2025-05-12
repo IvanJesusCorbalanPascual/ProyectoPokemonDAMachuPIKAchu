@@ -13,8 +13,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import main.Entrenador;
-import main.Pokemon;
+import model.Entrenador;
+import model.Pokemon;
 
 public class ControladorCaja {
 

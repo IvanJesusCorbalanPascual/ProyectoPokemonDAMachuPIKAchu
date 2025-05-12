@@ -14,7 +14,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import main.Entrenador;
+import model.Entrenador;
 
 public class controladorCombate {
 

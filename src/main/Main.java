@@ -8,6 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import model.ConexionBD;
+import model.Entrenador;
+import model.Pokemon;
 
 public class Main extends Application {
     @Override

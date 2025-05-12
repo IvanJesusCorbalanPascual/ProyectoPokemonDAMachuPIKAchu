@@ -13,9 +13,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import main.Captura;
-import main.Entrenador;
-import main.Pokemon;
+import model.Captura;
+import model.Entrenador;
+import model.Pokemon;
 import bd.BDConnection;
 
 public class CapturaController {

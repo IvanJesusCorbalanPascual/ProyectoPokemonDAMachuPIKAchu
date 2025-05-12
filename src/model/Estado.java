@@ -1,4 +1,4 @@
-package main;
+package model;
 
 public enum Estado { // Enumerador del estado del pokemon
     SALUDABLE,

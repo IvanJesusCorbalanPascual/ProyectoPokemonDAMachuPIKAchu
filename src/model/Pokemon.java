@@ -46,7 +46,7 @@ public class Pokemon {
 	    this.nombre = nombre;
 	}
 	 
-	public void generarEstadisticasIniciales() { // Genera estadistias aleatorias para el pokemon recien creado
+	public void generarEstadisticasIniciales() {
 		Random rand = new Random();
 		this.vitalidad = rand.nextInt(10) + 1;
 		this.ataque = rand.nextInt(10) + 1;
@@ -55,7 +55,7 @@ public class Pokemon {
 		this.defensaEspecial = rand.nextInt(10) + 1;
 		this.velocidad = rand.nextInt(10) + 1;
 		this.estamina = rand.nextInt(10) + 1;
-		this.psMax = this.vitalidad * 10;
+		this.psMax = this.vitalidad; 
 		this.ps = this.psMax;
 	}
 
@@ -87,15 +87,15 @@ public class Pokemon {
 	    if (movimientosDisponibles.size() < 4) {
 	        movimientosDisponibles.add(nuevo);
 	    } else {
-	        movimientosDisponibles.set(0, nuevo); // sustituye el primero por simplicidad
+	        movimientosDisponibles.set(0, nuevo); 
 	    }
 	}
+	
+	public void recalcularPS() {
+	    this.psMax = this.vitalidad; 
+	    this.ps = this.psMax;
+	}
 
-	/*
-	 * public void aprenderMovimiento(Movimiento nuevo) { if
-	 * (movimientosDisponibles.size() < 4) { movimientosDisponibles.add(nuevo); }
-	 * else { // lógica para intercambiar movimiento, según decisión del usuario } }
-	 */
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
@@ -112,11 +112,10 @@ public class Pokemon {
 		return vitalidad;
 	}
 
-	public void setVitalidad(int i) {
-		this.vitalidad = i;
-		this.psMax = i * 10;
-		if (this.ps > psMax) this.ps = psMax;
-
+	public void setVitalidad(int vitalidad) {
+	    this.vitalidad = vitalidad;
+	    this.psMax = vitalidad;
+	    this.ps = psMax;
 	}
 
 	public int getAtaque() {
@@ -125,7 +124,6 @@ public class Pokemon {
 
 	public void setAtaque(int i) {
 		this.ataque = i;
-
 	}
 
 	public int getNumPokedex() {
@@ -234,6 +232,10 @@ public class Pokemon {
 	    this.nivel = nivel;
 	}
 
+	public void setAtaqueEspecial(int ataqueEspecial) {
+	    this.ataqueEspecial = ataqueEspecial;
+	}
+
 	public void setDefensaEspecial(int defensaEspecial) {
 	    this.defensaEspecial = defensaEspecial;
 	}
@@ -257,6 +259,13 @@ public class Pokemon {
 	public void setIdPokemon(int idPokemon) {
 		this.idPokemon = idPokemon;
 	}
-	
-	// Métodos get/set y otros métodos como atacar, etc., vendrán después
+
+	public void setPs(int ps) {
+	    this.ps = Math.min(ps, this.psMax);
+	}
+
+	public void setPsMax(int psMax) {
+	    this.psMax = psMax;
+	    if (this.ps > psMax) this.ps = psMax;
+	}
 }

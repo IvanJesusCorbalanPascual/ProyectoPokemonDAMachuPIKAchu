@@ -278,3 +278,5 @@ SET equipo = 1
 WHERE id_pokemon IN (1, 2, 3, 4, 5, 6);
 
 ALTER TABLE Entrenadores ADD pokeballs INT DEFAULT 0;
+ALTER TABLE pokemon ADD estamina INT DEFAULT 0;
+

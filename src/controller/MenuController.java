@@ -123,8 +123,6 @@ public class MenuController {
 	    controller.setEntrenador(this.entrenador); //  Muy importante
 	    controller.setPrimaryStage((Stage) ((Node) event.getSource()).getScene().getWindow());
 
-	    controller.iniciarCombate(); 
-	    
 	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 	    stage.setScene(new Scene(root));
 	    stage.setTitle("Combate");

@@ -90,17 +90,24 @@ public class CapturaController {
         if (pokemonActual != null) {
             lblPokemonGenerado.setText(pokemonActual.getNombre());
             try {
-                String ruta = getClass().getResource("/imagenes/Pokemon/Front/" + pokemonActual.getNumPokedex() + ".png").toExternalForm();
+                String ruta = getClass()
+                    .getResource("/imagenes/Pokemon/Front/" + pokemonActual.getNumPokedex() + ".png")
+                    .toExternalForm();
                 Image imagen = new Image(ruta);
                 imgPokemonGenerado.setImage(imagen);
             } catch (Exception e) {
                 System.out.println("Imagen no encontrada para el Pokémon número " + pokemonActual.getNumPokedex());
                 e.printStackTrace();
             }
-        }
 
-        System.out.println("Generado: " + pokemonActual.getNombre() + " (" + pokemonActual.getNumPokedex() + ")");
+            System.out.println("Generado: " + pokemonActual.getNombre() + " (" + pokemonActual.getNumPokedex() + ")");
+        } else {
+            lblPokemonGenerado.setText("No se pudo generar");
+            imgPokemonGenerado.setImage(null);
+            System.out.println("Error: pokemonActual es null");
+        }
     }
+
 
     @FXML
     void salir(ActionEvent event) {

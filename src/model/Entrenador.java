@@ -83,7 +83,7 @@ public class Entrenador {
                 int nivel = rs.getInt("nivel");
                 int numPokedex = rs.getInt("num_pokedex");
                 int equipo = rs.getInt("equipo");
-                int idPokemon = rs.getInt("id_pokemon"); // 🔧 CAMBIO
+                int idPokemon = rs.getInt("id_pokemon");
 
                 String sexoBD = rs.getString("sexo");
                 Sexo sexo = sexoBD.equals("H") ? Sexo.MACHO : Sexo.HEMBRA;
@@ -96,20 +96,29 @@ public class Entrenador {
                     ? Tipo.valueOf(quitarTildes(tipo2BD.toUpperCase()))
                     : Tipo.NORMAL;
 
+                // Crear instancia
                 Pokemon p = new Pokemon(nombre, sexo, tipo1, tipo2);
                 p.setNivel(nivel);
                 p.setNumPokedex(numPokedex);
-                p.setIdPokemon(idPokemon); // 🔧 CAMBIO
+                p.setIdPokemon(idPokemon);
 
-                // Asignar bien según valor de BD
+                // Cargar estadísticas
+                p.setVitalidad(rs.getInt("vitalidad"));
+                p.setEstamina(rs.getInt("estamina"));
+                p.setAtaque(rs.getInt("ataque"));
+                p.setDefensa(rs.getInt("defensa"));
+                p.setAtaqueEspecial(rs.getInt("ataque_especial"));
+                p.setDefensaEspecial(rs.getInt("defensa_especial"));
+                p.setVelocidad(rs.getInt("velocidad"));
+                p.recalcularPS(); // ✅ Calcula ps y psMax usando vitalidad
+
                 if (equipo == 1) {
                     equipoPrincipal.add(p);
                 } else if (equipo == 2) {
-                    equipoCaja.add(p);  // <- Faltaba esto
+                    equipoCaja.add(p);
                 }
-
             }
-            
+
             while (equipoPrincipal.size() < 6 && !equipoCaja.isEmpty()) {
                 Pokemon p = equipoCaja.remove(0);
                 equipoPrincipal.add(p);
@@ -123,26 +132,21 @@ public class Entrenador {
         }
     }
 
-    
     public void actualizarEquipoEnBD(Connection conexion) {
         try {
-            // Primero, marcar todos los Pokémon del entrenador como sin equipo (0 opcional, lo eliminamos)
-            // Luego actualizamos uno a uno lo correcto
+            String updateEquipo = "UPDATE pokemon SET equipo = 1 WHERE id_pokemon = ?";
+            PreparedStatement stmtEquipo = conexion.prepareStatement(updateEquipo);
+            for (Pokemon p : equipoPrincipal) {
+                stmtEquipo.setInt(1, p.getIdPokemon());
+                stmtEquipo.executeUpdate();
+            }
 
-            // Marcar como equipo = 1 (equipo principal)
-        	String updateEquipo = "UPDATE pokemon SET equipo = 1 WHERE id_pokemon = ?";
-        	PreparedStatement stmtEquipo = conexion.prepareStatement(updateEquipo);
-        	for (Pokemon p : equipoPrincipal) {
-        	    stmtEquipo.setInt(1, p.getIdPokemon());
-        	    stmtEquipo.executeUpdate();
-        	}
-
-        	String updateCaja = "UPDATE pokemon SET equipo = 2 WHERE id_pokemon = ?";
-        	PreparedStatement stmtCaja = conexion.prepareStatement(updateCaja);
-        	for (Pokemon p : equipoCaja) {
-        	    stmtCaja.setInt(1, p.getIdPokemon());
-        	    stmtCaja.executeUpdate();
-        	}
+            String updateCaja = "UPDATE pokemon SET equipo = 2 WHERE id_pokemon = ?";
+            PreparedStatement stmtCaja = conexion.prepareStatement(updateCaja);
+            for (Pokemon p : equipoCaja) {
+                stmtCaja.setInt(1, p.getIdPokemon());
+                stmtCaja.executeUpdate();
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -153,7 +157,6 @@ public class Entrenador {
         this.pokeballs += cantidad;
     }
 
-    // Conexion con la base de datos para guardar las pokeballs que se compran en la tienda
     public void guardarPokeballsEnBD(Connection conexion) {
         try {
             String sql = "UPDATE Entrenadores SET pokeballs = ? WHERE id_entrenador = ?";
@@ -166,7 +169,6 @@ public class Entrenador {
         }
     }
 
-    // Metodo para quitar tildes y evitar errores
     private String quitarTildes(String input) {
         return input
             .replace("Á", "A")
@@ -176,8 +178,7 @@ public class Entrenador {
             .replace("Ú", "U")
             .replace("Ñ", "N");
     }
-    
- // Getters/Setters si los necesitas
+
     public int getPokeballs() {
         return pokeballs;
     }
@@ -202,44 +203,43 @@ public class Entrenador {
         return id;
     }
 
-	public String getNombre() {
-		return nombre;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public List<Pokemon> getEquipoPrincipal() {
-		return equipoPrincipal;
-	}
+    public List<Pokemon> getEquipoPrincipal() {
+        return equipoPrincipal;
+    }
 
-	public void setEquipoPrincipal(List<Pokemon> equipoPrincipal) {
-		this.equipoPrincipal = equipoPrincipal;
-	}
+    public void setEquipoPrincipal(List<Pokemon> equipoPrincipal) {
+        this.equipoPrincipal = equipoPrincipal;
+    }
 
-	public List<Pokemon> getEquipoCaja() {
-		return equipoCaja;
-	}
+    public List<Pokemon> getEquipoCaja() {
+        return equipoCaja;
+    }
 
-	public void setEquipoCaja(List<Pokemon> equipoCaja) {
-		this.equipoCaja = equipoCaja;
-	}
+    public void setEquipoCaja(List<Pokemon> equipoCaja) {
+        this.equipoCaja = equipoCaja;
+    }
 
-	public int getPokedollars() {
-		return pokedollars;
-	}
+    public int getPokedollars() {
+        return pokedollars;
+    }
 
-	public void setPokedollars(int pokedollars) {
-		this.pokedollars = pokedollars;
-	}
+    public void setPokedollars(int pokedollars) {
+        this.pokedollars = pokedollars;
+    }
 
-	public List<Objeto> getObjetos() {
-		return objetos;
-	}
+    public List<Objeto> getObjetos() {
+        return objetos;
+    }
 
-	public void setObjetos(List<Objeto> objetos) {
-		this.objetos = objetos;
-	}
-
+    public void setObjetos(List<Objeto> objetos) {
+        this.objetos = objetos;
+    }
 }

@@ -85,32 +85,32 @@
             <Font name="Verdana Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="vidaTxtPoke1" layoutX="126.0" layoutY="67.0" prefHeight="26.0" prefWidth="120.0" text="0 / 0 HP" textFill="WHITE">
+      <Label fx:id="vidaTxtPoke1" layoutX="107.0" layoutY="67.0" prefHeight="26.0" prefWidth="130.0" text="0 / 0 HP" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="vidaTxtPoke2" layoutX="433.0" layoutY="67.0" prefHeight="26.0" prefWidth="120.0" text="0 / 0 HP" textFill="WHITE">
+      <Label fx:id="vidaTxtPoke2" layoutX="414.0" layoutY="67.0" prefHeight="26.0" prefWidth="130.0" text="0 / 0 HP" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="vidaTxtPoke3" layoutX="126.0" layoutY="166.0" prefHeight="26.0" prefWidth="120.0" text="0 / 0 HP" textFill="WHITE">
+      <Label fx:id="vidaTxtPoke3" layoutX="107.0" layoutY="166.0" prefHeight="26.0" prefWidth="130.0" text="0 / 0 HP" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="vidaTxtPoke4" layoutX="433.0" layoutY="166.0" prefHeight="26.0" prefWidth="120.0" text="0 / 0 HP" textFill="WHITE">
+      <Label fx:id="vidaTxtPoke4" layoutX="414.0" layoutY="166.0" prefHeight="26.0" prefWidth="130.0" text="0 / 0 HP" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="vidaTxtPoke5" layoutX="126.0" layoutY="269.0" prefHeight="26.0" prefWidth="120.0" text="0 / 0 HP" textFill="WHITE">
+      <Label fx:id="vidaTxtPoke5" layoutX="107.0" layoutY="269.0" prefHeight="26.0" prefWidth="130.0" text="0 / 0 HP" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="vidaTxtPoke6" layoutX="433.0" layoutY="269.0" prefHeight="26.0" prefWidth="120.0" text="0 / 0 HP" textFill="WHITE">
+      <Label fx:id="vidaTxtPoke6" layoutX="414.0" layoutY="269.0" prefHeight="26.0" prefWidth="130.0" text="0 / 0 HP" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="16.0" />
          </font>

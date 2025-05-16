@@ -217,8 +217,6 @@ INSERT INTO Pokemon (
 );
 
 
-
-
 CREATE TABLE Movimiento ( 
     id_movimiento INT AUTO_INCREMENT PRIMARY KEY, 
     nom_movimiento VARCHAR(20) NOT NULL,  
@@ -290,9 +288,7 @@ UPDATE pokemon
 SET equipo = 1
 WHERE id_pokemon IN (1, 2, 3, 4, 5, 6);
 
---ALTER TABLE Entrenadores ADD pokeballs INT DEFAULT 0;
---
---/*Para guardar el login se añaden usuario y contraseña a Entrenadores*/
+/*Para guardar el login se añaden usuario y contraseña a Entrenadores*/
 --ALTER TABLE Entrenadores
 --ADD COLUMN usuario VARCHAR(50),
 --ADD COLUMN contraseña VARCHAR(100);
@@ -302,3 +298,10 @@ ALTER TABLE Entrenadores MODIFY COLUMN id_entrenador INT NOT NULL AUTO_INCREMENT
 ALTER TABLE Entrenadores
 MODIFY COLUMN equipo_principal VARCHAR(255) DEFAULT NULL,
 MODIFY COLUMN equipo_secundario VARCHAR(255) DEFAULT NULL;
+ALTER TABLE Entrenadores ADD pokeballs INT DEFAULT 0;
+ALTER TABLE pokemon ADD estamina INT DEFAULT 0;
+
+-- Reemplaza los tipos incorrectos por tipos reales del enum Tipo
+UPDATE movimiento SET tipo_mov = 'NORMAL' WHERE tipo_mov = 'Físico';
+UPDATE movimiento SET tipo_mov = 'NORMAL' WHERE tipo_mov = 'Especial';
+UPDATE movimiento SET tipo_mov = 'NORMAL' WHERE tipo_mov = 'Estado';

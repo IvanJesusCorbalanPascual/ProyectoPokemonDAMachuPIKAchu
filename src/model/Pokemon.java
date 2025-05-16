@@ -22,7 +22,7 @@ public class Pokemon {
 	private Sexo sexo;
 	private Tipo tipo1;
 	private Tipo tipo2;
-	private Estado estado;
+	private Estado estado = Estado.NINGUNO;
 	private Objeto objeto;
 	private List<Movimiento> movimientosDisponibles;
 	private List<Movimiento> movimientosPosibles;
@@ -35,7 +35,7 @@ public class Pokemon {
 		this.sexo = sexo;
 		this.tipo1 = tipo1;
 		this.tipo2 = tipo2;
-		this.estado = Estado.SALUDABLE;
+		this.estado = Estado.NINGUNO;
 		this.movimientosDisponibles = new ArrayList<>();
 		this.movimientosPosibles = new ArrayList<>();
 		generarEstadisticasIniciales();
@@ -46,7 +46,7 @@ public class Pokemon {
 	    this.nombre = nombre;
 	}
 	 
-	private void generarEstadisticasIniciales() { // Genera estadistias aleatorias para el pokemon recien creado
+	public void generarEstadisticasIniciales() {
 		Random rand = new Random();
 		this.vitalidad = rand.nextInt(10) + 1;
 		this.ataque = rand.nextInt(10) + 1;
@@ -55,7 +55,7 @@ public class Pokemon {
 		this.defensaEspecial = rand.nextInt(10) + 1;
 		this.velocidad = rand.nextInt(10) + 1;
 		this.estamina = rand.nextInt(10) + 1;
-		this.psMax = this.vitalidad * 10;
+		this.psMax = this.vitalidad; 
 		this.ps = this.psMax;
 	}
 
@@ -87,9 +87,40 @@ public class Pokemon {
 	    if (movimientosDisponibles.size() < 4) {
 	        movimientosDisponibles.add(nuevo);
 	    } else {
-	        movimientosDisponibles.set(0, nuevo); // sustituye el primero por simplicidad
+	        movimientosDisponibles.set(0, nuevo); 
 	    }
 	}
+	
+	public void recalcularPS() {
+	    this.psMax = this.vitalidad; 
+	    this.ps = this.psMax;
+	}
+	
+    public boolean puedeAtacar() {
+        return switch (estado) {
+            case DORMIDO, CONGELADO -> false;
+            case PARALIZADO -> Math.random() > 0.25;
+            default -> true;
+        };
+    }
+    
+    public void aplicarEfectoEstado() {
+        if (estado == null || estado == Estado.NINGUNO) return;
+
+        switch (estado) {
+            case ENVENENADO, QUEMADO -> {
+                int danio = Math.max(1, psMax / 8); // 1/8 de PS max como daño
+                recibirDanio(danio);
+                System.out.println(nombre + " sufre " + danio + " de daño por el estado " + estado.getNombre());
+            }
+            case DORMIDO, CONGELADO -> {
+                
+                System.out.println(nombre + " está " + estado.getNombre() + " y no puede atacar.");
+            }
+            default -> {}
+        }
+    }
+
 
 	/*
 	 * public void aprenderMovimiento(Movimiento nuevo) { if
@@ -115,11 +146,10 @@ public class Pokemon {
 		return vitalidad;
 	}
 
-	public void setVitalidad(int i) {
-		this.vitalidad = i;
-		this.psMax = i * 10;
-		if (this.ps > psMax) this.ps = psMax;
-
+	public void setVitalidad(int vitalidad) {
+	    this.vitalidad = vitalidad;
+	    this.psMax = vitalidad;
+	    this.ps = psMax;
 	}
 
 	public void setPs(int ps) {
@@ -132,7 +162,6 @@ public class Pokemon {
 
 	public void setAtaque(int i) {
 		this.ataque = i;
-
 	}
 
 	public int getNumPokedex() {
@@ -209,7 +238,7 @@ public class Pokemon {
 
 	public void curar() {
 	    this.ps = this.psMax;
-	    this.estado = Estado.SALUDABLE;
+	    this.estado = Estado.NINGUNO;
 	}
 	
 	public void recibirDanio(int danio) {
@@ -218,7 +247,7 @@ public class Pokemon {
 	}
 
 	public boolean estaDisponible() {
-	    return !estaDebilitado() && estado == Estado.SALUDABLE;
+	    return !estaDebilitado() && estado == Estado.NINGUNO;
 	}
 	
 	public List<Movimiento> getMovimientosDisponibles() {
@@ -233,12 +262,20 @@ public class Pokemon {
 	    this.objeto = objeto;
 	}
 	
+	public void setMovimientosDisponibles(List<Movimiento> movimientos) {
+	    this.movimientosDisponibles = movimientos;
+	}
+	
 	public void setDefensa(int defensa) {
 	    this.defensa = defensa;
 	}
 	
 	public void setNivel(int nivel) {
 	    this.nivel = nivel;
+	}
+
+	public void setAtaqueEspecial(int ataqueEspecial) {
+	    this.ataqueEspecial = ataqueEspecial;
 	}
 
 	public void setDefensaEspecial(int defensaEspecial) {
@@ -314,4 +351,12 @@ public class Pokemon {
 	    return nombre + " (" + sexo + ", Nv. " + nivel + ")";
 	}
 
+	public void setPs(int ps) {
+	    this.ps = Math.min(ps, this.psMax);
+	}
+
+	public void setPsMax(int psMax) {
+	    this.psMax = psMax;
+	    if (this.ps > psMax) this.ps = psMax;
+	}
 }

@@ -302,3 +302,11 @@ ALTER TABLE Entrenadores MODIFY COLUMN id_entrenador INT NOT NULL AUTO_INCREMENT
 ALTER TABLE Entrenadores
 MODIFY COLUMN equipo_principal VARCHAR(255) DEFAULT NULL,
 MODIFY COLUMN equipo_secundario VARCHAR(255) DEFAULT NULL;
+ALTER TABLE Entrenadores ADD pokeballs INT DEFAULT 0;
+ALTER TABLE pokemon ADD estamina INT DEFAULT 0;
+
+-- Reemplaza los tipos incorrectos por tipos reales del enum Tipo
+UPDATE movimiento SET tipo_mov = 'NORMAL' WHERE tipo_mov = 'Físico';
+UPDATE movimiento SET tipo_mov = 'NORMAL' WHERE tipo_mov = 'Especial';
+UPDATE movimiento SET tipo_mov = 'NORMAL' WHERE tipo_mov = 'Estado';
+

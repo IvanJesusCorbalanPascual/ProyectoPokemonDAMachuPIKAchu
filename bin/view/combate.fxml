@@ -22,12 +22,12 @@
       </ImageView>
       <ProgressBar fx:id="enemyHealthBar" layoutX="109.0" layoutY="86.0" prefHeight="14.0" prefWidth="150.0" progress="0.38" style="-fx-accent: #4CAF50;" />
       <ProgressBar fx:id="playerHealthBar" layoutX="436.0" layoutY="254.0" prefHeight="14.0" prefWidth="140.0" progress="0.18" style="-fx-accent: #4CAF50;" />
-      <Label fx:id="enemyNameLabel" layoutX="61.0" layoutY="62.0" prefHeight="18.0" prefWidth="98.0" text="Pokémon">
+      <Label fx:id="enemyNameLabel" layoutX="61.0" layoutY="62.0" prefHeight="18.0" prefWidth="160.0" text="Pokémon" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="playerNameLabel" layoutX="387.0" layoutY="228.0" prefHeight="18.0" prefWidth="98.0" text="Pokémon">
+      <Label fx:id="playerNameLabel" layoutX="387.0" layoutY="228.0" prefHeight="18.0" prefWidth="160.0" text="Pokémon" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -52,7 +52,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="attackBtn1" mnemonicParsing="false" onAction="#onAttack1" prefHeight="60.0" prefWidth="434.0" style="-fx-background-color: lightgreen; -fx-border-color: black; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Ataque 1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+            <Button fx:id="attackBtn1" mnemonicParsing="false" onAction="#onAttack1" prefHeight="60.0" prefWidth="434.0" style="-fx-cursor: hand; -fx-background-color: lightgreen; -fx-border-color: black; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Ataque 1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -60,22 +60,22 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="attackBtn2" mnemonicParsing="false" onAction="#onAttack2" prefHeight="60.0" prefWidth="434.0" style="-fx-background-color: lightgreen; -fx-border-color: black; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Ataque 2" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+            <Button fx:id="attackBtn2" mnemonicParsing="false" onAction="#onAttack2" prefHeight="60.0" prefWidth="434.0" style="-fx-background-color: lightgreen; -fx-cursor: hand; -fx-border-color: black; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Ataque 2" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Button>
-            <Button fx:id="attackBtn3" mnemonicParsing="false" onAction="#onAttack3" prefHeight="60.0" prefWidth="434.0" style="-fx-background-color: lightgreen; -fx-border-color: black; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Ataque 3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+            <Button fx:id="attackBtn3" mnemonicParsing="false" onAction="#onAttack3" prefHeight="60.0" prefWidth="434.0" style="-fx-background-color: lightgreen; -fx-cursor: hand; -fx-border-color: black; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Ataque 3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Button>
-            <Button fx:id="attackBtn4" mnemonicParsing="false" onAction="#onAttack4" prefHeight="60.0" prefWidth="434.0" style="-fx-background-color: lightgreen; -fx-border-color: black; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Ataque 4" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+            <Button fx:id="attackBtn4" mnemonicParsing="false" onAction="#onAttack4" prefHeight="60.0" prefWidth="434.0" style="-fx-background-color: lightgreen; -fx-cursor: hand; -fx-border-color: black; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Ataque 4" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Button>
-            <Button fx:id="switchCombatPokemon" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onAttack3" prefHeight="40.0" prefWidth="606.0" style="-fx-background-color: lightblue; -fx-border-color: black; -fx-border-width: 2; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Cambiar Pokémon" translateY="6.5" GridPane.rowIndex="2">
+            <Button fx:id="switchCombatPokemon" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onAttack3" prefHeight="40.0" prefWidth="606.0" style="-fx-background-color: lightblue; -fx-cursor: hand; -fx-border-color: black; -fx-border-width: 2; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Cambiar Pokémon" translateY="6.5" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -97,7 +97,7 @@
       </ImageView>
       <ScrollPane layoutX="452.0" layoutY="1.0" prefHeight="200.0" prefWidth="151.0" style="-fx-border-color: black; -fx-border-width: 2;">
         <content>
-          <AnchorPane fx:id="textCombatLog" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="154.0" translateX="1.0" />
+          <AnchorPane fx:id="textCombatLog" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: white;" translateX="1.0" />
         </content>
       </ScrollPane>
       <Button fx:id="playerPokemonSoundButton1" layoutX="20.0" layoutY="243.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="39.0" style="-fx-background-color: #c4a484; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 20; -fx-background-radius: 21;">
@@ -109,14 +109,14 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="salirBtn" layoutX="360.0" layoutY="16.0" mnemonicParsing="false" onAction="#onExit" prefHeight="40.0" prefWidth="83.0" style="-fx-background-color: #FF6961; -fx-background-radius: 21; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 20;" text="Salir">
+      <Button fx:id="salirBtn" layoutX="360.0" layoutY="16.0" mnemonicParsing="false" onAction="#onExit" prefHeight="40.0" prefWidth="83.0" style="-fx-background-color: #FF6961; -fx-cursor: hand; -fx-background-radius: 21; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 20;" text="Salir">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
          <graphic>
             <ImageView fitHeight="26.0" fitWidth="24.0">
                <image>
-                  <Image url="@../../../Users/sergi/Downloads/cerrar-sesion.png" />
+                  <Image url="@../Imagenes/otros/cerrar-sesion.png" />
                </image>
             </ImageView>
          </graphic></Button>

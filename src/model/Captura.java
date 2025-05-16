@@ -1,33 +1,58 @@
 package model;
 
 import bd.BDConnection;
-
 import java.sql.*;
 
 public class Captura {
 
 	public static Pokemon generarPokemonAleatorio() {
 		// Paso 1: Obtener un número de pokédex aleatorio
-		String sqlNum = "SELECT num_pokedex FROM Pokedex ORDER BY RAND() LIMIT 1";
+		String sql = "SELECT * FROM pokemon ORDER BY RAND() LIMIT 1";
 
 		try (Connection conn = BDConnection.getConnection();
 				Statement stmt = conn.createStatement();
-				ResultSet rsNum = stmt.executeQuery(sqlNum)) {
+				ResultSet rs = stmt.executeQuery(sql)) {
 
-			if (rsNum.next()) {
-				int num = rsNum.getInt("num_pokedex");
+			if (rs.next()) {
+				int num = rs.getInt("num_pokedex");
+				String nombre = rs.getString("nombre");
+				String tipo1BD = rs.getString("tipo1");
+				String tipo2BD = rs.getString("tipo2");
+				String sexoBD = rs.getString("sexo");
 
-				// Paso 2: Obtener el nombre de ese Pokémon con su número
-				String sqlNombre = "SELECT nom_pokemon FROM Pokedex WHERE num_pokedex = " + num;
-				try (ResultSet rsNombre = stmt.executeQuery(sqlNombre)) {
-					if (rsNombre.next()) {
-						String nombre = rsNombre.getString("nom_pokemon");
-						return new Pokemon(num, nombre);
-					}
-				}
+				int nivel = rs.getInt("nivel");
+				int estamina = rs.getInt("estamina");
+				int vitalidad = rs.getInt("vitalidad");
+				int ataque = rs.getInt("ataque");
+				int defensa = rs.getInt("defensa");
+				int ataqueEsp = rs.getInt("ataque_especial");
+				int defensaEsp = rs.getInt("defensa_especial");
+				int velocidad = rs.getInt("velocidad");
+
+				Sexo sexo = sexoBD.equalsIgnoreCase("H") ? Sexo.MACHO : Sexo.HEMBRA;
+
+				Tipo tipo1 = Tipo.valueOf(quitarTildes(tipo1BD.toUpperCase()));
+				Tipo tipo2 = (tipo2BD != null && !tipo2BD.isEmpty()) ? Tipo.valueOf(quitarTildes(tipo2BD.toUpperCase()))
+						: Tipo.NORMAL;
+
+				Pokemon p = new Pokemon(nombre, sexo, tipo1, tipo2);
+				p.setNumPokedex(num);
+				p.setNivel(nivel);
+				p.setEstamina(estamina);
+
+				// Aquí se asignan todas las estadísticas
+				p.setVitalidad(vitalidad); // Esto también calcula psMax y ps
+				p.setAtaque(ataque);
+				p.setDefensa(defensa);
+				p.setAtaqueEspecial(ataqueEsp);
+				p.setDefensaEspecial(defensaEsp);
+				p.setVelocidad(velocidad);
+
+				return p;
 			}
 
-		} catch (SQLException e) {
+		} catch (SQLException | IllegalArgumentException e) {
+			System.err.println("Error al generar Pokémon aleatorio:");
 			e.printStackTrace();
 		}
 
@@ -36,5 +61,11 @@ public class Captura {
 
 	public static boolean intentarCaptura() {
 		return Math.random() < 0.5; // Metodo con 50% de probabilidad de capturar el Pokemon
+	}
+
+	private static String quitarTildes(String input) {
+		return input.replace("Á", "A").replace("É", "E").replace("Í", "I").replace("Ó", "O").replace("Ú", "U")
+				.replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u")
+				.replace("Ñ", "N").replace("ñ", "n");
 	}
 }

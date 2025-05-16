@@ -280,3 +280,8 @@ WHERE id_pokemon IN (1, 2, 3, 4, 5, 6);
 ALTER TABLE Entrenadores ADD pokeballs INT DEFAULT 0;
 ALTER TABLE pokemon ADD estamina INT DEFAULT 0;
 
+-- Reemplaza los tipos incorrectos por tipos reales del enum Tipo
+UPDATE movimiento SET tipo_mov = 'NORMAL' WHERE tipo_mov = 'Físico';
+UPDATE movimiento SET tipo_mov = 'NORMAL' WHERE tipo_mov = 'Especial';
+UPDATE movimiento SET tipo_mov = 'NORMAL' WHERE tipo_mov = 'Estado';
+

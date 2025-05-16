@@ -22,7 +22,7 @@ public class Pokemon {
 	private Sexo sexo;
 	private Tipo tipo1;
 	private Tipo tipo2;
-	private Estado estado;
+	private Estado estado = Estado.NINGUNO;
 	private Objeto objeto;
 	private List<Movimiento> movimientosDisponibles;
 	private List<Movimiento> movimientosPosibles;
@@ -35,7 +35,7 @@ public class Pokemon {
 		this.sexo = sexo;
 		this.tipo1 = tipo1;
 		this.tipo2 = tipo2;
-		this.estado = Estado.SALUDABLE;
+		this.estado = Estado.NINGUNO;
 		this.movimientosDisponibles = new ArrayList<>();
 		this.movimientosPosibles = new ArrayList<>();
 		generarEstadisticasIniciales();
@@ -95,6 +95,32 @@ public class Pokemon {
 	    this.psMax = this.vitalidad; 
 	    this.ps = this.psMax;
 	}
+	
+    public boolean puedeAtacar() {
+        return switch (estado) {
+            case DORMIDO, CONGELADO -> false;
+            case PARALIZADO -> Math.random() > 0.25;
+            default -> true;
+        };
+    }
+    
+    public void aplicarEfectoEstado() {
+        if (estado == null || estado == Estado.NINGUNO) return;
+
+        switch (estado) {
+            case ENVENENADO, QUEMADO -> {
+                int danio = Math.max(1, psMax / 8); // 1/8 de PS max como daño
+                recibirDanio(danio);
+                System.out.println(nombre + " sufre " + danio + " de daño por el estado " + estado.getNombre());
+            }
+            case DORMIDO, CONGELADO -> {
+                
+                System.out.println(nombre + " está " + estado.getNombre() + " y no puede atacar.");
+            }
+            default -> {}
+        }
+    }
+
 
 	public void setEstado(Estado estado) {
 		this.estado = estado;
@@ -200,7 +226,7 @@ public class Pokemon {
 
 	public void curar() {
 	    this.ps = this.psMax;
-	    this.estado = Estado.SALUDABLE;
+	    this.estado = Estado.NINGUNO;
 	}
 	
 	public void recibirDanio(int danio) {
@@ -209,7 +235,7 @@ public class Pokemon {
 	}
 
 	public boolean estaDisponible() {
-	    return !estaDebilitado() && estado == Estado.SALUDABLE;
+	    return !estaDebilitado() && estado == Estado.NINGUNO;
 	}
 	
 	public List<Movimiento> getMovimientosDisponibles() {
@@ -222,6 +248,10 @@ public class Pokemon {
 	
 	public void setObjeto(Objeto objeto) {
 	    this.objeto = objeto;
+	}
+	
+	public void setMovimientosDisponibles(List<Movimiento> movimientos) {
+	    this.movimientosDisponibles = movimientos;
 	}
 	
 	public void setDefensa(int defensa) {

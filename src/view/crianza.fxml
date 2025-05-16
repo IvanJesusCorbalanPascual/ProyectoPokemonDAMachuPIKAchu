@@ -79,6 +79,11 @@
             </ImageView>
             <ComboBox fx:id="boxPadre" layoutX="66.0" layoutY="178.0" onAction="#elegirPadre" prefWidth="150.0" />
             <ComboBox fx:id="boxMadre" layoutX="462.0" layoutY="178.0" onAction="#elegirMadre" prefWidth="150.0" />
+            <Label fx:id="lblResultado" alignment="CENTER" layoutX="66.0" layoutY="98.0" prefHeight="52.0" prefWidth="548.0" textFill="#eaff00">
+               <font>
+                  <Font name="Pokemon Classic Regular" size="18.0" />
+               </font>
+            </Label>
       </children>
     </AnchorPane>
   </children>

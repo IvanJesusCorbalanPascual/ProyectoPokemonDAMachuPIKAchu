@@ -71,33 +71,33 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </ImageView>
-            <Button id="btnCentroPokemon" fx:id="btnCentroPokemon" layoutX="32.0" layoutY="114.0" mnemonicParsing="false" onAction="#abrirCentroPokemon" prefHeight="62.0" prefWidth="270.0" style="-fx-background-color: #FF6B6B; -fx-background-radius: 50; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 10, 0.5, 2, 2);;" text="Centro Pokémon" textAlignment="CENTER">
+            <Button id="btnCentroPokemon" fx:id="btnCentroPokemon" layoutX="40.0" layoutY="114.0" mnemonicParsing="false" onAction="#abrirCentroPokemon" prefHeight="62.0" prefWidth="270.0" style="-fx-background-color: #FF6B6B; -fx-background-radius: 50; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 10, 0.5, 2, 2);;" text="Centro Pokémon" textAlignment="CENTER">
                <font>
-                  <Font name="Lucida Console" size="26.0" />
+                  <Font name="Pokemon Classic Regular" size="17.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button id="btnEquipo" fx:id="btnEquipo" layoutX="168.0" layoutY="204.0" mnemonicParsing="false" onAction="#abrirEquipo" prefHeight="62.0" prefWidth="166.0" style="-fx-background-color: #4D96FF; -fx-background-radius: 50px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 10, 0.5, 2, 2);" text="Equipo" textAlignment="CENTER">
+            <Button id="btnEquipo" fx:id="btnEquipo" layoutX="172.0" layoutY="204.0" mnemonicParsing="false" onAction="#abrirEquipo" prefHeight="62.0" prefWidth="166.0" style="-fx-background-color: #4D96FF; -fx-background-radius: 50px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 10, 0.5, 2, 2);" text="Equipo" textAlignment="CENTER">
                <font>
-                  <Font name="Lucida Console" size="26.0" />
+                  <Font name="Pokemon Classic Regular" size="17.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button id="btnCrianza" fx:id="btnCrianza" layoutX="220.0" layoutY="300.0" mnemonicParsing="false" onAction="#abrirCrianza" prefHeight="62.0" prefWidth="166.0" style="-fx-background-radius: 50px; -fx-background-color: #FFB7D5; -fx-border-radius: 50px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 10, 0.5, 2, 2);" text="Crianza" textAlignment="CENTER">
+            <Button id="btnCrianza" fx:id="btnCrianza" layoutX="228.0" layoutY="300.0" mnemonicParsing="false" onAction="#abrirCrianza" prefHeight="62.0" prefWidth="166.0" style="-fx-background-radius: 50px; -fx-background-color: #FFB7D5; -fx-border-radius: 50px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 10, 0.5, 2, 2);" text="Crianza" textAlignment="CENTER">
                <font>
-                  <Font name="Lucida Console" size="26.0" />
+                  <Font name="Pokemon Classic Regular" size="17.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label id="labelEntrenador" fx:id="lblEntrenador" layoutX="86.0" layoutY="48.0" text="Label">
+            <Label id="labelEntrenador" fx:id="lblEntrenador" layoutX="110.0" layoutY="51.0" text="Label">
                <font>
-                  <Font name="Rubik-Bold" size="20.0" />
+                  <Font name="Pokemon Classic Regular" size="20.0" />
                </font></Label>
             <Button id="btnSalir" fx:id="btnSalir" layoutX="763.0" layoutY="474.0" mnemonicParsing="false" onAction="#salir" style="-fx-effect: innershadow(gaussian, rgba(0,0,0,0.5), 10, 0.5, 0, 0);" text="Cerrar Sesión">
                <font>
@@ -112,12 +112,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <font>
-                  <Font name="Lucida Console" size="26.0" />
+                  <Font name="Pokemon Classic Regular" size="17.0" />
                </font>
             </Button>
             <Button id="btnEntrenamiento" fx:id="btnEntrenamiento" layoutX="652.0" layoutY="114.0" mnemonicParsing="false" onAction="#abrirEntrenamiento" prefHeight="62.0" prefWidth="270.0" style="-fx-background-radius: 50px; -fx-background-color: #FFA500; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 10, 0.5, 2, 2);" text="Entrenamiento" textAlignment="CENTER">
                <font>
-                  <Font name="Lucida Console" size="26.0" />
+                  <Font name="Pokemon Classic Regular" size="17.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -125,32 +125,32 @@
             </Button>
             <Button id="btnEntrenador" fx:id="btnCaptura" layoutX="560.0" layoutY="300.0" mnemonicParsing="false" onAction="#abrirCaptura" prefHeight="62.0" prefWidth="166.0" style="-fx-background-radius: 50px; -fx-background-color: #7FFF00; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 10, 0.5, 2, 2);" text="Captura" textAlignment="CENTER">
                <font>
-                  <Font name="Lucida Console" size="26.0" />
+                  <Font name="Pokemon Classic Regular" size="17.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label id="labelPokedolares" fx:id="lblPokedolares" layoutX="781.0" layoutY="48.0" text="Label">
+            <Label id="labelPokedolares" fx:id="lblPokedolares" layoutX="742.0" layoutY="51.0" text="Label">
                <font>
-                  <Font name="Rubik-Bold" size="20.0" />
+                  <Font name="Pokemon Classic Regular" size="20.0" />
                </font></Label>
-            <Button id="btnTienda" fx:id="btnTienda" layoutX="395.0" layoutY="393.0" mnemonicParsing="false" onAction="#abrirTienda" prefHeight="62.0" prefWidth="166.0" style="-fx-background-color: #FFD93D; -fx-background-radius: 50px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 10, 0.5, 2, 2);" text="Tienda" textAlignment="CENTER">
+            <Button id="btnTienda" fx:id="btnTienda" layoutX="395.0" layoutY="395.0" mnemonicParsing="false" onAction="#abrirTienda" prefHeight="62.0" prefWidth="166.0" style="-fx-background-color: #FFD93D; -fx-background-radius: 50px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 10, 0.5, 2, 2);" text="Tienda" textAlignment="CENTER">
                <font>
-                  <Font name="Lucida Console" size="26.0" />
+                  <Font name="Pokemon Classic Regular" size="17.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Text id="lblEntrenador" layoutX="48.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrenador" textAlignment="CENTER">
+            <Text id="lblEntrenador" layoutX="38.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrenador" textAlignment="CENTER">
                <font>
-                  <Font name="Segoe UI Black" size="24.0" />
+                  <Font name="Pokemon Classic Regular" size="24.0" />
                </font>
             </Text>
-            <Text id="lblPokedolares" layoutX="736.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pokedolares" textAlignment="CENTER">
+            <Text id="lblPokedolares" layoutX="661.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pokedolares" textAlignment="CENTER">
                <font>
-                  <Font name="Segoe UI Black" size="24.0" />
+                  <Font name="Pokemon Classic Regular" size="24.0" />
                </font>
             </Text>
       </children>

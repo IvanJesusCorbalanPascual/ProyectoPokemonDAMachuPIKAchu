@@ -63,7 +63,7 @@ public class TiendaController {
 		int precio = objeto.getPrecio();
 		if (entrenador.getPokedollars() >= precio) {
 			entrenador.restarPokédolares(precio);
-			entrenador.guardarPokédolaresEnBD(objetoDAO.getConexion());
+			entrenador.guardarPokedollarsEnBD(objetoDAO.getConexion());
 			objetoDAO.añadirObjetoAMochila(entrenador.getId(), idObjeto);
 			lblResultado.setText("¡Has comprado " + objeto.getNombre() + " por " + precio + "₽!");
 		} else {
@@ -115,7 +115,7 @@ public class TiendaController {
 			entrenador.restarPokédolares(precio);
 			entrenador.añadirPokeballs(5); // +5 Pokeballs
 			entrenador.guardarPokeballsEnBD(objetoDAO.getConexion());
-			entrenador.guardarPokédolaresEnBD(objetoDAO.getConexion());
+			entrenador.guardarPokedollarsEnBD(objetoDAO.getConexion());
 			lblResultado.setText("¡Has comprado 5 Pokéballs por " + precio + "₽!");
 		} else {
 			lblResultado.setText("No tienes suficiente dinero para comprar Pokéballs.");

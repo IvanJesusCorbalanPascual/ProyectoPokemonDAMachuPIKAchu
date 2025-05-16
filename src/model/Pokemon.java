@@ -152,10 +152,6 @@ public class Pokemon {
 	    this.ps = psMax;
 	}
 
-	public void setPs(int ps) {
-		this.ps = ps;
-	}
-
 	public int getAtaque() {
 		return ataque;
 	}
@@ -274,10 +270,6 @@ public class Pokemon {
 	    this.nivel = nivel;
 	}
 
-	public void setAtaqueEspecial(int ataqueEspecial) {
-	    this.ataqueEspecial = ataqueEspecial;
-	}
-
 	public void setDefensaEspecial(int defensaEspecial) {
 	    this.defensaEspecial = defensaEspecial;
 	}
@@ -318,10 +310,6 @@ public class Pokemon {
 		this.nombre = nombre;
 	}
 
-	public void setPsMax(int psMax) {
-		this.psMax = psMax;
-	}
-
 	public void setExperiencia(int experiencia) {
 		this.experiencia = experiencia;
 	}
@@ -336,10 +324,6 @@ public class Pokemon {
 
 	public void setTipo2(Tipo tipo2) {
 		this.tipo2 = tipo2;
-	}
-
-	public void setMovimientosDisponibles(List<Movimiento> movimientosDisponibles) {
-		this.movimientosDisponibles = movimientosDisponibles;
 	}
 
 	public void setMovimientosPosibles(List<Movimiento> movimientosPosibles) {

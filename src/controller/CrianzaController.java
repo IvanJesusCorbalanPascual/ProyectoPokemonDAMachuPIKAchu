@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -31,16 +32,14 @@ public class CrianzaController {
     @FXML private ImageView imgHuevo;
     @FXML private ImageView pkm1;
     @FXML private ImageView pkm2;
+    @FXML private Label lblResultado;
 
     private Entrenador entrenador;
-    private Connection conexion;
     private Pokemon huevo;
 
     // Para inicializar desde otra vista
     public void init(Entrenador entrenador, Connection conexion) {
         this.entrenador = entrenador;
-        this.conexion = conexion;
-
         boxPadre.getItems().addAll(entrenador.getEquipo());
         boxMadre.getItems().addAll(entrenador.getEquipo());
 
@@ -73,17 +72,20 @@ public class CrianzaController {
         Pokemon madre = boxMadre.getValue();
 
         if (padre == null || madre == null) {
-            System.out.println("Selecciona dos Pokémon.");
+            System.out.println("Selecciona dos Pokémon");
+            lblResultado.setText("Selecciona dos Pokémon");
             return;
         }
 
         if (!sonCompatibles(padre, madre)) {
-            System.out.println("Los Pokémon no son compatibles.");
+            System.out.println("Los Pokémon no son compatibles");
+            lblResultado.setText("Los Pokémon no son compatibles");
             return;
         }
 
         if (padre.getFertilidad() == 0 || madre.getFertilidad() == 0) {
             System.out.println("❌ Uno de los Pokémon no tiene más fertilidad.");
+            lblResultado.setText("❌ Uno de los Pokémon no tiene más fertilidad.");
             return;
         }
 
@@ -112,7 +114,8 @@ public class CrianzaController {
     @FXML
     void abrirHuevo(ActionEvent event) {
         if (huevo == null) {
-            System.out.println("No hay huevo para abrir.");
+            System.out.println("No hay huevo para abrir");
+            lblResultado.setText("No hay huevo para abrir");
             return;
         }
 
@@ -141,7 +144,6 @@ public class CrianzaController {
             e.printStackTrace();
         }
     }
-
 
     @FXML
     void salir(MouseEvent event) {

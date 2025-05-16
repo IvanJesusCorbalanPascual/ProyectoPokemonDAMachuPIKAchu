@@ -98,12 +98,12 @@ public class CapturaController {
 		pokemonActual = Captura.generarPokemonAleatorio();
 
 		if (pokemonActual != null) {
-			// ✅ Asignar sexo aleatorio si no tiene
+			// Asignar sexo aleatorio
 			if (pokemonActual.getSexo() == null) {
 				pokemonActual.setSexo(Math.random() < 0.5 ? Sexo.MACHO : Sexo.HEMBRA);
 			}
 
-			// ✅ Mostrar nombre y sexo
+			// Mostrar nombre y sexo
 			lblPokemonGenerado.setText(pokemonActual.getNombre() + " (" + pokemonActual.getSexo() + ")");
 
 			try {
@@ -113,10 +113,10 @@ public class CapturaController {
 					Image imagen = new Image(is);
 					imgPokemonGenerado.setImage(imagen);
 				} else {
-					System.out.println("⚠ Imagen no encontrada para " + pokemonActual.getNombre() + " ("
+					System.out.println("Imagen no encontrada para " + pokemonActual.getNombre() + " ("
 							+ pokemonActual.getNumPokedex() + ")");
 					imgPokemonGenerado
-							.setImage(new Image(getClass().getResourceAsStream("/imagenes/ui/desconocido.png")));
+							.setImage(new Image(getClass().getResourceAsStream("")));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

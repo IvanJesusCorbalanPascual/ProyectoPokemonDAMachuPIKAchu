@@ -174,6 +174,19 @@ public class Entrenador {
         }
     }
 
+    public void guardarPokedollarsEnBD(Connection conexion) {
+        try {
+            String sql = "UPDATE entrenadores SET pokedolares = ? WHERE id_entrenador = ?";
+            PreparedStatement stmt = conexion.prepareStatement(sql);
+            stmt.setInt(1, this.pokedollars);
+            stmt.setInt(2, this.id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    
     private String quitarTildes(String input) {
         return input
             .replace("Á", "A")

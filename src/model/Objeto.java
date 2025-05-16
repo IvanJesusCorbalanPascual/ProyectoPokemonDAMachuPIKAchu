@@ -50,14 +50,14 @@ public class Objeto {
 //	        break;
 //
 //	    case "eter":
-//	        p.restaurarMovimientos(); // Asegúrate de tener este método en la clase Pokémon
+//	        p.restaurarMovimientos();
 //	        break;
-
-		/*
-		 * case "anillo unico": p.activarInvencibilidad(3); // Método que debes
-		 * implementar para durar 3 turnos p.setAtaque((int) (p.getAtaque() * 10));
-		 * break;
-		 */
+//
+//		
+//		 case "anillo unico": p.activarInvencibilidad(3);
+//		 p.setAtaque((int) (p.getAtaque() * 10));
+//		 break;
+		 
 		}
 
 	}

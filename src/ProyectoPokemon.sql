@@ -1,34 +1,45 @@
 /*Base de datos Proyecto Pokemon del equipo DAMachuPIKAchu Ivan Jesus Corbalan Pascual, Sergio Martinez Alonso, Lorenzo Fernandez Jara 1ºDAM*/
 
-/*Creacion tabla Objetos*/
-CREATE TABLE Objetos  ( 
+-- Si la tabla ya existe, la eliminamos
+DROP TABLE IF EXISTS Pokemon;
+DROP TABLE IF EXISTS Movimiento;
+DROP TABLE IF EXISTS Mochila;
+DROP TABLE IF EXISTS Objetos;
+DROP TABLE IF EXISTS Pokedex;
+DROP TABLE IF EXISTS Entrenadores;
+
+-- Creación tabla Objetos
+CREATE TABLE Objetos (
     id_objeto INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
-    efecto TEXT, 
-    descripcion TEXT, 
-    precio DECIMAL(10,2) 
-); 
+    efecto TEXT,
+    descripcion TEXT,
+    precio DECIMAL(10,2)
+);
 
-/*Insercion de datos a tabla objetos*/
-INSERT INTO Objetos (nombre, efecto, descripcion, precio) VALUES 
-    ('pesa', 'Aumenta la fuerza', 'Objeto pesado para entrenamiento', 50.00),  
-    ('pluma', 'Ligereza', 'Reduce el peso del usuario', 50.00), 
-    ('chaleco', 'Defensa', 'Aumenta la protección contra golpes', 150.00),  
-    ('baston', 'Soporte', 'Ayuda en el equilibrio y caminatas', 25.00),  
-    ('pilas', 'Energía', 'Recarga dispositivos eléctricos', 20.00),  
-    ('eter', 'Regeneración', 'Restaura puntos de pp', 200.00), 
-    ('anillo único', 'Invisibilidad', 'Hace al pokemon invisible', 9999.99), 
+-- Inserción de datos a tabla Objetos
+INSERT INTO Objetos (nombre, efecto, descripcion, precio) VALUES
+    ('pesa', 'Aumenta la fuerza', 'Objeto pesado para entrenamiento', 50.00),
+    ('pluma', 'Ligereza', 'Reduce el peso del usuario', 50.00),
+    ('chaleco', 'Defensa', 'Aumenta la protección contra golpes', 150.00),
+    ('baston', 'Soporte', 'Ayuda en el equilibrio y caminatas', 25.00),
+    ('pilas', 'Energía', 'Recarga dispositivos eléctricos', 20.00),
+    ('eter', 'Regeneración', 'Restaura puntos de pp', 200.00),
+    ('anillo único', 'Invisibilidad', 'Hace al pokemon invisible', 9999.99),
     ('pokeball', 'Captura', 'Permite capturar pokemons', 50.00);
 
-
-/*Creacion tabla entrenadores*/
+-- Creación tabla Entrenadores con login
 CREATE TABLE Entrenadores (
-    id_entrenador INT PRIMARY KEY, 
-    nombre VARCHAR(50) NOT NULL, 
-    equipo_principal VARCHAR(255) NOT NULL, 
-    equipo_secundario VARCHAR(255) NOT NULL, 
-    pokedollars INT DEFAULT 0, objetos TEXT 
-); 
+    id_entrenador INT PRIMARY KEY AUTO_INCREMENT,
+    usuario VARCHAR(50) UNIQUE NOT NULL,
+    contraseña VARCHAR(100) NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+    equipo_principal VARCHAR(255),
+    equipo_secundario VARCHAR(255),
+    pokedollars INT DEFAULT 0,
+    pokeballs INT DEFAULT 100,
+    objetos TEXT
+);
 
 /*Creacion tabla mochila*/
 CREATE TABLE Mochila ( 
@@ -48,10 +59,12 @@ ADD CONSTRAINT fk_mochila_objeto
 FOREIGN KEY (id_objeto) REFERENCES Objetos(id_objeto);
 
 /*Insercion de datos a tabla entrenadores*/
-INSERT INTO Entrenadores (id_entrenador, nombre, equipo_principal, equipo_secundario, pokedollars, objetos) VALUES  
-    (1, 'Luis Regino', 'Pikachu, Charizard, Bulbasaur, Squirtle, Pidgeotto, Muk', 'Snorlax, Kingler, Tauros, Lapras, Heracross, Donphan', 5000, 'Pokeball, Superpoción'),  
-    (2, 'Fernando', 'Onix, Geodude, Vulpix, Ludicolo, Steelix, Croagunk', 'Zubat, Crobat, Marshtomp, Forretress, Sudowoodo, Chansey', 3000, 'Hiperpoción, Revivir'), 
-    (3, 'Jose Carrion', 'Starmie, Staryu, Psyduck, Gyarados, Golduck, Politoed', 'Horsea, Togepi, Seaking, Corsola, Lanturn, Azumarill', 4500, 'Piedra Agua, Poción');
+INSERT INTO Entrenadores (usuario, contraseña, nombre, equipo_principal, equipo_secundario, pokedollars, objetos)
+VALUES
+    ('luisre', '1234', 'Luis Regino', 'Pikachu, Charizard, Bulbasaur, Squirtle, Pidgeotto, Muk', 'Snorlax, Kingler, Tauros, Lapras, Heracross, Donphan', 5000, 'Pokeball, Superpoción'),
+    ('fer', 'abcd', 'Fernando', 'Onix, Geodude, Vulpix, Ludicolo, Steelix, Croagunk', 'Zubat, Crobat, Marshtomp, Forretress, Sudowoodo, Chansey', 3000, 'Hiperpoción, Revivir'),
+    ('josec', 'pass', 'Jose Carrion', 'Starmie, Staryu, Psyduck, Gyarados, Golduck, Politoed', 'Horsea, Togepi, Seaking, Corsola, Lanturn, Azumarill', 4500, 'Piedra Agua, Poción'
+);
 
 
 /*Creacion tabla pokedex*/
@@ -277,4 +290,15 @@ UPDATE pokemon
 SET equipo = 1
 WHERE id_pokemon IN (1, 2, 3, 4, 5, 6);
 
-ALTER TABLE Entrenadores ADD pokeballs INT DEFAULT 0;
+--ALTER TABLE Entrenadores ADD pokeballs INT DEFAULT 0;
+--
+--/*Para guardar el login se añaden usuario y contraseña a Entrenadores*/
+--ALTER TABLE Entrenadores
+--ADD COLUMN usuario VARCHAR(50),
+--ADD COLUMN contraseña VARCHAR(100);
+
+ALTER TABLE Entrenadores MODIFY COLUMN id_entrenador INT NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE Entrenadores
+MODIFY COLUMN equipo_principal VARCHAR(255) DEFAULT NULL,
+MODIFY COLUMN equipo_secundario VARCHAR(255) DEFAULT NULL;

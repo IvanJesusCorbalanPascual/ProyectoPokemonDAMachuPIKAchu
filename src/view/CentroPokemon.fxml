@@ -56,77 +56,80 @@
                   <Image url="@../imagenes/fondo/fondo_centroPokemon.png" />
                </image>
             </ImageView>
-            <ProgressBar fx:id="bar6" layoutX="463.0" layoutY="497.0" prefWidth="200.0" progress="0.0" />
+            <ProgressBar fx:id="bar6" layoutX="442.0" layoutY="497.0" prefWidth="200.0" progress="0.0" />
             <ProgressBar fx:id="bar1" layoutX="48.0" layoutY="206.0" prefWidth="200.0" progress="0.0" />
-            <ProgressBar fx:id="bar5" layoutX="55.0" layoutY="497.0" prefWidth="200.0" progress="0.0" />
-            <ProgressBar fx:id="bar3" layoutX="55.0" layoutY="348.0" prefWidth="200.0" progress="0.0" />
-            <ProgressBar fx:id="bar4" layoutX="463.0" layoutY="348.0" prefWidth="200.0" progress="0.0" />
-            <ProgressBar fx:id="bar2" layoutX="463.0" layoutY="206.0" prefWidth="200.0" progress="0.0" />
-            <ImageView fitHeight="68.0" fitWidth="157.0" layoutX="273.0" layoutY="564.0" pickOnBounds="true" preserveRatio="true">
+            <ProgressBar fx:id="bar5" layoutX="48.0" layoutY="497.0" prefWidth="200.0" progress="0.0" />
+            <ProgressBar fx:id="bar3" layoutX="48.0" layoutY="348.0" prefWidth="200.0" progress="0.0" />
+            <ProgressBar fx:id="bar4" layoutX="442.0" layoutY="348.0" prefWidth="200.0" progress="0.0" />
+            <ProgressBar fx:id="bar2" layoutX="442.0" layoutY="206.0" prefWidth="200.0" progress="0.0" />
+            <ImageView fx:id="curarPokemons" fitHeight="68.0" fitWidth="157.0" layoutX="273.0" layoutY="564.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/boton/imgCurarPokemons.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
             <ImageView fitHeight="86.0" fitWidth="143.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/boton/imgCentroPokemon.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="pkm6" fitHeight="150.0" fitWidth="200.0" layoutX="488.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="pkm6" fitHeight="100.0" fitWidth="200.0" layoutX="492.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/Pokemon/Front/39.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="pkm5" fitHeight="150.0" fitWidth="200.0" layoutX="82.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="pkm5" fitHeight="100.0" fitWidth="200.0" layoutX="98.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/Pokemon/Front/39.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="pkm4" fitHeight="150.0" fitWidth="200.0" layoutX="488.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="pkm4" fitHeight="100.0" fitWidth="200.0" layoutX="492.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/Pokemon/Front/39.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="pkm3" fitHeight="150.0" fitWidth="200.0" layoutX="82.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="pkm3" fitHeight="100.0" fitWidth="200.0" layoutX="98.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/Pokemon/Front/39.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="pkm2" fitHeight="150.0" fitWidth="200.0" layoutX="488.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="pkm2" fitHeight="100.0" fitWidth="200.0" layoutX="491.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/Pokemon/Front/39.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="pkm1" fitHeight="150.0" fitWidth="200.0" layoutX="82.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="pkm1" fitHeight="100.0" fitWidth="200.0" layoutX="98.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/Pokemon/Front/39.png" />
                </image>
             </ImageView>
-            <Label fx:id="pkmlbl1" layoutX="136.0" layoutY="181.0" text="Label">
+            <Label fx:id="pkmlbl1" alignment="CENTER" layoutX="66.0" layoutY="167.0" prefHeight="48.0" prefWidth="163.0">
                <font>
                   <Font name="Yu Gothic Regular" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="pkmlbl2" layoutX="542.0" layoutY="181.0" text="Label">
+            <Label fx:id="pkmlbl2" alignment="CENTER" layoutX="456.0" layoutY="163.0" prefHeight="55.0" prefWidth="170.0">
                <font>
                   <Font name="Yu Gothic Regular" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="pkmlbl3" layoutX="136.0" layoutY="328.0" text="Label">
+            <Label fx:id="pkmlbl3" alignment="CENTER" layoutX="76.0" layoutY="314.0" prefHeight="48.0" prefWidth="143.0">
                <font>
                   <Font name="Yu Gothic Regular" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="pkmlbl4" layoutX="542.0" layoutY="328.0" text="Label">
+            <Label fx:id="pkmlbl4" alignment="CENTER" layoutX="457.0" layoutY="306.0" prefHeight="55.0" prefWidth="170.0">
                <font>
                   <Font name="Yu Gothic Regular" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="pkmlbl5" layoutX="136.0" layoutY="472.0" text="Label">
+            <Label fx:id="pkmlbl5" alignment="CENTER" layoutX="63.0" layoutY="450.0" prefHeight="55.0" prefWidth="170.0">
                <font>
                   <Font name="Yu Gothic Regular" size="16.0" />
                </font></Label>
-            <Label fx:id="pkmlbl6" layoutX="542.0" layoutY="472.0" text="Label">
+            <Label fx:id="pkmlbl6" alignment="CENTER" layoutX="460.0" layoutY="450.0" prefHeight="55.0" prefWidth="163.0">
                <font>
                   <Font name="Yu Gothic Regular" size="16.0" />
                </font>
@@ -136,9 +139,39 @@
                   <Font name="Lucida Console" size="18.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <Label fx:id="psLbl1" alignment="CENTER" contentDisplay="CENTER" layoutX="48.0" layoutY="205.0" prefHeight="20.0" prefWidth="200.0">
+               <font>
+                  <Font name="Yu Gothic Regular" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="psLbl3" alignment="CENTER" contentDisplay="CENTER" layoutX="48.0" layoutY="347.0" prefHeight="20.0" prefWidth="200.0">
+               <font>
+                  <Font name="Yu Gothic Regular" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="psLbl5" alignment="CENTER" contentDisplay="CENTER" layoutX="48.0" layoutY="495.0" prefHeight="20.0" prefWidth="200.0">
+               <font>
+                  <Font name="Yu Gothic Regular" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="psLbl2" alignment="CENTER" contentDisplay="CENTER" layoutX="442.0" layoutY="205.0" prefHeight="20.0" prefWidth="200.0">
+               <font>
+                  <Font name="Yu Gothic Regular" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="psLbl4" alignment="CENTER" contentDisplay="CENTER" layoutX="441.0" layoutY="347.0" prefHeight="20.0" prefWidth="200.0">
+               <font>
+                  <Font name="Yu Gothic Regular" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="psLbl5" alignment="CENTER" contentDisplay="CENTER" layoutX="441.0" layoutY="495.0" prefHeight="20.0" prefWidth="200.0">
+               <font>
+                  <Font name="Yu Gothic Regular" size="16.0" />
+               </font>
+            </Label>
       </children>
     </AnchorPane>
   </children>

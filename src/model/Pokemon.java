@@ -96,6 +96,9 @@ public class Pokemon {
 	 * (movimientosDisponibles.size() < 4) { movimientosDisponibles.add(nuevo); }
 	 * else { // lógica para intercambiar movimiento, según decisión del usuario } }
 	 */
+	
+	
+	// Getters & Setters
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
@@ -117,6 +120,10 @@ public class Pokemon {
 		this.psMax = i * 10;
 		if (this.ps > psMax) this.ps = psMax;
 
+	}
+
+	public void setPs(int ps) {
+		this.ps = ps;
 	}
 
 	public int getAtaque() {
@@ -257,6 +264,54 @@ public class Pokemon {
 	public void setIdPokemon(int idPokemon) {
 		this.idPokemon = idPokemon;
 	}
+
+	public void setFertilidad(int fertilidad) {
+		this.fertilidad = fertilidad;
+	}
+
+	public int getAtaqueEspecial() {
+		return ataqueEspecial;
+	}
+
+	public void setAtaqueEspecial(int ataqueEspecial) {
+		this.ataqueEspecial = ataqueEspecial;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setPsMax(int psMax) {
+		this.psMax = psMax;
+	}
+
+	public void setExperiencia(int experiencia) {
+		this.experiencia = experiencia;
+	}
+
+	public void setSexo(Sexo sexo) {
+		this.sexo = sexo;
+	}
+
+	public void setTipo1(Tipo tipo1) {
+		this.tipo1 = tipo1;
+	}
+
+	public void setTipo2(Tipo tipo2) {
+		this.tipo2 = tipo2;
+	}
+
+	public void setMovimientosDisponibles(List<Movimiento> movimientosDisponibles) {
+		this.movimientosDisponibles = movimientosDisponibles;
+	}
+
+	public void setMovimientosPosibles(List<Movimiento> movimientosPosibles) {
+		this.movimientosPosibles = movimientosPosibles;
+	}
 	
-	// Métodos get/set y otros métodos como atacar, etc., vendrán después
+	@Override
+	public String toString() {
+	    return nombre + " (" + sexo + ", Nv. " + nivel + ")";
+	}
+
 }

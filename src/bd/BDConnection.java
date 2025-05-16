@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class BDConnection {
+	// Clase de conexion con la base de datos
 	public static Connection con;
 	
 	private static String url = "jdbc:mysql://localhost:3306/proyectopokemon";

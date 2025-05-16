@@ -2,9 +2,9 @@ package controller;
 
 import java.io.IOException;
 
-import javafx.application.Platform; 
-import javafx.event.ActionEvent; 
-import javafx.fxml.FXML; 
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import bd.BDConnection;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -25,8 +25,6 @@ public class MenuController {
 
 	private Stage primaryStage;
 
-	private FXMLLoader loader;
-	
 	private Entrenador entrenador;
 
 	@FXML
@@ -81,59 +79,69 @@ public class MenuController {
 
 	@FXML
 	void abrirCaptura(ActionEvent event) throws IOException {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/captura.fxml"));
-	    Parent root = loader.load();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/captura.fxml"));
+		Parent root = loader.load();
 
-	    CapturaController controller = loader.getController();
-	    controller.setEntrenador(this.entrenador); // ← AÑADIDO
-	    controller.init(primaryStage);
-	    controller.setPrimaryStage(primaryStage);
+		CapturaController controller = loader.getController();
+		controller.setEntrenador(this.entrenador); // ← AÑADIDO
+		controller.init(primaryStage);
+		controller.setPrimaryStage(primaryStage);
 
-	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-	    stage.setScene(new Scene(root));
-	    stage.setTitle("Captura");
-	    stage.show();
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		stage.setScene(new Scene(root));
+		stage.setTitle("Captura");
+		stage.show();
 	}
-
 
 	@FXML
 	void abrirCentroPokemon(ActionEvent event) throws IOException {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/CentroPokemon.fxml"));
-	    Parent root = loader.load();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/CentroPokemon.fxml"));
+		Parent root = loader.load();
 
-	    CentroPokemonController controller = loader.getController();
-	    controller.setEntrenador(this.entrenador); // ← AÑADIDO
-	    controller.setPrimaryStage(primaryStage);
+		CentroPokemonController controller = loader.getController();
+		controller.setEntrenador(this.entrenador); // ← AÑADIDO
+		controller.setPrimaryStage(primaryStage);
 
-	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-	    stage.setScene(new Scene(root));
-	    stage.setTitle("Centro Pokémon");
-	    stage.show();
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		stage.setScene(new Scene(root));
+		stage.setTitle("Centro Pokémon");
+		stage.show();
 	}
-
-
-
 
 	@FXML
 	void abrirCombate(ActionEvent event) throws IOException {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/combate.fxml"));
-	    Parent root = loader.load();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/combate.fxml"));
+		Parent root = loader.load();
 
-	    controladorCombate controller = loader.getController();
-	    controller.setEntrenador(this.entrenador); //  Muy importante
-	    controller.setPrimaryStage((Stage) ((Node) event.getSource()).getScene().getWindow());
+		controladorCombate controller = loader.getController();
+		controller.setEntrenador(this.entrenador); // Muy importante
+		controller.setPrimaryStage((Stage) ((Node) event.getSource()).getScene().getWindow());
 
-	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-	    stage.setScene(new Scene(root));
-	    stage.setTitle("Combate");
-	    stage.show(); 
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		stage.setScene(new Scene(root));
+		stage.setTitle("Combate");
+		stage.show();
 	}
-
 
 	@FXML
 	void abrirCrianza(ActionEvent event) {
+	    try {
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/crianza.fxml"));
+	        Parent root = loader.load();
+	        
+	        CrianzaController controller = loader.getController();
+	        controller.init(entrenador, BDConnection.getConnection()); // ✅ CORRECTO
 
+	        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	        stage.setScene(new Scene(root));
+	        stage.setTitle("Crianza Pokémon");
+	        stage.show();
+
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
 	}
+
 
 	@FXML
 	void abrirEntrenamiento(ActionEvent event) {
@@ -142,57 +150,61 @@ public class MenuController {
 
 	@FXML
 	void abrirEquipo(ActionEvent event) {
-	    try {
-	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/equipo.fxml"));
-	        Parent root = loader.load();
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/equipo.fxml"));
+			Parent root = loader.load();
 
-	        ControladorEquipo controladorEquipo = loader.getController();
-	        controladorEquipo.setEntrenador(this.entrenador);
-	        controladorEquipo.actualizarVista();
+			ControladorEquipo controladorEquipo = loader.getController();
+			controladorEquipo.setEntrenador(this.entrenador);
+			controladorEquipo.actualizarVista();
 
-	        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-	        Scene scene = new Scene(root);
-	        stage.setScene(scene);
-	        stage.setTitle("Equipo Pokémon");
-	        stage.show();
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
-	}
-
-
-
-	@FXML
-	void abrirPokedex(ActionEvent event) {
-
+			Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.setTitle("Equipo Pokémon");
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
 	void abrirTienda(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/tienda.fxml"));
+			Parent root = loader.load();
+
+			TiendaController tiendaController = loader.getController();
+			tiendaController.init(entrenador, BDConnection.getConnection());
+
+			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.setTitle("Tienda Pokémon");
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	public void salir(ActionEvent event) {
 	    try {
-	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/tienda.fxml"));
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
 	        Parent root = loader.load();
 
-	        TiendaController tiendaController = loader.getController();
-	        tiendaController.init(entrenador, BDConnection.getConnection());
+	        ControladorLogin loginController = loader.getController();
+	        loginController.setPrimaryStage((Stage) ((Node) event.getSource()).getScene().getWindow()); // 🔥 IMPORTANTE
 
 	        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-	        Scene scene = new Scene(root);
-	        stage.setScene(scene);
-	        stage.setTitle("Tienda Pokémon");
+	        stage.setScene(new Scene(root));
+	        stage.setTitle("Inicio de Sesión");
 	        stage.show();
 	    } catch (IOException e) {
 	        e.printStackTrace();
 	    }
 	}
-
-
-	@FXML
-	public void salir(ActionEvent event) {
-		this.entrenador.actualizarEquipoEnBD(BDConnection.getConnection());
-		Platform.exit();
-	}
-
+	
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
@@ -200,9 +212,15 @@ public class MenuController {
 	public void setPrimaryStage(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 	}
-	
+
 	public void setEntrenador(Entrenador entrenador) {
 		this.entrenador = entrenador;
+
+		// Actualizar los labels con el nombre y los pokedólares
+		if (lblEntrenador != null && lblPokedolares != null) {
+			lblEntrenador.setText(entrenador.getNombre());
+			lblPokedolares.setText(entrenador.getPokedollars() + " ₽");
+		}
 	}
 
 	public void init(Stage Stage) {
@@ -211,9 +229,11 @@ public class MenuController {
 
 	@FXML
 	public void initialize() {
-	    if (this.entrenador == null) {
-	        this.entrenador = new Entrenador(1, "LuisRe");
-	        this.entrenador.cargarPokemonsDesdeBD(BDConnection.getConnection());
-	    }
+		// Detiene y deshabilita la musica del login cuando entra al menu
+		if (ControladorLogin.mediaPlayer != null) {
+			ControladorLogin.mediaPlayer.stop();
+			ControladorLogin.mediaPlayer.dispose();
+			ControladorLogin.mediaPlayer = null;
+		}
 	}
 }

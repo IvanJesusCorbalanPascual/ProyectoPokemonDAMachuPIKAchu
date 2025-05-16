@@ -56,7 +56,7 @@
                   <Image url="@../imagenes/fondo/fondo_captura.png" />
                </image>
             </ImageView>
-            <Label fx:id="lblPokemonGenerado" layoutX="345.0" layoutY="328.0" prefHeight="33.0" prefWidth="97.0">
+            <Label fx:id="lblPokemonGenerado" alignment="CENTER" layoutX="197.0" layoutY="328.0" prefHeight="34.0" prefWidth="370.0">
                <font>
                   <Font name="Verdana Bold" size="12.0" />
                </font></Label>
@@ -65,7 +65,10 @@
                   <Image url="@../imagenes/otros/pokeball.png" />
                </image>
             </ImageView>
-            <Text layoutX="273.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NºPokepollas:" />
+            <Text layoutX="279.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NºPokeballs:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Text>
             <Button id="btnSalir" fx:id="btnSalir" layoutX="673.0" layoutY="448.0" mnemonicParsing="false" onAction="#salir" style="-fx-effect: innershadow(gaussian, rgba(0,0,0,0.5), 10, 0.5, 0, 0);" text="Salir">
                <font>
                   <Font name="Lucida Console" size="18.0" />
@@ -91,8 +94,11 @@
                </cursor>
             </ImageView>
             <ImageView fx:id="imgPokemonGenerado" fitHeight="265.0" fitWidth="273.0" layoutX="254.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true" />
-            <Text layoutX="420.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" />
-            <Label fx:id="numPokeballs" layoutX="442.0" layoutY="384.0" text="Label">
+            <Text layoutX="420.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Text>
+            <Label fx:id="numPokeballs" layoutX="442.0" layoutY="385.0" text="Label">
                <font>
                   <Font name="Verdana Bold" size="12.0" />
                </font></Label>

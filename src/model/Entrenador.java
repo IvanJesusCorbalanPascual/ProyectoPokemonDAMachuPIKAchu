@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class Entrenador {
+	
     private String nombre;
     private List<Pokemon> equipoPrincipal;
     private List<Pokemon> equipoCaja;
@@ -127,8 +128,7 @@ public class Entrenador {
     public void actualizarEquipoEnBD(Connection conexion) {
         try {
             // Primero, marcar todos los Pokémon del entrenador como sin equipo (0 opcional, lo eliminamos)
-            // Luego actualizamos uno a uno lo correcto
-
+            // Luego actualizar uno a uno lo correcto
             // Marcar como equipo = 1 (equipo principal)
         	String updateEquipo = "UPDATE pokemon SET equipo = 1 WHERE id_pokemon = ?";
         	PreparedStatement stmtEquipo = conexion.prepareStatement(updateEquipo);
@@ -153,7 +153,7 @@ public class Entrenador {
         this.pokeballs += cantidad;
     }
 
-    // Conexion con la base de datos para guardar las pokeballs que se compran en la tienda
+    // Conexion con la base de datos para guardar las pokeballs compradas
     public void guardarPokeballsEnBD(Connection conexion) {
         try {
             String sql = "UPDATE Entrenadores SET pokeballs = ? WHERE id_entrenador = ?";
@@ -177,7 +177,24 @@ public class Entrenador {
             .replace("Ñ", "N");
     }
     
- // Getters/Setters si los necesitas
+    public void restarPokédolares(int cantidad) {
+        if (cantidad > 0 && this.pokedollars >= cantidad) {
+            this.pokedollars -= cantidad;
+        }
+    }
+
+    public void guardarPokédolaresEnBD(Connection conexion) {
+        String sql = "UPDATE Entrenadores SET pokedollars = ? WHERE id_entrenador = ?";
+        try (PreparedStatement stmt = conexion.prepareStatement(sql)) {
+            stmt.setInt(1, this.pokedollars);
+            stmt.setInt(2, this.id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Getters & Setters 
     public int getPokeballs() {
         return pokeballs;
     }

@@ -313,3 +313,25 @@ ALTER TABLE pokemon ADD ps INT(11) DEFAULT 0;
 ALTER TABLE entrenadores ADD pokedolares INT DEFAULT 0;
 
 ALTER TABLE pokemon ADD ps INT(11) DEFAULT 0;
+
+
+DELETE FROM pokemon WHERE id_entrenador IS NULL;
+
+
+ALTER TABLE pokemon MODIFY id_entrenador INT NOT NULL;
+
+
+CREATE TABLE entrenador_objeto (
+    id_entrenador INT NOT NULL,
+    id_objeto INT NOT NULL,
+    cantidad INT DEFAULT 1,
+    PRIMARY KEY (id_entrenador, id_objeto),
+    FOREIGN KEY (id_entrenador) REFERENCES entrenadores(id_entrenador) ON DELETE CASCADE,
+    FOREIGN KEY (id_objeto) REFERENCES objetos(id_objeto) ON DELETE CASCADE
+);
+
+
+ALTER TABLE pokemon
+ADD CONSTRAINT fk_pokemon_entrenador
+FOREIGN KEY (id_entrenador) REFERENCES entrenadores(id_entrenador)
+ON DELETE CASCADE;

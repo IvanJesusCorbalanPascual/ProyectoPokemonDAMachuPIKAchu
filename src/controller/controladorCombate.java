@@ -17,6 +17,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Captura;
+import model.ConexionBD;
+
+import java.sql.Connection;
+import java.sql.SQLException;
 import model.Entrenador;
 import model.Estado;
 import model.Movimiento;
@@ -41,8 +45,6 @@ public class controladorCombate {
 	private int pokemonsDerrotadosEnemigo = 0;
 	private boolean turnoJugadorPrimero;
 	private int turno = 0;
-	private static javafx.scene.control.TextArea logAreaStatic;
-
 	@FXML
 	private Button attackBtn1;
 	@FXML
@@ -136,11 +138,32 @@ public class controladorCombate {
 		logCombate("\n¡Has ganado el combate contra todos los Pokémon enemigos!");
 		desactivarBotonesAtaque();
 		switchCombatPokemon.setDisable(true);
+
+		// Recompensa de dinero
+		int recompensa = 300 + (pokemonEnemigo.getNivel() * 10);
+		entrenador.setPokedollars(entrenador.getPokedollars() + recompensa);
+		logCombate("Has ganado " + recompensa + " Pokédólares.");
+
+		// Guardar estado del equipo y dinero en la base de datos
+		try (Connection conn = ConexionBD.establecerConexion()) {
+			entrenador.actualizarEquipoEnBD(conn);
+			entrenador.actualizarPokedollarsEnBD();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void mostrarPantallaDerrota() {
 		logCombate("\nTodos tus Pokémon han sido derrotados. Has perdido el combate.");
 		desactivarBotonesAtaque();
+
+		// Guarda el estado del equipo y dinero también en la derrota
+		try (Connection conn = ConexionBD.establecerConexion()) {
+			entrenador.actualizarEquipoEnBD(conn);
+			entrenador.actualizarPokedollarsEnBD();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void ejecutarAtaque(int index) {
@@ -247,26 +270,40 @@ public class controladorCombate {
 				mostrarPantallaVictoria(); // <- Esto marca correctamente que ganaste
 				return;
 			}
-			
+
 			actualizarVistaCombate();
 		}
 
 		turno++;
+		pokemonJugador.setPs(psActualJugador);
 		ataqueEnemigo();
 	}
 
 	@FXML
 	void onExit(ActionEvent event) {
 		try {
+			// Guardar el estado del equipo y dinero al salir del combate
+			try (Connection conn = ConexionBD.establecerConexion()) {
+				if (conn != null) {
+					entrenador.actualizarEquipoEnBD(conn);
+					entrenador.actualizarPokedollarsEnBD();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			// Cargar la vista del menú principal
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/menu.fxml"));
 			Parent root = loader.load();
 			MenuController menuController = loader.getController();
 			menuController.setEntrenador(this.entrenador);
 			menuController.setPrimaryStage((Stage) ((Node) event.getSource()).getScene().getWindow());
+
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
 			stage.setTitle("Menú Principal");
 			stage.show();
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -279,15 +316,20 @@ public class controladorCombate {
 	@FXML
 	public void initialize() {
 	}
-
+	
 	public void iniciarCombate() {
 		List<Pokemon> equipo = entrenador.getEquipo();
 		if (equipo.isEmpty())
 			return;
 
-		pokemonJugador = equipo.get(0);
-		pokemonJugador
-				.setMovimientosDisponibles(MovimientoDAO.obtenerMovimientosPorPokemon(pokemonJugador.getNumPokedex()));
+		pokemonJugador = entrenador.obtenerPrimerPokemonConVida();
+		if (pokemonJugador == null) {
+		    logCombate("No tienes Pokémon con vida.");
+		    mostrarPantallaDerrota();
+		    return;
+		}
+		pokemonJugador.setMovimientosDisponibles(MovimientoDAO.obtenerMovimientosPorPokemon(pokemonJugador.getNumPokedex()));
+		psActualJugador = pokemonJugador.getPs();
 
 		// CAMBIO: Generamos un equipo enemigo completo
 		equipoEnemigo = new ArrayList<>();
@@ -310,7 +352,7 @@ public class controladorCombate {
 	public void actualizarVistaCombate() {
 		playerNameLabel.setText(pokemonJugador.getNombre() + " (HP: " + psActualJugador + ")");
 		enemyNameLabel.setText(pokemonEnemigo.getNombre() + " (HP: " + psActualEnemigo + ")");
-		playerHealthBar.setProgress((double) psActualJugador / pokemonJugador.getPs());
+		playerHealthBar.setProgress((double) psActualJugador / pokemonJugador.getPsMax());
 		enemyHealthBar.setProgress((double) psActualEnemigo / pokemonEnemigo.getPs());
 		try {
 			playerPokemonImage.setImage(new javafx.scene.image.Image(
@@ -335,7 +377,7 @@ public class controladorCombate {
 
 	private void ataqueEnemigo() {
 		pokemonEnemigo.aplicarEfectoEstado();
-		actualizarVistaCombate();
+
 		if (pokemonEnemigo.estaDebilitado())
 			return;
 
@@ -380,8 +422,13 @@ public class controladorCombate {
 		}
 		}
 		if (psActualJugador <= 0) {
+			psActualJugador = 0; // Asegura que sea 0 exacto
+			pokemonJugador.setPs(0); //Esto es clave en el caso de 0 ps
 			logCombate(pokemonJugador.getNombre() + " ha sido derrotado.");
 			pokemonsDerrotadosJugador++;
+			
+			actualizarVistaCombate();
+			
 			if (pokemonsDerrotadosJugador >= 6 || !hayPokemonDisponibles()) {
 				mostrarPantallaDerrota();
 				return;
@@ -390,7 +437,10 @@ public class controladorCombate {
 			forzarCambioDePokemon();
 			return;
 		}
+		pokemonJugador.setPs(psActualJugador); // Esto guarda la vida actual si sigue vivo
+
 		turno++;
+		actualizarVistaCombate();
 	}
 
 	private void desactivarBotonesAtaque() {
@@ -398,6 +448,13 @@ public class controladorCombate {
 		attackBtn2.setDisable(true);
 		attackBtn3.setDisable(true);
 		attackBtn4.setDisable(true);
+	}
+
+	private void activarBotonesAtaque() {
+		attackBtn1.setDisable(false);
+		attackBtn2.setDisable(false);
+		attackBtn3.setDisable(false);
+		attackBtn4.setDisable(false);
 	}
 
 	public Stage getPrimaryStage() {
@@ -439,10 +496,17 @@ public class controladorCombate {
 	public void setPokemonJugador(Pokemon pokemon, int ps) {
 		this.pokemonJugador = pokemon;
 		this.psActualJugador = ps;
+
 		if (pokemonEnemigo != null) {
 			actualizarVistaCombate();
+
+			// Si el nuevo Pokémon no está debilitado activara los botones
+			if (!pokemon.estaDebilitado()) {
+				activarBotonesAtaque();
+			}
 		}
 	}
+
 
 	public void setEquipoEnemigo(List<Pokemon> equipoEnemigo, int indice, int psActual) {
 		this.equipoEnemigo = equipoEnemigo;

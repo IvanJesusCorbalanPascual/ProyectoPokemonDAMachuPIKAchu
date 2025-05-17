@@ -61,11 +61,11 @@ public class ObjetoDAO {
         List<Objeto> objetos = new ArrayList<>();
 
         String sql = """
-            SELECT o.id_objeto, o.nombre, o.precio, m.cantidad
-            FROM Objetos o
-            JOIN Mochila m ON o.id_objeto = m.id_objeto
-            WHERE m.id_entrenador = ?
-        """;
+        	    SELECT o.id_objeto, o.nombre, o.precio, eo.cantidad
+        	    FROM objetos o
+        	    JOIN entrenador_objeto eo ON o.id_objeto = eo.id_objeto
+        	    WHERE eo.id_entrenador = ?
+        	""";
 
         try (PreparedStatement stmt = conexion.prepareStatement(sql)) {
             stmt.setInt(1, idEntrenador);

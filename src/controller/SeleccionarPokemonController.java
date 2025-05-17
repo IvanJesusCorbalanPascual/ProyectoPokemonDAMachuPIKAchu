@@ -130,6 +130,8 @@ public class SeleccionarPokemonController {
 			combateController.setPokemonJugador(seleccionado, seleccionado.getPs());
 			combateController.setEntrenador(entrenador, false); // No reinicia el combate
 
+			combateController.actualizarVistaCombate();
+			
 			primaryStage.setScene(new Scene(root));
 			primaryStage.show();
 

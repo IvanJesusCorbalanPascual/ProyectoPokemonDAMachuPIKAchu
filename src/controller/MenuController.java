@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Connection;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -19,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.ConexionBD;
 import model.Entrenador;
 
 public class MenuController {
@@ -190,12 +192,14 @@ public class MenuController {
 
 	@FXML
 	public void salir(ActionEvent event) {
+		guardarProgreso();
+		
 	    try {
 	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
 	        Parent root = loader.load();
 
 	        ControladorLogin loginController = loader.getController();
-	        loginController.setPrimaryStage((Stage) ((Node) event.getSource()).getScene().getWindow()); // 🔥 IMPORTANTE
+	        loginController.setPrimaryStage((Stage) ((Node) event.getSource()).getScene().getWindow()); // Importante
 
 	        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 	        stage.setScene(new Scene(root));
@@ -205,6 +209,20 @@ public class MenuController {
 	        e.printStackTrace();
 	    }
 	}
+	
+	public void guardarProgreso() {
+	    try (Connection conn = ConexionBD.establecerConexion()) {
+	        if (conn != null) {
+	            entrenador.actualizarEquipoEnBD(conn);
+	            entrenador.guardarObjetosEnBD(conn);
+	            entrenador.guardarPokeballsEnBD(conn);
+	            entrenador.guardarPokedollarsEnBD(conn);
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}
+
 	
 	public Stage getPrimaryStage() {
 		return primaryStage;

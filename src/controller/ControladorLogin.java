@@ -67,50 +67,66 @@ public class ControladorLogin {
 
 	@FXML
 	void iniciarSesion(ActionEvent event) {
-		String usuario = txtUsuario.getText();
-		String pass = txtContraseña.getText();
+	    String usuario = txtUsuario.getText();
+	    String pass = txtContraseña.getText();
 
-		if (usuario.isBlank() || pass.isBlank()) {
-			lblResultado.setText("Por favor, completa todos los campos.");
-			return;
-		}
+	    if (usuario.isBlank() || pass.isBlank()) {
+	        lblResultado.setText("Por favor, completa todos los campos.");
+	        return;
+	    }
 
-		try (Connection con = conectar()) {
-			PreparedStatement ps = con
-					.prepareStatement("SELECT * FROM Entrenadores WHERE usuario = ? AND contraseña = ?");
-			ps.setString(1, usuario);
-			ps.setString(2, pass);
-			ResultSet rs = ps.executeQuery();
+	    try (Connection con = conectar()) {
+	        PreparedStatement ps = con.prepareStatement("SELECT * FROM Entrenadores WHERE usuario = ? AND contraseña = ?");
+	        ps.setString(1, usuario);
+	        ps.setString(2, pass);
+	        ResultSet rs = ps.executeQuery();
 
-			if (rs.next()) {
-				int id = rs.getInt("id_entrenador");
-				String nombre = rs.getString("nombre");
-				int pokedollars = rs.getInt("pokedollars");
+	        if (rs.next()) {
+	            int id = rs.getInt("id_entrenador");
+	            String nombre = rs.getString("nombre");
+	            int pokedollars = rs.getInt("pokedollars");
 
-				Entrenador entrenador = new Entrenador(id, nombre);
-				entrenador.setPokedollars(pokedollars);
-				entrenador.cargarPokemonsDesdeBD(con);
+	            Entrenador entrenador = new Entrenador(id, nombre);
+	            entrenador.setPokedollars(pokedollars);
 
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Menu.fxml"));
-				Parent root = loader.load();
+	            // 🔁 Cargar datos importantes
+	            entrenador.cargarPokemonsDesdeBD(con);
+	            entrenador.cargarObjetosDesdeBD(con);
 
-				MenuController controller = loader.getController();
-				controller.setEntrenador(entrenador);
-				controller.setPrimaryStage(primaryStage);
+	            // 🔁 Cargar pokeballs también desde la BD
+	            PreparedStatement psPokeballs = con.prepareStatement("SELECT pokeballs FROM Entrenadores WHERE id_entrenador = ?");
+	            psPokeballs.setInt(1, id);
+	            ResultSet rsPokeballs = psPokeballs.executeQuery();
+	            if (rsPokeballs.next()) {
+	                entrenador.setPokeballs(rsPokeballs.getInt("pokeballs"));
+	            }
 
-				primaryStage.setScene(new Scene(root));
-				primaryStage.setTitle("Menú Principal");
-				primaryStage.show();
+	            // Ir al menú principal
+	            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Menu.fxml"));
+	            Parent root = loader.load();
 
-			} else {
-				lblResultado.setText("Usuario o contraseña incorrectos.");
-			}
+	            MenuController controller = loader.getController();
+	            controller.setEntrenador(entrenador);
+	            controller.setPrimaryStage(primaryStage);
 
-		} catch (Exception e) {
-			lblResultado.setText("Error al conectar.");
-			e.printStackTrace();
-		}
+	            if (mediaPlayer != null) {
+	                mediaPlayer.stop();
+	            }
+
+	            primaryStage.setScene(new Scene(root));
+	            primaryStage.setTitle("Menú Principal");
+	            primaryStage.show();
+
+	        } else {
+	            lblResultado.setText("Usuario o contraseña incorrectos.");
+	        }
+
+	    } catch (Exception e) {
+	        lblResultado.setText("Error al conectar.");
+	        e.printStackTrace();
+	    }
 	}
+
 
 	@FXML
 	void registrar(ActionEvent event) {

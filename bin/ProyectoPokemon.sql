@@ -311,3 +311,5 @@ ALTER TABLE pokemon ADD ps INT(11) DEFAULT 0;
 
 
 ALTER TABLE entrenadores ADD pokedolares INT DEFAULT 0;
+
+ALTER TABLE pokemon ADD ps INT(11) DEFAULT 0;

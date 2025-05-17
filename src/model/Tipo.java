@@ -86,7 +86,7 @@ public enum Tipo {
                 }
                 case VENENO -> {
                     tipo.efectividades.put(PLANTA, 2.0);
-                    tipo.efectividades.put(FANTASMA, 0.0);
+                    tipo.efectividades.put(HADA, 2.0);
                     tipo.efectividades.put(ROCA, 0.5);
                     tipo.efectividades.put(TIERRA, 0.5);
                 }
@@ -109,7 +109,7 @@ public enum Tipo {
                     tipo.efectividades.put(LUCHA, 2.0);
                     tipo.efectividades.put(VENENO, 2.0);
                     tipo.efectividades.put(PSIQUICO, 0.5);
-                    tipo.efectividades.put(FANTASMA, 0.0);
+                    // (Fantasma no se especifica aquí para que quede en 1.0 por defecto)
                 }
                 case BICHO -> {
                     tipo.efectividades.put(PLANTA, 2.0);
@@ -129,12 +129,19 @@ public enum Tipo {
                 case FANTASMA -> {
                     tipo.efectividades.put(FANTASMA, 2.0);
                     tipo.efectividades.put(NORMAL, 0.0);
-                    tipo.efectividades.put(PSIQUICO, 0.0);
+                    tipo.efectividades.put(PSIQUICO, 2.0);
                 }
                 case DRAGON -> {
                     tipo.efectividades.put(DRAGON, 2.0);
                 }
-                default -> {}
+                case HADA -> {
+                    tipo.efectividades.put(LUCHA, 2.0);
+                    tipo.efectividades.put(DRAGON, 2.0);
+                    tipo.efectividades.put(FUEGO, 0.5);
+                    tipo.efectividades.put(VENENO, 0.5);
+                }
+                default -> {
+                }
             }
         }
     }

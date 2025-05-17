@@ -24,7 +24,7 @@ public enum Estado { // Enumerador del estado del pokemon
 		return switch (this) {
 		case PARALIZADO -> "Puede fallar el turno (25%).";
 		case DORMIDO -> "No permite atacar durante varios turnos.";
-		case QUEMADO -> "Piede PS por cada turno y su ataque se reduce.";
+		case QUEMADO -> "Pierde PS por cada turno y su ataque se reduce.";
 		case ENVENENADO -> "Pierde PS cada turno.";
 		case CONGELADO -> "No puede atacar hasta que desaparezca el efecto.";
 		default -> "Sin efecto.";

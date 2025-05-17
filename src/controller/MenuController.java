@@ -110,14 +110,15 @@ public class MenuController {
 
 	@FXML
 	void abrirCombate(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/combate.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/combate.fxml"));
 		Parent root = loader.load();
 
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); 
+		
 		controladorCombate controller = loader.getController();
-		controller.setEntrenador(this.entrenador); // Muy importante
-		controller.setPrimaryStage((Stage) ((Node) event.getSource()).getScene().getWindow());
+		controller.setPrimaryStage(stage);
+		controller.setEntrenador(this.entrenador); // ← Ahora sí se puede llamar con seguridad
 
-		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(new Scene(root));
 		stage.setTitle("Combate");
 		stage.show();

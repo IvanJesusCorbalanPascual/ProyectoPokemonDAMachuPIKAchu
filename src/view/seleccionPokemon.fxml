@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="588.0" prefWidth="506.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SeleccionarPokemonController">
+   <children>
+      <ImageView fitHeight="588.0" fitWidth="507.0" pickOnBounds="true">
+         <image>
+            <Image url="@../Imagenes/fondo/seleccionPokemonFondo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgPoke1" fitHeight="100.0" fitWidth="103.0" layoutX="31.0" layoutY="10.0" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/Pokemon/Front/1.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nombrePoke1" layoutX="121.0" layoutY="33.0" prefHeight="34.0" prefWidth="120.0" text="Pokémon" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="vidaPoke1" layoutX="112.0" layoutY="60.0" prefHeight="12.0" prefWidth="150.0" progress="0.58" style="-fx-accent: #4CAF50;" />
+      <Label fx:id="vidaTxtPoke1" layoutX="121.0" layoutY="69.0" prefHeight="26.0" prefWidth="130.0" text="0 / 0 HP" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="nivelPoke1" layoutX="251.0" layoutY="33.0" prefHeight="34.0" prefWidth="75.0" text="Nv: " textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imgPoke2" fitHeight="100.0" fitWidth="103.0" layoutX="26.0" layoutY="94.0" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/Pokemon/Front/1.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nombrePoke2" layoutX="116.0" layoutY="117.0" prefHeight="34.0" prefWidth="120.0" text="Pokémon" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="vidaPoke2" layoutX="107.0" layoutY="144.0" prefHeight="12.0" prefWidth="150.0" progress="0.58" style="-fx-accent: #4CAF50;" />
+      <Label fx:id="vidaTxtPoke2" layoutX="116.0" layoutY="153.0" prefHeight="26.0" prefWidth="130.0" text="0 / 0 HP" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="nivelPoke2" layoutX="246.0" layoutY="117.0" prefHeight="34.0" prefWidth="75.0" text="Nv: " textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imgPoke3" fitHeight="100.0" fitWidth="103.0" layoutX="26.0" layoutY="166.0" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/Pokemon/Front/1.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nombrePoke3" layoutX="116.0" layoutY="189.0" prefHeight="34.0" prefWidth="120.0" text="Pokémon" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="vidaPoke3" layoutX="107.0" layoutY="216.0" prefHeight="12.0" prefWidth="150.0" progress="0.58" style="-fx-accent: #4CAF50;" />
+      <Label fx:id="vidaTxtPoke3" layoutX="116.0" layoutY="225.0" prefHeight="26.0" prefWidth="130.0" text="0 / 0 HP" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="nivelPoke3" layoutX="246.0" layoutY="189.0" prefHeight="34.0" prefWidth="75.0" text="Nv: " textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imgPoke4" fitHeight="100.0" fitWidth="103.0" layoutX="39.0" layoutY="238.0" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/Pokemon/Front/6.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nombrePoke4" layoutX="129.0" layoutY="261.0" prefHeight="34.0" prefWidth="120.0" text="Pokémon" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="vidaPoke4" layoutX="120.0" layoutY="288.0" prefHeight="12.0" prefWidth="150.0" progress="0.58" style="-fx-accent: #4CAF50;" />
+      <Label fx:id="vidaTxtPoke4" layoutX="129.0" layoutY="297.0" prefHeight="26.0" prefWidth="130.0" text="0 / 0 HP" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="nivelPoke4" layoutX="259.0" layoutY="261.0" prefHeight="34.0" prefWidth="75.0" text="Nv: " textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imgPoke5" fitHeight="100.0" fitWidth="103.0" layoutX="39.0" layoutY="310.0" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/Pokemon/Front/1.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nombrePoke5" layoutX="129.0" layoutY="333.0" prefHeight="34.0" prefWidth="120.0" text="Pokémon" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="vidaPoke5" layoutX="120.0" layoutY="360.0" prefHeight="12.0" prefWidth="150.0" progress="0.58" style="-fx-accent: #4CAF50;" />
+      <Label fx:id="vidaTxtPoke5" layoutX="129.0" layoutY="369.0" prefHeight="26.0" prefWidth="130.0" text="0 / 0 HP" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="nivelPoke5" layoutX="259.0" layoutY="333.0" prefHeight="34.0" prefWidth="75.0" text="Nv: " textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imgPoke6" fitHeight="100.0" fitWidth="103.0" layoutX="38.0" layoutY="382.0" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/Pokemon/Front/1.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nombrePoke6" layoutX="128.0" layoutY="405.0" prefHeight="34.0" prefWidth="120.0" text="Pokémon" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="vidaPoke6" layoutX="119.0" layoutY="432.0" prefHeight="12.0" prefWidth="150.0" progress="0.58" style="-fx-accent: #4CAF50;" />
+      <Label fx:id="vidaTxtPoke6" layoutX="128.0" layoutY="441.0" prefHeight="26.0" prefWidth="130.0" text="0 / 0 HP" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="nivelPoke6" layoutX="258.0" layoutY="405.0" prefHeight="34.0" prefWidth="75.0" text="Nv: " textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="btnUsar1" fitHeight="87.0" fitWidth="82.0" layoutX="377.0" layoutY="31.0" onMouseClicked="#btnUsar1Click" onMouseEntered="#btnUsar1Enter" onMouseExited="#btnUsar1Exit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/boton/boton_usar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnUsar2" fitHeight="87.0" fitWidth="82.0" layoutX="377.0" layoutY="103.0" onMouseClicked="#btnUsar2Click" onMouseEntered="#btnUsar2Enter" onMouseExited="#btnUsar2Exit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/boton/boton_usar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnUsar3" fitHeight="87.0" fitWidth="82.0" layoutX="377.0" layoutY="177.0" onMouseClicked="#btnUsar3Click" onMouseEntered="#btnUsar3Enter" onMouseExited="#btnUsar3Exit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/boton/boton_usar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnUsar4" fitHeight="87.0" fitWidth="82.0" layoutX="377.0" layoutY="252.0" onMouseClicked="#btnUsar4Click" onMouseEntered="#btnUsar4Enter" onMouseExited="#btnUsar4Exit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/boton/boton_usar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnUsar5" fitHeight="87.0" fitWidth="82.0" layoutX="377.0" layoutY="325.0" onMouseClicked="#btnUsar5Click" onMouseEntered="#btnUsar5Enter" onMouseExited="#btnUsar5Exit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/boton/boton_usar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnUsar6" fitHeight="87.0" fitWidth="82.0" layoutX="377.0" layoutY="397.0" onMouseClicked="#btnUsar6Click" onMouseEntered="#btnUsar6Enter" onMouseExited="#btnUsar6Exit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/boton/boton_usar.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="eligePokeLbl" layoutX="28.0" layoutY="539.0" prefHeight="34.0" prefWidth="446.0" textFill="WHITE">
+         <font>
+            <Font name="Pokemon Classic Regular" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="btnVolver" fitHeight="89.0" fitWidth="82.0" layoutX="396.0" layoutY="455.0" onMouseClicked="#btnVolverClick" onMouseEntered="#btnVolverEnter" onMouseExited="#btnVolverExit" style="-fx-cursor: hand; -fx-opacity: 1.0;">
+         <image>
+            <Image url="@../Imagenes/boton/fondo_boton_volver.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="149.0" layoutY="482.0" prefHeight="34.0" prefWidth="219.0" text="Elige un Pokémon" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Pokemon Classic Regular" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

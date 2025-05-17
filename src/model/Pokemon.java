@@ -15,6 +15,7 @@ public class Pokemon {
 	private int ataqueEspecial;
 	private int defensaEspecial;
 	private int velocidad;
+	private int turnosEstado = 0;
 	private int estamina;
 	private int nivel;
 	private int experiencia;
@@ -60,28 +61,35 @@ public class Pokemon {
 	}
 
 	public void subirExperiencia(int expGanada) {
-		experiencia += expGanada;
-		if (experiencia >= nivel * 10) {
-			subirNivel();
-			experiencia = 0;
-		}
+	    experiencia += expGanada;
+	    while (experiencia >= nivel * 10) {
+	        experiencia -= nivel * 10;
+	        subirNivel();
+	    }
 	}
 
 	private void subirNivel() {
-		nivel++;
-		Random rand = new Random();
-		vitalidad += rand.nextInt(5) + 1;
-		ataque += rand.nextInt(5) + 1;
-		defensa += rand.nextInt(5) + 1;
-		ataqueEspecial += rand.nextInt(5) + 1;
-		defensaEspecial += rand.nextInt(5) + 1;
-		velocidad += rand.nextInt(5) + 1;
-		estamina += rand.nextInt(5) + 1;
-		if ((nivel == 8 || nivel == 16 || nivel == 32) && !movimientosPosibles.isEmpty()) {
-			Movimiento nuevo = movimientosPosibles.get(0);
-			aprenderMovimiento(nuevo);
-		}
+	    nivel++;
+	    Random rand = new Random();
+	    vitalidad += rand.nextInt(5) + 1;
+	    ataque += rand.nextInt(5) + 1;
+	    defensa += rand.nextInt(5) + 1;
+	    ataqueEspecial += rand.nextInt(5) + 1;
+	    defensaEspecial += rand.nextInt(5) + 1;
+	    velocidad += rand.nextInt(5) + 1;
+	    estamina += rand.nextInt(5) + 1;
+	    psMax = vitalidad; // Actualiza PS al máximo
+	    ps = psMax;
+
+	    System.out.println(nombre + " subió a nivel " + nivel + "!");
+
+	    // Permite aprender movimiento en los niveles clave
+	    if ((nivel == 8 || nivel == 16 || nivel == 32) && !movimientosPosibles.isEmpty()) {
+	        Movimiento nuevo = movimientosPosibles.get(0); 
+	        aprenderMovimiento(nuevo);
+	    }
 	}
+
 
 	public void aprenderMovimiento(Movimiento nuevo) {
 	    if (movimientosDisponibles.size() < 4) {
@@ -96,30 +104,75 @@ public class Pokemon {
 	    this.ps = this.psMax;
 	}
 	
-    public boolean puedeAtacar() {
-        return switch (estado) {
-            case DORMIDO, CONGELADO -> false;
-            case PARALIZADO -> Math.random() > 0.25;
-            default -> true;
-        };
-    }
-    
-    public void aplicarEfectoEstado() {
-        if (estado == null || estado == Estado.NINGUNO) return;
+	public boolean puedeAtacar() {
+	    if (estado == Estado.DORMIDO) {
+	        return false;
+	    } else if (estado == Estado.PARALIZADO) {
+	        boolean ataca = Math.random() > 0.5;
+	        if (!ataca) {
+	        	System.out.println(nombre + " está paralizado y no se puede mover.");
+	        }
+	        return ataca;
+	    }
+	    return true;
+	}
 
-        switch (estado) {
-            case ENVENENADO, QUEMADO -> {
-                int danio = Math.max(1, psMax / 8); // 1/8 de PS max como daño
-                recibirDanio(danio);
-                System.out.println(nombre + " sufre " + danio + " de daño por el estado " + estado.getNombre());
-            }
-            case DORMIDO, CONGELADO -> {
-                
-                System.out.println(nombre + " está " + estado.getNombre() + " y no puede atacar.");
-            }
-            default -> {}
-        }
-    }
+	public String getResumenEstado() {
+		return estaDebilitado() ? " (DEBILITADO)"
+			 : estado != Estado.NINGUNO ? " [" + estado.toString() + "]"
+			 : "";
+	}
+	
+	public Pokemon copiar() {
+		Pokemon copia = new Pokemon(numPokedex, nombre);
+		copia.setMote(mote);
+		copia.setNivel(nivel);
+		copia.setExperiencia(experiencia);
+		copia.setSexo(sexo);
+		copia.setTipo1(tipo1);
+		copia.setTipo2(tipo2);
+		copia.setVitalidad(vitalidad);
+		copia.setEstado(estado);
+		copia.setTurnosEstado(turnosEstado);
+		copia.setPs(ps);
+		copia.setPsMax(psMax);
+		copia.setAtaque(ataque);
+		copia.setDefensa(defensa);
+		copia.setAtaqueEspecial(ataqueEspecial);
+		copia.setDefensaEspecial(defensaEspecial);
+		copia.setVelocidad(velocidad);
+		copia.setEstamina(estamina);
+		copia.setObjeto(objeto);
+		copia.setMovimientosDisponibles(new ArrayList<>(movimientosDisponibles));
+		return copia;
+	}
+    
+	public void aplicarEfectoEstado() {
+	    if (estado == null || estado == Estado.NINGUNO) return;
+
+	    switch (estado) {
+	        case DORMIDO -> {
+	            turnosEstado--;
+	            System.out.println(nombre + " está dormido. Turnos restantes: " + turnosEstado);
+	            if (turnosEstado <= 0) {
+	                estado = Estado.NINGUNO;
+	                turnosEstado = 0;
+	            }
+	        }
+	        case ENVENENADO, QUEMADO -> {
+	            int daño = Math.max(1, (int) (psMax * 0.1));
+	            ps -= daño;
+	            if (ps < 0) ps = 0;
+	            System.out.println(nombre + " sufre " + daño + " de daño por estar " + estado.toString().toLowerCase() + ".");
+	        }
+	        case PARALIZADO -> {
+	            //Lo controlamos en puedeAtacar()
+	        }
+	        default -> {}
+	    }
+	}
+
+
 
 
 	/*
@@ -130,8 +183,16 @@ public class Pokemon {
 	
 	
 	// Getters & Setters
-	public void setEstado(Estado estado) {
-		this.estado = estado;
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+        if (estado == Estado.DORMIDO) {
+            this.turnosEstado = 2 + new Random().nextInt(3); // Se dormira entre 2 y 4 turnos
+        }
+    }
+
+	
+	public void setTurnosEstado(int turnos) {
+	    this.turnosEstado = turnos;
 	}
 
 	public Estado getEstado() {
@@ -237,9 +298,10 @@ public class Pokemon {
 	    this.estado = Estado.NINGUNO;
 	}
 	
-	public void recibirDanio(int danio) {
+	public boolean recibirDanio(int danio) {
 	    this.ps -= danio;
 	    if (this.ps < 0) this.ps = 0;
+	    return estaDebilitado();
 	}
 
 	public boolean estaDisponible() {
@@ -332,11 +394,11 @@ public class Pokemon {
 	
 	@Override
 	public String toString() {
-	    return nombre + " (" + sexo + ", Nv. " + nivel + ")";
+	    return getMote() + " (" + sexo + ", Nv. " + nivel + ")";
 	}
 
 	public void setPs(int ps) {
-	    this.ps = Math.min(ps, this.psMax);
+	    this.ps = Math.max(0, Math.min(ps, this.psMax));
 	}
 
 	public void setPsMax(int psMax) {

@@ -62,7 +62,7 @@ public class TiendaController {
 
 		int precio = objeto.getPrecio();
 		if (entrenador.getPokedollars() >= precio) {
-			entrenador.restarPokédolares(precio);
+			entrenador.restarPokedollars(precio);
 			entrenador.guardarPokedollarsEnBD(objetoDAO.getConexion());
 			objetoDAO.añadirObjetoAMochila(entrenador.getId(), idObjeto);
 			lblResultado.setText("¡Has comprado " + objeto.getNombre() + " por " + precio + "₽!");
@@ -112,7 +112,7 @@ public class TiendaController {
 	void comprarPokeball(ActionEvent event) {
 		int precio = 200;
 		if (entrenador.getPokedollars() >= precio) {
-			entrenador.restarPokédolares(precio);
+			entrenador.restarPokedollars(precio);
 			entrenador.añadirPokeballs(5); // +5 Pokeballs
 			entrenador.guardarPokeballsEnBD(objetoDAO.getConexion());
 			entrenador.guardarPokedollarsEnBD(objetoDAO.getConexion());

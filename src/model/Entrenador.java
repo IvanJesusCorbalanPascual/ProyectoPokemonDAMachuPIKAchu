@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class Entrenador {
-	
+        
     private String nombre;
     private List<Pokemon> equipoPrincipal;
     private List<Pokemon> equipoCaja;
@@ -111,7 +111,7 @@ public class Entrenador {
                 p.setAtaqueEspecial(rs.getInt("ataque_especial"));
                 p.setDefensaEspecial(rs.getInt("defensa_especial"));
                 p.setVelocidad(rs.getInt("velocidad"));
-                p.recalcularPS(); // ✅ Calcula ps y psMax usando vitalidad
+                p.recalcularPS(); // Calcula ps y psMax usando vitalidad
 
                 if (equipo == 1) {
                     equipoPrincipal.add(p);
@@ -138,19 +138,19 @@ public class Entrenador {
             // Primero, marcar todos los Pokémon del entrenador como sin equipo (0 opcional, lo eliminamos)
             // Luego actualizar uno a uno lo correcto
             // Marcar como equipo = 1 (equipo principal)
-        	String updateEquipo = "UPDATE pokemon SET equipo = 1 WHERE id_pokemon = ?";
-        	PreparedStatement stmtEquipo = conexion.prepareStatement(updateEquipo);
-        	for (Pokemon p : equipoPrincipal) {
-        	    stmtEquipo.setInt(1, p.getIdPokemon());
-        	    stmtEquipo.executeUpdate();
-        	}
+            String updateEquipo = "UPDATE pokemon SET equipo = 1 WHERE id_pokemon = ?";
+            PreparedStatement stmtEquipo = conexion.prepareStatement(updateEquipo);
+            for (Pokemon p : equipoPrincipal) {
+                stmtEquipo.setInt(1, p.getIdPokemon());
+                stmtEquipo.executeUpdate();
+            }
 
-        	String updateCaja = "UPDATE pokemon SET equipo = 2 WHERE id_pokemon = ?";
-        	PreparedStatement stmtCaja = conexion.prepareStatement(updateCaja);
-        	for (Pokemon p : equipoCaja) {
-        	    stmtCaja.setInt(1, p.getIdPokemon());
-        	    stmtCaja.executeUpdate();
-        	}
+            String updateCaja = "UPDATE pokemon SET equipo = 2 WHERE id_pokemon = ?";
+            PreparedStatement stmtCaja = conexion.prepareStatement(updateCaja);
+            for (Pokemon p : equipoCaja) {
+                stmtCaja.setInt(1, p.getIdPokemon());
+                stmtCaja.executeUpdate();
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -186,7 +186,6 @@ public class Entrenador {
         }
     }
 
-    
     private String quitarTildes(String input) {
         return input
             .replace("Á", "A")
@@ -196,8 +195,8 @@ public class Entrenador {
             .replace("Ú", "U")
             .replace("Ñ", "N");
     }
-    
-    public void restarPokédolares(int cantidad) {
+
+    public void restarPokedollars(int cantidad) {
         if (cantidad > 0 && this.pokedollars >= cantidad) {
             this.pokedollars -= cantidad;
         }

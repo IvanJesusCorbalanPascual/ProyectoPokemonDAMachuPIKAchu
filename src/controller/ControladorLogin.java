@@ -44,17 +44,17 @@ public class ControladorLogin {
 	}
 
 	private void reproducirMusica() {
-		try {
-			String path = "src/imagenes/otros/intro.mp3";
-			Media media = new Media(new File(path).toURI().toString());
-			mediaPlayer = new MediaPlayer(media);
-			mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Se repite en bucle
-			mediaPlayer.play();
-		} catch (Exception e) {
-			System.out.println("Error al reproducir música: " + e.getMessage());
-		}
-	}
-
+        try {
+            String path = "src/imagenes/otros/intro.mp3";
+            Media media = new Media(new File(path).toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Se repite en bucle
+            ControladorLogin.mediaPlayer.setVolume(0.1); // Baja el volumen de la musica
+            mediaPlayer.play();
+        } catch (Exception e) {
+            System.out.println("Error al reproducir música: " + e.getMessage());
+        }
+    }
 
 	private Connection conectar() throws SQLException {
 		return ConexionBD.establecerConexion();

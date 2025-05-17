@@ -21,9 +21,12 @@ import bd.BDConnection;
 
 public class CapturaController {
 
+	// Variables
 	private Pokemon pokemonActual;
 	private Entrenador entrenador;
+	private Stage primaryStage;
 
+	// Variables FXML
 	@FXML
 	private Button btnSalir;
 	@FXML
@@ -41,29 +44,17 @@ public class CapturaController {
 	@FXML
 	private ImageView pokeball;
 
-	private Stage primaryStage;
-
+	// Metodos
 	public void init(Stage stage) {
 		this.primaryStage = stage;
 	}
 
-	public Stage getPrimaryStage() {
-		return primaryStage;
-	}
-
-	public void setPrimaryStage(Stage primaryStage) {
-		this.primaryStage = primaryStage;
-	}
-
-	public void setEntrenador(Entrenador entrenador) {
-		this.entrenador = entrenador;
-		actualizarContadorPokeballs();
-	}
-
+	// Actualizando las pokeballs restantes
 	private void actualizarContadorPokeballs() {
 		numPokeballs.setText("Pokéballs: " + entrenador.getPokeballs());
 	}
-
+	
+	// Metodo capturar, solo funciona si el entrenador tiene pokeballs
 	@FXML
 	void capturar(MouseEvent event) {
 		if (pokemonActual == null)
@@ -74,7 +65,7 @@ public class CapturaController {
 			return;
 		}
 
-		// Gasta una Pokéball
+		// Gasta una Pokeball
 		entrenador.setPokeballs(entrenador.getPokeballs() - 1);
 		actualizarContadorPokeballs();
 
@@ -93,6 +84,7 @@ public class CapturaController {
 		entrenador.guardarPokeballsEnBD(BDConnection.getConnection());
 	}
 
+	// Metodo generar pokemon asignando un sexo aleatorio en el proceso
 	@FXML
 	void generar(MouseEvent event) {
 		pokemonActual = Captura.generarPokemonAleatorio();
@@ -115,8 +107,7 @@ public class CapturaController {
 				} else {
 					System.out.println("Imagen no encontrada para " + pokemonActual.getNombre() + " ("
 							+ pokemonActual.getNumPokedex() + ")");
-					imgPokemonGenerado
-							.setImage(new Image(getClass().getResourceAsStream("")));
+					imgPokemonGenerado.setImage(new Image(getClass().getResourceAsStream("")));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -145,5 +136,19 @@ public class CapturaController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	// Getters & Setters
+	public Stage getPrimaryStage() {
+		return primaryStage;
+	}
+
+	public void setPrimaryStage(Stage primaryStage) {
+		this.primaryStage = primaryStage;
+	}
+
+	public void setEntrenador(Entrenador entrenador) {
+		this.entrenador = entrenador;
+		actualizarContadorPokeballs();
 	}
 }

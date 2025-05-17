@@ -13,20 +13,19 @@ CREATE TABLE Objetos (
     id_objeto INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     efecto TEXT,
-    descripcion TEXT,
     precio DECIMAL(10,2)
 );
 
 -- Inserción de datos a tabla Objetos
-INSERT INTO Objetos (nombre, efecto, descripcion, precio) VALUES
-    ('pesa', 'Aumenta la fuerza', 'Objeto pesado para entrenamiento', 50.00),
-    ('pluma', 'Ligereza', 'Reduce el peso del usuario', 50.00),
-    ('chaleco', 'Defensa', 'Aumenta la protección contra golpes', 150.00),
-    ('baston', 'Soporte', 'Ayuda en el equilibrio y caminatas', 25.00),
-    ('pilas', 'Energía', 'Recarga dispositivos eléctricos', 20.00),
-    ('eter', 'Regeneración', 'Restaura puntos de pp', 200.00),
-    ('anillo único', 'Invisibilidad', 'Hace al pokemon invisible', 9999.99),
-    ('pokeball', 'Captura', 'Permite capturar pokemons', 50.00);
+INSERT INTO Objetos (nombre, efecto, precio) VALUES
+    ('pesa', 'Aumenta la fuerza', 50.00),
+    ('pluma', 'Aumenta la velocidad', 50.00),
+    ('chaleco', 'Aumenta la defensa', 150.00),
+    ('baston', 'Soporte', 25.00),
+    ('pilas', 'Recarga la Energía', 20.00),
+    ('eter', 'Regeneración de PP', 200.00),
+    ('anillo único', 'Hace al pokemon invisible', 9999.99),
+    ('pokeball', 'Permite capturar pokemons', 50.00);
 
 -- Creación tabla Entrenadores con login
 CREATE TABLE Entrenadores (
@@ -158,7 +157,6 @@ VALUES
 (48, 'Venonat', 'venonat_front.png', 'venonat_back.png', 'venonat.ogg', 1, 'Bicho', 'Veneno'),
 (49, 'Venomoth', 'venomoth_front.png', 'venomoth_back.png', 'venomoth.ogg', 2, 'Bicho', 'Veneno');
 
-/*Insercion de datos a la tabla pokemon*/
 /* Inserción de datos en la tabla Pokemon */
 INSERT INTO Pokemon (
     id_pokemon, id_entrenador, num_pokedex, nombre, mote, vitalidad, ataque, defensa,
@@ -310,3 +308,4 @@ UPDATE movimiento SET tipo_mov = 'NORMAL' WHERE tipo_mov = 'Físico';
 UPDATE movimiento SET tipo_mov = 'NORMAL' WHERE tipo_mov = 'Especial';
 UPDATE movimiento SET tipo_mov = 'NORMAL' WHERE tipo_mov = 'Estado';
 
+ALTER TABLE entrenadores ADD pokedolares INT DEFAULT 0;

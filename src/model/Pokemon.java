@@ -309,7 +309,7 @@ public class Pokemon {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	
 	public void setExperiencia(int experiencia) {
 		this.experiencia = experiencia;
 	}

@@ -19,100 +19,114 @@ import model.Pokemon;
 
 public class CentroPokemonController {
 
-    @FXML private ProgressBar bar1, bar2, bar3, bar4, bar5, bar6;
-    @FXML private ImageView btnCurarPokemon;
-    @FXML private Button btnSalir;
-    @FXML private ImageView pkm1, pkm2, pkm3, pkm4, pkm5, pkm6;
-    @FXML private Label pkmlbl1, pkmlbl2, pkmlbl3, pkmlbl4, pkmlbl5, pkmlbl6;
+	// Variables
+	private Entrenador entrenador;
+	private Stage primaryStage;
 
-    private Entrenador entrenador;
-    private Stage primaryStage;
+	// Variables FXML
+	@FXML
+	private ProgressBar bar1, bar2, bar3, bar4, bar5, bar6;
+	@FXML
+	private ImageView btnCurarPokemon;
+	@FXML
+	private Button btnSalir;
+	@FXML
+	private ImageView pkm1, pkm2, pkm3, pkm4, pkm5, pkm6;
+	@FXML
+	private Label pkmlbl1, pkmlbl2, pkmlbl3, pkmlbl4, pkmlbl5, pkmlbl6;
 
-    public void setEntrenador(Entrenador entrenador) {
-        this.entrenador = entrenador;
-        actualizarVista();
-    }
+	// Metodos
+	
+	// Para que salgan los mismo pokemon del equipo en el centro pokemon
+	private void actualizarVista() {
+		if (entrenador == null)
+			return;
 
-    public void setPrimaryStage(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-    }
+		List<Pokemon> equipo = entrenador.getEquipo();
+		actualizarSlot(0, equipo);
+		actualizarSlot(1, equipo);
+		actualizarSlot(2, equipo);
+		actualizarSlot(3, equipo);
+		actualizarSlot(4, equipo);
+		actualizarSlot(5, equipo);
+	}
 
-    public Stage getPrimaryStage() {
-        return primaryStage;
-    }
+	// M
+	private void actualizarSlot(int index, List<Pokemon> equipo) {
+		ImageView[] imagenes = { pkm1, pkm2, pkm3, pkm4, pkm5, pkm6 };
+		Label[] nombres = { pkmlbl1, pkmlbl2, pkmlbl3, pkmlbl4, pkmlbl5, pkmlbl6 };
+		ProgressBar[] barras = { bar1, bar2, bar3, bar4, bar5, bar6 };
 
-    private void actualizarVista() {
-        if (entrenador == null) return;
+		if (index < equipo.size()) {
+			Pokemon p = equipo.get(index);
+			String ruta = "/Imagenes/Pokemon/Front/" + p.getNumPokedex() + ".png";
 
-        List<Pokemon> equipo = entrenador.getEquipo();
-        actualizarSlot(0, equipo);
-        actualizarSlot(1, equipo);
-        actualizarSlot(2, equipo);
-        actualizarSlot(3, equipo);
-        actualizarSlot(4, equipo);
-        actualizarSlot(5, equipo);
-    }
+			try {
+				var stream = getClass().getResourceAsStream(ruta);
+				if (stream != null) {
+					imagenes[index].setImage(new Image(stream));
+				} else {
+					System.err.println("No se encontró la imagen: " + ruta);
+					imagenes[index].setImage(null);
+				}
+			} catch (Exception e) {
+				System.err.println("Error cargando imagen: " + e.getMessage());
+				imagenes[index].setImage(null);
+			}
 
-    private void actualizarSlot(int index, List<Pokemon> equipo) {
-        ImageView[] imagenes = {pkm1, pkm2, pkm3, pkm4, pkm5, pkm6};
-        Label[] nombres = {pkmlbl1, pkmlbl2, pkmlbl3, pkmlbl4, pkmlbl5, pkmlbl6};
-        ProgressBar[] barras = {bar1, bar2, bar3, bar4, bar5, bar6};
+			nombres[index].setText(p.getNombre());
+			barras[index].setProgress((double) p.getPs() / p.getPsMax());
+		} else {
+			imagenes[index].setImage(null);
+			nombres[index].setText("");
+			barras[index].setProgress(0);
+		}
+	}
 
-        if (index < equipo.size()) {
-            Pokemon p = equipo.get(index);
-            String ruta = "/Imagenes/Pokemon/Front/" + p.getNumPokedex() + ".png";
+	@FXML
+	void salir(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/menu.fxml"));
+			Parent root = loader.load();
 
-            try {
-                var stream = getClass().getResourceAsStream(ruta);
-                if (stream != null) {
-                    imagenes[index].setImage(new Image(stream));
-                } else {
-                    System.err.println("No se encontró la imagen: " + ruta);
-                    imagenes[index].setImage(null);
-                }
-            } catch (Exception e) {
-                System.err.println("Error cargando imagen: " + e.getMessage());
-                imagenes[index].setImage(null);
-            }
+			MenuController menuController = loader.getController();
+			menuController.setEntrenador(this.entrenador);
+			menuController.setPrimaryStage((Stage) ((Node) event.getSource()).getScene().getWindow());
 
-            nombres[index].setText(p.getNombre());
-            barras[index].setProgress((double) p.getPs() / p.getPsMax());
-        } else {
-            imagenes[index].setImage(null);
-            nombres[index].setText("");
-            barras[index].setProgress(0);
-        }
-    }
+			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stage.setScene(new Scene(root));
+			stage.setTitle("Menú Principal");
+			stage.show();
 
-    @FXML
-    void salir(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/menu.fxml"));
-            Parent root = loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
-            MenuController menuController = loader.getController();
-            menuController.setEntrenador(this.entrenador);
-            menuController.setPrimaryStage((Stage) ((Node) event.getSource()).getScene().getWindow());
+	@FXML
+	private void curarEquipo() {
+		if (entrenador == null)
+			return;
 
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Menú Principal");
-            stage.show();
+		for (Pokemon p : entrenador.getEquipo()) {
+			p.setPs(p.getPsMax()); // Restaurando la vida al maximo
+		}
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+		actualizarVista(); // Actualizando la interfaz para reflejar los cambios
+	}
 
-    @FXML
-    private void curarEquipo() {
-        if (entrenador == null) return;
+	// Getters & Setters
+	public void setEntrenador(Entrenador entrenador) {
+		this.entrenador = entrenador;
+		actualizarVista();
+	}
 
-        for (Pokemon p : entrenador.getEquipo()) {
-            p.setPs(p.getPsMax());  // Restaurar la vida al máximo
-        }
+	public void setPrimaryStage(Stage primaryStage) {
+		this.primaryStage = primaryStage;
+	}
 
-        actualizarVista();  // Actualizar la interfaz para reflejar los cambios
-    }
+	public Stage getPrimaryStage() {
+		return primaryStage;
+	}
 
 }

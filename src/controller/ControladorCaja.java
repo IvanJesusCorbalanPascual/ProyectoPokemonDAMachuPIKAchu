@@ -18,12 +18,11 @@ import model.Pokemon;
 
 public class ControladorCaja {
 
+	// Variables
 	private Stage primaryStage;
-
-	public void setPrimaryStage(Stage stage) {
-	    this.primaryStage = stage;
-	}
+	private Entrenador entrenador;
 	
+	// Variables FXML
 	@FXML
 	private ImageView btnEquipo;
 
@@ -108,69 +107,87 @@ public class ControladorCaja {
 	@FXML
 	private ImageView imgPoke9;
 
-	private Entrenador entrenador;
-
 	public void setEntrenador(Entrenador entrenador) {
-	    this.entrenador = entrenador;
-	    actualizarVista();
+		this.entrenador = entrenador;
+		actualizarVista();
 	}
 
 	public void actualizarVista() {
-	    ImageView[] imageViews = {
-	        imgPoke1, imgPoke2, imgPoke3, imgPoke4, imgPoke5, imgPoke6,
-	        imgPoke7, imgPoke8, imgPoke9, imgPoke10, imgPoke11, imgPoke12,
-	        imgPoke13, imgPoke14, imgPoke15, imgPoke16, imgPoke17, imgPoke18,
-	        imgPoke19, imgPoke20, imgPoke21, imgPoke22, imgPoke23, imgPoke24
-	    };
+		ImageView[] imageViews = { imgPoke1, imgPoke2, imgPoke3, imgPoke4, imgPoke5, imgPoke6, imgPoke7, imgPoke8,
+				imgPoke9, imgPoke10, imgPoke11, imgPoke12, imgPoke13, imgPoke14, imgPoke15, imgPoke16, imgPoke17,
+				imgPoke18, imgPoke19, imgPoke20, imgPoke21, imgPoke22, imgPoke23, imgPoke24 };
 
-	    for (int i = 0; i < imageViews.length; i++) {
-	        if (entrenador.getCaja().size() > i) {
-	            int num = entrenador.getCaja().get(i).getNumPokedex();
-	            imageViews[i].setImage(new Image(getClass().getResourceAsStream("/Imagenes/Pokemon/Front/" + num + ".png")));
-	        } else {
-	            imageViews[i].setImage(null); // Si no hay Pokémon, limpiamos
-	        }
-	    }
+		for (int i = 0; i < imageViews.length; i++) {
+			if (entrenador.getCaja().size() > i) {
+				int num = entrenador.getCaja().get(i).getNumPokedex();
+				imageViews[i]
+						.setImage(new Image(getClass().getResourceAsStream("/Imagenes/Pokemon/Front/" + num + ".png")));
+			} else {
+				imageViews[i].setImage(null); // Si no hay pokemons se limpia la img
+			}
+		}
 	}
-	
+
 	private void moverAPequipo(int index) {
-	    List<Pokemon> caja = entrenador.getCaja();
-	    List<Pokemon> equipo = entrenador.getEquipo();
+		List<Pokemon> caja = entrenador.getCaja();
+		List<Pokemon> equipo = entrenador.getEquipo();
 
-	    if (index < caja.size() && equipo.size() < 6) {
-	        Pokemon p = caja.remove(index);
-	        equipo.add(p);
-	        actualizarVista();
+		if (index < caja.size() && equipo.size() < 6) {
+			Pokemon p = caja.remove(index);
+			equipo.add(p);
+			actualizarVista();
 
-	        // Guardar el cambio en la BD
-	        entrenador.actualizarEquipoEnBD(BDConnection.getConnection());
-	    }
+			// Guardar el cambio en la BD
+			entrenador.actualizarEquipoEnBD(BDConnection.getConnection());
+		}
 	}
-
-
 
 	@FXML
 	void btnEquipoClick(MouseEvent event) {
-	    try {
-	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/equipo.fxml"));
-	        Parent root = loader.load();
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/equipo.fxml"));
+			Parent root = loader.load();
 
-	        // Pasar entrenador al controlador de equipo
-	        ControladorEquipo controladorEquipo = loader.getController();
-	        controladorEquipo.setEntrenador(this.entrenador);
-	        controladorEquipo.setPrimaryStage(this.primaryStage);
-	        controladorEquipo.actualizarVista();
+			// Pasar entrenador al controlador de equipo
+			ControladorEquipo controladorEquipo = loader.getController();
+			controladorEquipo.setEntrenador(this.entrenador);
+			controladorEquipo.setPrimaryStage(this.primaryStage);
+			controladorEquipo.actualizarVista();
 
-	        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-	        Scene scene = new Scene(root);
-	        stage.setScene(scene);
-	        stage.setTitle("Equipo Pokémon");
-	        stage.show();
+			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.setTitle("Equipo Pokémon");
+			stage.show();
 
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
+	
+//	private void liberarPokemon(int index) {
+//	    if (index >= entrenador.getCaja().size()) return;
+//
+//	    Pokemon pokemon = entrenador.getCaja().get(index);
+//
+//	    // Mostrar alerta de confirmación
+//	    javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.CONFIRMATION);
+//	    alert.setTitle("Liberar Pokémon");
+//	    alert.setHeaderText("¿Estás seguro de que quieres liberar a " + pokemon.getNombre() + "?");
+//	    alert.setContentText("Esta acción no se puede deshacer.");
+//
+//	    java.util.Optional<javafx.scene.control.ButtonType> result = alert.showAndWait();
+//	    if (result.isPresent() && result.get() == javafx.scene.control.ButtonType.OK) {
+//	        // Eliminar de la lista
+//	        entrenador.getCaja().remove(index);
+//
+//	        // Eliminar de la base de datos
+//	        eliminarPokemonDeBD(pokemon);
+//
+//	        // Actualizar la vista
+//	        actualizarVista();
+//	    }
+//	}
 
 
 	@FXML
@@ -207,9 +224,9 @@ public class ControladorCaja {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/menu.fxml"));
 			Parent root = loader.load();
-			
-		     MenuController menuController = loader.getController();
-		     menuController.setEntrenador(this.entrenador); 
+
+			MenuController menuController = loader.getController();
+			menuController.setEntrenador(this.entrenador);
 
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			Scene scene = new Scene(root);
@@ -223,6 +240,7 @@ public class ControladorCaja {
 
 	}
 
+	// Hover de botones para dar sensacion de animacion
 	@FXML
 	void btnVolverEnter(MouseEvent event) {
 		Node source = (Node) event.getSource();
@@ -234,31 +252,131 @@ public class ControladorCaja {
 		Node source = (Node) event.getSource();
 		source.setOpacity(1.0);
 	}
-	
-	@FXML void imgPoke1Click(MouseEvent e) { moverAPequipo(0); }
-	@FXML void imgPoke2Click(MouseEvent e) { moverAPequipo(1); }
-	@FXML void imgPoke3Click(MouseEvent e) { moverAPequipo(2); }
-	@FXML void imgPoke4Click(MouseEvent e) { moverAPequipo(3); }
-	@FXML void imgPoke5Click(MouseEvent e) { moverAPequipo(4); }
-	@FXML void imgPoke6Click(MouseEvent e) { moverAPequipo(5); }
-	@FXML void imgPoke7Click(MouseEvent e) { moverAPequipo(6); }
-	@FXML void imgPoke8Click(MouseEvent e) { moverAPequipo(7); }
-	@FXML void imgPoke9Click(MouseEvent e) { moverAPequipo(8); }
-	@FXML void imgPoke10Click(MouseEvent e) { moverAPequipo(9); }
-	@FXML void imgPoke11Click(MouseEvent e) { moverAPequipo(10); }
-	@FXML void imgPoke12Click(MouseEvent e) { moverAPequipo(11); }
-	@FXML void imgPoke13Click(MouseEvent e) { moverAPequipo(12); }
-	@FXML void imgPoke14Click(MouseEvent e) { moverAPequipo(13); }
-	@FXML void imgPoke15Click(MouseEvent e) { moverAPequipo(14); }
-	@FXML void imgPoke16Click(MouseEvent e) { moverAPequipo(15); }
-	@FXML void imgPoke17Click(MouseEvent e) { moverAPequipo(16); }
-	@FXML void imgPoke18Click(MouseEvent e) { moverAPequipo(17); }
-	@FXML void imgPoke19Click(MouseEvent e) { moverAPequipo(18); }
-	@FXML void imgPoke20Click(MouseEvent e) { moverAPequipo(19); }
-	@FXML void imgPoke21Click(MouseEvent e) { moverAPequipo(20); }
-	@FXML void imgPoke22Click(MouseEvent e) { moverAPequipo(21); }
-	@FXML void imgPoke23Click(MouseEvent e) { moverAPequipo(22); }
-	@FXML void imgPoke24Click(MouseEvent e) { moverAPequipo(23); }
 
+	//
+	@FXML
+	void imgPoke1Click(MouseEvent e) {
+		moverAPequipo(0);
+	}
+
+	@FXML
+	void imgPoke2Click(MouseEvent e) {
+		moverAPequipo(1);
+	}
+
+	@FXML
+	void imgPoke3Click(MouseEvent e) {
+		moverAPequipo(2);
+	}
+
+	@FXML
+	void imgPoke4Click(MouseEvent e) {
+		moverAPequipo(3);
+	}
+
+	@FXML
+	void imgPoke5Click(MouseEvent e) {
+		moverAPequipo(4);
+	}
+
+	@FXML
+	void imgPoke6Click(MouseEvent e) {
+		moverAPequipo(5);
+	}
+
+	@FXML
+	void imgPoke7Click(MouseEvent e) {
+		moverAPequipo(6);
+	}
+
+	@FXML
+	void imgPoke8Click(MouseEvent e) {
+		moverAPequipo(7);
+	}
+
+	@FXML
+	void imgPoke9Click(MouseEvent e) {
+		moverAPequipo(8);
+	}
+
+	@FXML
+	void imgPoke10Click(MouseEvent e) {
+		moverAPequipo(9);
+	}
+
+	@FXML
+	void imgPoke11Click(MouseEvent e) {
+		moverAPequipo(10);
+	}
+
+	@FXML
+	void imgPoke12Click(MouseEvent e) {
+		moverAPequipo(11);
+	}
+
+	@FXML
+	void imgPoke13Click(MouseEvent e) {
+		moverAPequipo(12);
+	}
+
+	@FXML
+	void imgPoke14Click(MouseEvent e) {
+		moverAPequipo(13);
+	}
+
+	@FXML
+	void imgPoke15Click(MouseEvent e) {
+		moverAPequipo(14);
+	}
+
+	@FXML
+	void imgPoke16Click(MouseEvent e) {
+		moverAPequipo(15);
+	}
+
+	@FXML
+	void imgPoke17Click(MouseEvent e) {
+		moverAPequipo(16);
+	}
+
+	@FXML
+	void imgPoke18Click(MouseEvent e) {
+		moverAPequipo(17);
+	}
+
+	@FXML
+	void imgPoke19Click(MouseEvent e) {
+		moverAPequipo(18);
+	}
+
+	@FXML
+	void imgPoke20Click(MouseEvent e) {
+		moverAPequipo(19);
+	}
+
+	@FXML
+	void imgPoke21Click(MouseEvent e) {
+		moverAPequipo(20);
+	}
+
+	@FXML
+	void imgPoke22Click(MouseEvent e) {
+		moverAPequipo(21);
+	}
+
+	@FXML
+	void imgPoke23Click(MouseEvent e) {
+		moverAPequipo(22);
+	}
+
+	@FXML
+	void imgPoke24Click(MouseEvent e) {
+		moverAPequipo(23);
+	}
+
+	// Getters & Setters
+	public void setPrimaryStage(Stage stage) {
+		this.primaryStage = stage;
+	}
 
 }

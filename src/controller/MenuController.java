@@ -229,7 +229,7 @@ public class MenuController {
 
 	@FXML
 	public void initialize() {
-		// Detiene y deshabilita la musica del login cuando entra al menu
+		// Detiene y deshabilita la musica del login al entra al menu
 		if (ControladorLogin.mediaPlayer != null) {
 			ControladorLogin.mediaPlayer.stop();
 			ControladorLogin.mediaPlayer.dispose();

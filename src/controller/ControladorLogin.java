@@ -49,6 +49,7 @@ public class ControladorLogin {
 			Media media = new Media(new File(path).toURI().toString());
 			mediaPlayer = new MediaPlayer(media);
 			mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Se repite en bucle
+			ControladorLogin.mediaPlayer.setVolume(0.02); // Baja el volumen de la musica
 			mediaPlayer.play();
 		} catch (Exception e) {
 			System.out.println("Error al reproducir música: " + e.getMessage());

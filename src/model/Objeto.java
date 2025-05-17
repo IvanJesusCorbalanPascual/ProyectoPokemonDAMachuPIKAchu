@@ -3,18 +3,22 @@ package model;
 public class Objeto {
 	private String nombre;
 	private int precio;
+	private int idObjeto;
+	private int cantidad;
 
-	public Objeto(String nombre, int precio) {
-		this.nombre = nombre;
-		this.precio = precio;
+	// Constructor con cantidad
+	public Objeto(String nombre, int precio, int idObjeto, int cantidad) {
+	    this.nombre = nombre;
+	    this.precio = precio;
+	    this.idObjeto = idObjeto;
+	    this.cantidad = cantidad;
 	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public int getPrecio() {
-		return precio;
+	
+	// Constructor sin cantidad
+	public Objeto(String nombre, int precio, int idObjeto) {
+	    this.nombre = nombre;
+	    this.precio = precio;
+	    this.idObjeto = idObjeto;
 	}
 
 	// Aplica el efecto dependiendo del objeto
@@ -61,4 +65,44 @@ public class Objeto {
 		}
 
 	}
+	
+	// Getters & Setters
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public int getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(int precio) {
+		this.precio = precio;
+	}
+
+	public int getIdObjeto() {
+		return idObjeto;
+	}
+
+	public void setIdObjeto(int idObjeto) {
+		this.idObjeto = idObjeto;
+	}
+
+	public int getCantidad() {
+	    return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+	    this.cantidad = cantidad;
+	}
+	
+	// toString	
+	@Override
+	public String toString() {
+	    return nombre + " x" + cantidad;
+	}
+
 }

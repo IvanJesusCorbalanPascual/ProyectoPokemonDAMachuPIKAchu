@@ -26,6 +26,7 @@ import dao.MovimientoDAO;
 
 public class controladorCombate {
 
+	// Variables
 	private Stage primaryStage;
 	private Entrenador entrenador;
 	private Pokemon pokemonJugador;
@@ -34,6 +35,7 @@ public class controladorCombate {
 	private int psActualEnemigo;
 	private int turno = 0;
 
+	// Variables FXML
 	@FXML private Button attackBtn1;
 	@FXML private Button attackBtn2;
 	@FXML private Button attackBtn3;
@@ -53,11 +55,13 @@ public class controladorCombate {
 	@FXML private Button switchCombatPokemon;
 	@FXML private AnchorPane textCombatLog;
 
+	// Metodos FXML
 	@FXML void onAttack1(ActionEvent event) { ejecutarAtaque(0); }
 	@FXML void onAttack2(ActionEvent event) { ejecutarAtaque(1); }
 	@FXML void onAttack3(ActionEvent event) { ejecutarAtaque(2); }
 	@FXML void onAttack4(ActionEvent event) { ejecutarAtaque(3); }
 
+	// Metodos
 	private void ejecutarAtaque(int index) {
 	    if (turno % 2 != 0) return;
 
@@ -130,6 +134,7 @@ public class controladorCombate {
 	    ataqueEnemigo();
 	}
 
+	// Metodo para salir al menu
 	@FXML void onExit(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/menu.fxml"));

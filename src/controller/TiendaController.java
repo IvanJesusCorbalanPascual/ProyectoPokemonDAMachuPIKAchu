@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.sql.Connection;
 
+import bd.BDConnection;
 import dao.ObjetoDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Entrenador;
 import model.Objeto;
@@ -62,7 +64,7 @@ public class TiendaController {
 
 		int precio = objeto.getPrecio();
 		if (entrenador.getPokedollars() >= precio) {
-			entrenador.restarPokédolares(precio);
+			entrenador.restarPokedollars(precio);
 			entrenador.guardarPokedollarsEnBD(objetoDAO.getConexion());
 			objetoDAO.añadirObjetoAMochila(entrenador.getId(), idObjeto);
 			lblResultado.setText("¡Has comprado " + objeto.getNombre() + " por " + precio + "₽!");
@@ -95,24 +97,24 @@ public class TiendaController {
 
 	@FXML
 	void comprarPesa(ActionEvent event) {
-		comprarObjeto(event, 5);
+		comprarObjeto(event, 1);
 	}
 
 	@FXML
 	void comprarPilas(ActionEvent event) {
-		comprarObjeto(event, 8);
+		comprarObjeto(event, 5);
 	}
 
 	@FXML
 	void comprarPluma(ActionEvent event) {
-		comprarObjeto(event, 1);
+		comprarObjeto(event, 2);
 	}
 
 	@FXML
 	void comprarPokeball(ActionEvent event) {
 		int precio = 200;
 		if (entrenador.getPokedollars() >= precio) {
-			entrenador.restarPokédolares(precio);
+			entrenador.restarPokedollars(precio);
 			entrenador.añadirPokeballs(5); // +5 Pokeballs
 			entrenador.guardarPokeballsEnBD(objetoDAO.getConexion());
 			entrenador.guardarPokedollarsEnBD(objetoDAO.getConexion());
@@ -126,6 +128,25 @@ public class TiendaController {
 	private void actualizarPokedollars() {
 		lblPokedollars.setText(entrenador.getPokedollars() + "");
 	}
+	
+	@FXML
+    void abrirMochila(MouseEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/mochila.fxml"));
+			Parent root = loader.load();
+
+			MochilaController mochilaController = loader.getController();
+			mochilaController.init(entrenador, BDConnection.getConnection());
+
+			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.setTitle("Mochila");
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
 
 	@FXML
 	void salir(ActionEvent event) {

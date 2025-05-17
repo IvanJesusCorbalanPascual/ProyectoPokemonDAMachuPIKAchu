@@ -40,8 +40,8 @@ public class Captura {
 				p.setNivel(nivel);
 				p.setEstamina(estamina);
 
-				// Aquí se asignan todas las estadísticas
-				p.setVitalidad(vitalidad); // Esto también calcula psMax y ps
+				// Asignando las estadisticas
+				p.setVitalidad(vitalidad);
 				p.setAtaque(ataque);
 				p.setDefensa(defensa);
 				p.setAtaqueEspecial(ataqueEsp);
@@ -63,6 +63,7 @@ public class Captura {
 		return Math.random() < 0.5; // Metodo con 50% de probabilidad de capturar el Pokemon
 	}
 
+	// Metodo quitarTiles para evitar errores
 	private static String quitarTildes(String input) {
 		return input.replace("Á", "A").replace("É", "E").replace("Í", "I").replace("Ó", "O").replace("Ú", "U")
 				.replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u")

@@ -93,7 +93,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="imgPokemonGenerado" fitHeight="265.0" fitWidth="273.0" layoutX="254.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgPokemonGenerado" fitHeight="211.0" fitWidth="221.0" layoutX="272.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
             <Text layoutX="420.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X">
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -137,9 +137,9 @@
                   <Image url="@../imagenes/Pokemon/gifSquirtle.gif" />
                </image>
             </ImageView>
-            <Label fx:id="lblResultado" layoutX="279.0" layoutY="161.0" prefHeight="39.0" prefWidth="234.0">
+            <Label fx:id="lblResultado" alignment="CENTER" layoutX="187.0" layoutY="108.0" prefHeight="60.0" prefWidth="370.0">
                <font>
-                  <Font name="Verdana Bold" size="12.0" />
+                  <Font name="Pokemon Classic Regular" size="18.0" />
                </font>
             </Label>
       </children>

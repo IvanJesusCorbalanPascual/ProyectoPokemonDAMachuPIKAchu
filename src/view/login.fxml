@@ -52,7 +52,7 @@
                   <Image url="@../imagenes/fondo/fondo_login.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="45.0" fitWidth="68.0" layoutX="534.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="45.0" fitWidth="68.0" layoutX="534.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/Pokemon/pikaStare.gif" />
                </image>
@@ -72,7 +72,7 @@
                   <Image url="@../imagenes/otros/Nintendo.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="75.0" fitWidth="68.0" layoutX="871.0" layoutY="510.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="75.0" fitWidth="68.0" layoutX="881.0" layoutY="476.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/Pokemon/gifPikachu.gif" />
                </image>
@@ -82,7 +82,7 @@
                   <Image url="@../imagenes/Pokemon/pikaball.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="41.0" fitWidth="47.0" layoutX="548.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="41.0" fitWidth="47.0" layoutX="548.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/otros/pokeball.png" />
                </image>
@@ -99,13 +99,18 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ImageView fx:id="imgSalir" fitHeight="54.0" fitWidth="120.0" layoutX="837.0" layoutY="573.0" onMouseClicked="#salir" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgSalir" fitHeight="54.0" fitWidth="120.0" layoutX="383.0" layoutY="564.0" onMouseClicked="#salir" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/boton/btnSalir.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+            </ImageView>
+            <ImageView fitHeight="139.0" fitWidth="166.0" layoutX="837.0" layoutY="501.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/otros/DamachuPikachu.png" />
+               </image>
             </ImageView>
       </children>
     </AnchorPane>

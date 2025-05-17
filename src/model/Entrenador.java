@@ -327,9 +327,15 @@ public class Entrenador {
 		this.equipoCaja = equipoCaja;
 	}
 
-	public int getPokedollars() {
-		return pokedollars;
-	}
+                // Cargar estadísticas
+                p.setVitalidad(rs.getInt("vitalidad"));
+                p.setEstamina(rs.getInt("estamina"));
+                p.setAtaque(rs.getInt("ataque"));
+                p.setDefensa(rs.getInt("defensa"));
+                p.setAtaqueEspecial(rs.getInt("ataque_especial"));
+                p.setDefensaEspecial(rs.getInt("defensa_especial"));
+                p.setVelocidad(rs.getInt("velocidad"));
+                p.recalcularPS(); // Calcula ps y psMax usando vitalidad
 
 	public void setPokedollars(int pokedollars) {
 		this.pokedollars = pokedollars;
@@ -339,7 +345,145 @@ public class Entrenador {
 		return objetos;
 	}
 
-	public void setObjetos(List<Objeto> objetos) {
-		this.objetos = objetos;
-	}
+            System.out.println("Equipo: " + equipoPrincipal.size() + " | Caja: " + equipoCaja.size());
+
+        } catch (SQLException | IllegalArgumentException e) {
+            System.err.println("Error al cargar Pokémon desde la BD:");
+            e.printStackTrace();
+        }
+    }
+
+    public void actualizarEquipoEnBD(Connection conexion) {
+        try {
+            // Primero, marcar todos los Pokémon del entrenador como sin equipo (0 opcional, lo eliminamos)
+            // Luego actualizar uno a uno lo correcto
+            // Marcar como equipo = 1 (equipo principal)
+            String updateEquipo = "UPDATE pokemon SET equipo = 1 WHERE id_pokemon = ?";
+            PreparedStatement stmtEquipo = conexion.prepareStatement(updateEquipo);
+            for (Pokemon p : equipoPrincipal) {
+                stmtEquipo.setInt(1, p.getIdPokemon());
+                stmtEquipo.executeUpdate();
+            }
+
+            String updateCaja = "UPDATE pokemon SET equipo = 2 WHERE id_pokemon = ?";
+            PreparedStatement stmtCaja = conexion.prepareStatement(updateCaja);
+            for (Pokemon p : equipoCaja) {
+                stmtCaja.setInt(1, p.getIdPokemon());
+                stmtCaja.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void añadirPokeballs(int cantidad) {
+        this.pokeballs += cantidad;
+    }
+
+    // Conexion con la base de datos para guardar las pokeballs compradas
+    public void guardarPokeballsEnBD(Connection conexion) {
+        try {
+            String sql = "UPDATE Entrenadores SET pokeballs = ? WHERE id_entrenador = ?";
+            PreparedStatement stmt = conexion.prepareStatement(sql);
+            stmt.setInt(1, this.pokeballs);
+            stmt.setInt(2, this.id);
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void guardarPokedollarsEnBD(Connection conexion) {
+        try {
+            String sql = "UPDATE entrenadores SET pokedolares = ? WHERE id_entrenador = ?";
+            PreparedStatement stmt = conexion.prepareStatement(sql);
+            stmt.setInt(1, this.pokedollars);
+            stmt.setInt(2, this.id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String quitarTildes(String input) {
+        return input
+            .replace("Á", "A")
+            .replace("É", "E")
+            .replace("Í", "I")
+            .replace("Ó", "O")
+            .replace("Ú", "U")
+            .replace("Ñ", "N");
+    }
+
+    public void restarPokedollars(int cantidad) {
+        if (cantidad > 0 && this.pokedollars >= cantidad) {
+            this.pokedollars -= cantidad;
+        }
+    }
+
+    // Getters & Setters 
+    public int getPokeballs() {
+        return pokeballs;
+    }
+
+    public void setPokeballs(int pokeballs) {
+        this.pokeballs = pokeballs;
+    }
+
+    public List<Pokemon> getEquipo() {
+        return equipoPrincipal;
+    }
+
+    public List<Pokemon> getCaja() {
+        return equipoCaja;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public List<Pokemon> getEquipoPrincipal() {
+        return equipoPrincipal;
+    }
+
+    public void setEquipoPrincipal(List<Pokemon> equipoPrincipal) {
+        this.equipoPrincipal = equipoPrincipal;
+    }
+
+    public List<Pokemon> getEquipoCaja() {
+        return equipoCaja;
+    }
+
+    public void setEquipoCaja(List<Pokemon> equipoCaja) {
+        this.equipoCaja = equipoCaja;
+    }
+
+    public int getPokedollars() {
+        return pokedollars;
+    }
+
+    public void setPokedollars(int pokedollars) {
+        this.pokedollars = pokedollars;
+    }
+
+    public List<Objeto> getObjetos() {
+        return objetos;
+    }
+
+    public void setObjetos(List<Objeto> objetos) {
+        this.objetos = objetos;
+    }
 }

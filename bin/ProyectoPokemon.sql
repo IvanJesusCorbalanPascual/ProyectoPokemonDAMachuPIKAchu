@@ -307,5 +307,7 @@ ALTER TABLE pokemon ADD estamina INT DEFAULT 0;
 UPDATE movimiento SET tipo_mov = 'NORMAL' WHERE tipo_mov = 'Físico';
 UPDATE movimiento SET tipo_mov = 'NORMAL' WHERE tipo_mov = 'Especial';
 UPDATE movimiento SET tipo_mov = 'NORMAL' WHERE tipo_mov = 'Estado';
+ALTER TABLE pokemon ADD ps INT(11) DEFAULT 0;
+
 
 ALTER TABLE entrenadores ADD pokedolares INT DEFAULT 0;

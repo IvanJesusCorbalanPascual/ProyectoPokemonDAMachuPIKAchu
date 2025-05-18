@@ -126,11 +126,11 @@ public class Entrenador {
 		objetos.clear();
 		try {
 			String sql = """
-					    SELECT o.id_objeto, o.nombre, o.tipo, o.valor, eo.cantidad
-					    FROM objeto o
-					    JOIN entrenador_objeto eo ON o.id_objeto = eo.id_objeto
-					    WHERE eo.id_entrenador = ?
-					""";
+	        	    SELECT o.id_objeto, o.nombre, o.precio, eo.cantidad
+	        	    FROM objetos o
+	        	    JOIN entrenador_objeto eo ON o.id_objeto = eo.id_objeto
+	        	    WHERE eo.id_entrenador = ?
+	        	""";
 			PreparedStatement stmt = conexion.prepareStatement(sql);
 			stmt.setInt(1, this.id);
 			ResultSet rs = stmt.executeQuery();
@@ -253,8 +253,35 @@ public class Entrenador {
 			e.printStackTrace();
 		}
 	}
-
 	
+	public Pokemon obtenerPrimerPokemonConVida() {
+	    for (Pokemon p : equipoPrincipal) {
+	        if (p.getPs() > 0) return p;
+	    }
+	    return null;
+	}
+
+	public void actualizarPokedollarsEnBD() {
+	    try (Connection conn = ConexionBD.establecerConexion()) {
+	        String sql = "UPDATE entrenadores SET pokedollars = ? WHERE id_entrenador = ?";
+	        PreparedStatement ps = conn.prepareStatement(sql);
+	        ps.setInt(1, this.pokedollars);
+	        ps.setInt(2, this.id);
+	        ps.executeUpdate();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
+	
+	public void curarEquipo() {
+	    for (Pokemon p : equipoPrincipal) {
+	        p.setPs(p.getPsMax());
+	        p.setEstado(Estado.NINGUNO); 
+	    }
+	}
+
+
+
     public void actualizarEquipoEnBD(Connection conexion) {
         try {
             // Primero, marcar todos los Pokémon del entrenador como sin equipo (0 opcional, lo eliminamos)
@@ -281,7 +308,7 @@ public class Entrenador {
 
     public void guardarPokedollarsEnBD(Connection conexion) {
         try {
-            String sql = "UPDATE entrenadores SET pokedolares = ? WHERE id_entrenador = ?";
+            String sql = "UPDATE entrenadores SET pokedollars = ? WHERE id_entrenador = ?";
             PreparedStatement stmt = conexion.prepareStatement(sql);
             stmt.setInt(1, this.pokedollars);
             stmt.setInt(2, this.id);

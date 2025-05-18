@@ -18,6 +18,7 @@ import model.Entrenador;
 import model.Pokemon;
 import model.Sexo;
 import bd.BDConnection;
+import dao.PokemonDAO;
 
 public class CapturaController {
 
@@ -75,6 +76,10 @@ public class CapturaController {
 			lblResultado.setText("¡Has capturado a " + pokemonActual.getNombre() + "!");
 			// Añadiendo el Pokemon al equipo/caja 
 			entrenador.añadirPokemon(pokemonActual);
+			
+			PokemonDAO dao = new PokemonDAO(BDConnection.getConnection());
+		    dao.insertarPokemon(pokemonActual, entrenador.getId());
+		    
 			generar(event);
 		} else {
 			lblResultado.setText("¡" + pokemonActual.getNombre() + " ha escapado!");
@@ -86,36 +91,35 @@ public class CapturaController {
 
 	// Metodo generar pokemon asignando un sexo aleatorio en el proceso
 	@FXML
-	void generar(MouseEvent event) {
-		pokemonActual = Captura.generarPokemonAleatorio();
+    void generar(MouseEvent event) {
+        pokemonActual = Captura.generarPokemonAleatorio();
 
 		if (pokemonActual != null) {
 			// Asignar sexo aleatorio
 			pokemonActual.setSexo(Math.random() < 0.5 ? Sexo.MACHO : Sexo.HEMBRA);
 
+            // Mostrar nombre y sexo
+            lblPokemonGenerado.setText(pokemonActual.getNombre() + " (" + pokemonActual.getSexo() + ")");
 
-			// Mostrar nombre y sexo
-			lblPokemonGenerado.setText(pokemonActual.getNombre() + " (" + pokemonActual.getSexo() + ")");
+            try {
+                String ruta = "/imagenes/Pokemon/Front/" + pokemonActual.getNumPokedex() + ".png";
+                var is = getClass().getResourceAsStream(ruta);
+                if (is != null) {
+                    Image imagen = new Image(is);
+                    imgPokemonGenerado.setImage(imagen);
+                } else {
+                    System.out.println("Imagen no encontrada para " + pokemonActual.getNombre() + " ("
+                            + pokemonActual.getNumPokedex() + ")");
+                    imgPokemonGenerado.setImage(new Image(getClass().getResourceAsStream("")));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-			try {
-				String ruta = "/imagenes/Pokemon/Front/" + pokemonActual.getNumPokedex() + ".png";
-				var is = getClass().getResourceAsStream(ruta);
-				if (is != null) {
-					Image imagen = new Image(is);
-					imgPokemonGenerado.setImage(imagen);
-				} else {
-					System.out.println("Imagen no encontrada para " + pokemonActual.getNombre() + " ("
-							+ pokemonActual.getNumPokedex() + ")");
-					imgPokemonGenerado.setImage(new Image(getClass().getResourceAsStream("")));
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-			System.out.println("Generado: " + pokemonActual.getNombre() + " (" + pokemonActual.getNumPokedex()
-					+ ") | Sexo: " + pokemonActual.getSexo());
-		}
-	}
+            System.out.println("Generado: " + pokemonActual.getNombre() + " (" + pokemonActual.getNumPokedex()
+                    + ") | Sexo: " + pokemonActual.getSexo());
+        }
+    }
 
 	@FXML
 	void salir(ActionEvent event) {

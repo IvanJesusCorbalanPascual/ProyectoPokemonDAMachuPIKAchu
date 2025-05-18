@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -104,12 +105,16 @@ public class CentroPokemonController {
 	}
 
 	@FXML
-	private void curarEquipo() {
+	private void curarEquipo(MouseEvent event) {
 		if (entrenador == null)
 			return;
 
-		for (Pokemon p : entrenador.getEquipo()) {
-			p.setPs(p.getPsMax()); // Restaurando la vida al maximo
+		entrenador.curarEquipo();
+
+		try (var conn = model.ConexionBD.establecerConexion()) {
+			entrenador.actualizarEquipoEnBD(conn);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		actualizarVista(); // Actualizando la interfaz para reflejar los cambios

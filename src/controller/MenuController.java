@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Connection;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -19,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.ConexionBD;
 import model.Entrenador;
 
 public class MenuController {
@@ -193,19 +195,37 @@ public class MenuController {
 
 	@FXML
 	public void salir(ActionEvent event) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
-			Parent root = loader.load();
+		guardarProgreso();
+	
+	public void guardarProgreso() {
+	    try (Connection conn = ConexionBD.establecerConexion()) {
+	        if (conn != null) {
+	            entrenador.actualizarEquipoEnBD(conn);
+	            entrenador.guardarObjetosEnBD(conn);
+	            entrenador.guardarPokeballsEnBD(conn);
+	            entrenador.guardarPokedollarsEnBD(conn);
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}
 
-			ControladorLogin loginController = loader.getController();
-			loginController.setPrimaryStage((Stage) ((Node) event.getSource()).getScene().getWindow()); // 🔥 IMPORTANTE
+	
+	public Stage getPrimaryStage() {
+		return primaryStage;
+	}
 
-			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			stage.setScene(new Scene(root));
-			stage.setTitle("Inicio de Sesión");
-			stage.show();
-		} catch (IOException e) {
-			e.printStackTrace();
+	public void setPrimaryStage(Stage primaryStage) {
+		this.primaryStage = primaryStage;
+	}
+
+	public void setEntrenador(Entrenador entrenador) {
+		this.entrenador = entrenador;
+
+		// Actualizar los labels con el nombre y los pokedólares
+		if (lblEntrenador != null && lblPokedolares != null) {
+			lblEntrenador.setText(entrenador.getNombre());
+			lblPokedolares.setText(entrenador.getPokedollars() + " ₽");
 		}
 	}
 

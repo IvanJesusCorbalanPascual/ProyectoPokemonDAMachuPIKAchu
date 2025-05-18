@@ -70,13 +70,13 @@ public class ControladorLogin {
 	// si todo esta correcto carga la partida del Entrenador
 	@FXML
 	void iniciarSesion(ActionEvent event) {
-		String usuario = txtUsuario.getText();
-		String pass = txtContraseña.getText();
+	    String usuario = txtUsuario.getText();
+	    String pass = txtContraseña.getText();
 
-		if (usuario.isBlank() || pass.isBlank()) {
-			lblResultado.setText("Por favor, completa todos los campos.");
-			return;
-		}
+	    if (usuario.isBlank() || pass.isBlank()) {
+	        lblResultado.setText("Por favor, completa todos los campos.");
+	        return;
+	    }
 
 		// Conexion con la base de datos para sacar el nombre y la contraseña
 		try (Connection con = conectar()) {
@@ -85,35 +85,51 @@ public class ControladorLogin {
 			ps.setString(1, usuario);
 			ps.setString(2, pass);
 			ResultSet rs = ps.executeQuery();
+			
+	        if (rs.next()) {
+	            int id = rs.getInt("id_entrenador");
+	            String nombre = rs.getString("nombre");
+	            int pokedollars = rs.getInt("pokedollars");
 
-			if (rs.next()) {
-				int id = rs.getInt("id_entrenador");
-				String nombre = rs.getString("nombre");
-				int pokedollars = rs.getInt("pokedollars");
+	            Entrenador entrenador = new Entrenador(id, nombre);
+	            entrenador.setPokedollars(pokedollars);
 
-				Entrenador entrenador = new Entrenador(id, nombre);
-				entrenador.setPokedollars(pokedollars);
-				entrenador.cargarPokemonsDesdeBD(con);
+	            // 🔁 Cargar datos importantes
+	            entrenador.cargarPokemonsDesdeBD(con);
+	            entrenador.cargarObjetosDesdeBD(con);
 
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Menu.fxml"));
-				Parent root = loader.load();
+	            // 🔁 Cargar pokeballs también desde la BD
+	            PreparedStatement psPokeballs = con.prepareStatement("SELECT pokeballs FROM Entrenadores WHERE id_entrenador = ?");
+	            psPokeballs.setInt(1, id);
+	            ResultSet rsPokeballs = psPokeballs.executeQuery();
+	            if (rsPokeballs.next()) {
+	                entrenador.setPokeballs(rsPokeballs.getInt("pokeballs"));
+	            }
 
-				MenuController controller = loader.getController();
-				controller.setEntrenador(entrenador);
-				controller.setPrimaryStage(primaryStage);
+	            // Ir al menú principal
+	            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Menu.fxml"));
+	            Parent root = loader.load();
 
-				primaryStage.setScene(new Scene(root));
-				primaryStage.setTitle("Menú Principal");
-				primaryStage.show();
+	            MenuController controller = loader.getController();
+	            controller.setEntrenador(entrenador);
+	            controller.setPrimaryStage(primaryStage);
 
-			} else {
-				lblResultado.setText("Usuario o contraseña incorrectos.");
-			}
+	            if (mediaPlayer != null) {
+	                mediaPlayer.stop();
+	            }
 
-		} catch (Exception e) {
-			lblResultado.setText("Error al conectar.");
-			e.printStackTrace();
-		}
+	            primaryStage.setScene(new Scene(root));
+	            primaryStage.setTitle("Menú Principal");
+	            primaryStage.show();
+
+	        } else {
+	            lblResultado.setText("Usuario o contraseña incorrectos.");
+	        }
+
+	    } catch (Exception e) {
+	        lblResultado.setText("Error al conectar.");
+	        e.printStackTrace();
+	    }
 	}
 
 	// Crea el usuario y lo guarda en la base de datos, a su vez lleva al jugador

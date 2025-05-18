@@ -62,7 +62,7 @@
             <ProgressBar fx:id="bar3" layoutX="48.0" layoutY="348.0" prefWidth="200.0" progress="0.0" />
             <ProgressBar fx:id="bar4" layoutX="442.0" layoutY="348.0" prefWidth="200.0" progress="0.0" />
             <ProgressBar fx:id="bar2" layoutX="442.0" layoutY="206.0" prefWidth="200.0" progress="0.0" />
-            <ImageView fx:id="curarPokemons" fitHeight="68.0" fitWidth="157.0" layoutX="273.0" layoutY="564.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="curarPokemons" fitHeight="68.0" fitWidth="157.0" layoutX="273.0" layoutY="564.0" onMouseClicked="#curarEquipo" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/boton/imgCurarPokemons.png" />
                </image>

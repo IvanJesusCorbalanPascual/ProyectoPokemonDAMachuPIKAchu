@@ -1,72 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
-  All rights reserved. Use is subject to license terms.
-
-  This file is available and licensed under the following license:
-
-  Redistribution and use in source and binary forms, with or without
-  modification, are permitted provided that the following conditions
-  are met:
-
-  - Redistributions of source code must retain the above copyright
-    notice, this list of conditions and the following disclaimer.
-  - Redistributions in binary form must reproduce the above copyright
-    notice, this list of conditions and the following disclaimer in
-    the documentation and/or other materials provided with the distribution.
-  - Neither the name of Oracle Corporation nor the names of its
-    contributors may be used to endorse or promote products derived
-    from this software without specific prior written permission.
-
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
--->
-
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controladorEntrenamiento">
-  <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-      <children>
-        <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" text="Drag components from Library here…" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
-          <font>
-            <Font size="18.0" />
-          </font>
-        </Label>
-            <ImageView fitHeight="702.0" fitWidth="700.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControladorEntrenamiento">
+   <children>
+      <ImageView fx:id="backgroundImg" fitHeight="298.0" fitWidth="788.0" layoutX="-6.0" pickOnBounds="true">
+         <image>
+            <Image url="@../imagenes/fondo/fondo_entrenamiento.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="rivalpokemonSoundButton" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="39.0" style="-fx-background-color: #c4a484; -fx-background-radius: 20; -fx-border-radius: 21; -fx-border-width: 2; -fx-border-color: black;">
+         <graphic>
+            <ImageView fx:id="enemySoundButton" fitHeight="100.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../imagenes/fondo/fondo_entrenamiento.png" />
+                  <Image url="@../Imagenes/otros/Sonido.png" />
                </image>
             </ImageView>
-            <Button fx:id="salirBtn" layoutX="607.0" layoutY="14.0" mnemonicParsing="false" onAction="#onExit" prefHeight="40.0" prefWidth="83.0" style="-fx-background-color: #FF6961; -fx-cursor: hand; -fx-background-radius: 21; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 20;" text="Salir">
+         </graphic>
+      </Button>
+      <ImageView fx:id="playerPokemonImage" fitHeight="187.0" fitWidth="200.0" layoutX="195.0" layoutY="149.0" />
+      <Button fx:id="playerPokemonSoundButton1" layoutX="20.0" layoutY="243.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="39.0" style="-fx-background-color: #c4a484; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 20; -fx-background-radius: 21;">
+         <graphic>
+            <ImageView fx:id="playerSoundButton" fitHeight="100.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Imagenes/otros/Sonido.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="salirBtn" layoutX="668.0" layoutY="13.0" mnemonicParsing="false" onAction="#onExit" prefHeight="40.0" prefWidth="83.0" style="-fx-background-color: #FF6961; -fx-cursor: hand; -fx-background-radius: 21; -fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 20;" text="Salir">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="24.0">
+               <image>
+                  <Image url="@../Imagenes/otros/cerrar-sesion.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <ImageView fitHeight="253.0" fitWidth="266.0" layoutX="112.0" layoutY="-37.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/otros/fondo_caja_combate_pokemon.png" />
+         </image>
+      </ImageView>
+      <ProgressBar fx:id="enemyHealthBar" layoutX="180.0" layoutY="88.0" prefHeight="14.0" prefWidth="150.0" progress="0.38" style="-fx-accent: #4CAF50;" />
+      <Label fx:id="enemyNameLabel" layoutX="132.0" layoutY="64.0" prefHeight="18.0" prefWidth="160.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="253.0" fitWidth="253.0" layoutX="423.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/otros/fondo_caja_combate_pokemon2.png" />
+         </image>
+      </ImageView>
+      <ProgressBar fx:id="playerHealthBar" layoutX="504.0" layoutY="248.0" prefHeight="14.0" prefWidth="140.0" progress="0.18" style="-fx-accent: #4CAF50;" />
+      <Label fx:id="playerNameLabel" layoutX="455.0" layoutY="222.0" prefHeight="18.0" prefWidth="160.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="-1.0" layoutY="276.8" prefHeight="138.0" prefWidth="426.0" style="-fx-background-color: lightgreen;" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="355.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="294.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="attackBtn1" mnemonicParsing="false" onAction="#onAttack1" prefHeight="60.0" prefWidth="434.0" style="-fx-cursor: hand; -fx-background-color: lightgreen; -fx-border-color: black; -fx-border-radius: 10px; -fx-background-radius: 10px;" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
                <font>
-                  <Font name="System Bold" size="13.0" />
+                  <Font name="Pokemon Classic Regular" size="10.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="26.0" fitWidth="24.0">
-                     <image>
-                        <Image url="@../Imagenes/otros/cerrar-sesion.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
             </Button>
-      </children>
-    </AnchorPane>
-  </children>
-</VBox>
+            <Button fx:id="attackBtn2" mnemonicParsing="false" onAction="#onAttack2" prefHeight="60.0" prefWidth="434.0" style="-fx-background-color: lightgreen; -fx-cursor: hand; -fx-border-color: black; -fx-border-radius: 10px; -fx-background-radius: 10px;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <font>
+                  <Font name="Pokemon Classic Regular" size="10.0" />
+               </font></Button>
+            <Button fx:id="attackBtn3" mnemonicParsing="false" onAction="#onAttack3" prefHeight="60.0" prefWidth="434.0" style="-fx-background-color: lightgreen; -fx-cursor: hand; -fx-border-color: black; -fx-border-radius: 10px; -fx-background-radius: 10px;" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+               <font>
+                  <Font name="Pokemon Classic Regular" size="10.0" />
+               </font></Button>
+            <Button fx:id="attackBtn4" mnemonicParsing="false" onAction="#onAttack4" prefHeight="60.0" prefWidth="434.0" style="-fx-background-color: lightgreen; -fx-cursor: hand; -fx-border-color: black; -fx-background-radius: 10px; -fx-border-radius: 10px;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+               <font>
+                  <Font name="Pokemon Classic Regular" size="10.0" />
+               </font></Button>
+            <Button fx:id="switchCombatPokemon" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cambiarPokemon" prefHeight="40.0" prefWidth="426.0" style="-fx-background-color: lightblue; -fx-cursor: hand; -fx-border-color: black; -fx-border-width: 2; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Cambiar Pokémon" translateY="6.5" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <font>
+                  <Font name="Pokemon Classic Regular" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
+      <ScrollPane layoutX="-2.0" layoutY="294.0" prefHeight="150.0" prefWidth="358.0" style="-fx-border-color: black; -fx-border-width: 2;">
+        <content>
+          <AnchorPane fx:id="textCombatLog" minHeight="0.0" minWidth="0.0" prefHeight="144.0" prefWidth="350.0" style="-fx-background-color: white;" translateX="1.0">
+               <children>
+                  <TextArea fx:id="combatLogArea" editable="false" prefHeight="141.0" prefWidth="350.0" wrapText="true">
+                     <font>
+                        <Font name="Pokemon Classic Regular" size="11.0" />
+                     </font>
+                  </TextArea>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="304.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/otros/titulo_entrenamiento.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="rivalPokemonImage" fitHeight="206.0" fitWidth="200.0" layoutX="423.0" layoutY="14.0" />
+   </children>
+</AnchorPane>

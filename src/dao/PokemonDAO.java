@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import model.ConexionBD;
 import model.Pokemon;
 import model.Sexo;
 
@@ -59,7 +60,7 @@ public class PokemonDAO {
 	    PreparedStatement stmt = null;
 
 	    try {
-	        conn = ConexionBDDAO.establecerConexion();
+	        conn = ConexionBD.establecerConexion();
 	        stmt = conn.prepareStatement(sql);
 
 	        stmt.setInt(1, p.getNivel());

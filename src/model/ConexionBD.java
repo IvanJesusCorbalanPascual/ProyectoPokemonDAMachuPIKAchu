@@ -1,9 +1,9 @@
-package dao;
+package model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConexionBDDAO {
+public class ConexionBD {
 	public static Connection establecerConexion() {
         try {
             // Clase de conexion a la BD para las Clases DAO

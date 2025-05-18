@@ -67,6 +67,13 @@ public class Captura {
 		return Math.random() < 0.5; // Metodo con 50% de probabilidad de capturar el Pokemon
 	}
 
+	public static Pokemon generarPokemonAleatorioNivel(int nivelReferencia) {
+	    Pokemon p = generarPokemonAleatorio();
+	    p.setNivel(Math.max(1, nivelReferencia + (int)(Math.random() * 3 - 1))); // +/-1 nivel
+	    return p;
+	}
+
+	
 	// Metodo quitarTiles para evitar errores
 	private static String quitarTildes(String input) {
 		return input.replace("Á", "A").replace("É", "E").replace("Í", "I").replace("Ó", "O").replace("Ú", "U")

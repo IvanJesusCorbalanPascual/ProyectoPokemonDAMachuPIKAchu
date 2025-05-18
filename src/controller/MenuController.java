@@ -24,6 +24,7 @@ import model.ConexionBD;
 import model.Entrenador;
 
 public class MenuController {
+
 	// Variables
 	private Stage primaryStage;
 	private Entrenador entrenador;
@@ -74,15 +75,12 @@ public class MenuController {
 	@FXML
 	private Text txtPokedolares;
 
-	// Esta clase es todo metodos FXML, simplemente cambiar el Stage a las demas
-	// vistas
-
-	// Metodos FXML
 	@FXML
 	void arriba(MouseEvent event) {
 
 	}
-
+	
+	// Metodos abrir X para abrir las diferentes vistas del juego
 	@FXML
 	void abrirCaptura(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/captura.fxml"));
@@ -119,8 +117,8 @@ public class MenuController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/combate.fxml"));
 		Parent root = loader.load();
 
-		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); 
+		
 		controladorCombate controller = loader.getController();
 		controller.setPrimaryStage(stage);
 		controller.setEntrenador(this.entrenador); // ← Ahora sí se puede llamar con seguridad
@@ -132,27 +130,43 @@ public class MenuController {
 
 	@FXML
 	void abrirCrianza(ActionEvent event) {
+	    try {
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/crianza.fxml"));
+	        Parent root = loader.load();
+	        
+	        CrianzaController controller = loader.getController();
+	        controller.init(entrenador, BDConnection.getConnection()); // ✅ CORRECTO
+
+	        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	        stage.setScene(new Scene(root));
+	        stage.setTitle("Crianza Pokémon");
+	        stage.show();
+
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
+
+
+	@FXML
+	void abrirEntrenamiento(ActionEvent event) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/crianza.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/entrenamiento.fxml"));
 			Parent root = loader.load();
 
-			CrianzaController controller = loader.getController();
-			controller.init(entrenador, BDConnection.getConnection()); // ✅ CORRECTO
+			ControladorEntrenamiento controller = loader.getController();
+			controller.setEntrenador(this.entrenador);
+			controller.setPrimaryStage(primaryStage);
 
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
-			stage.setTitle("Crianza Pokémon");
+			stage.setTitle("Entrenamiento Pokémon");
 			stage.show();
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	@FXML
-	void abrirEntrenamiento(ActionEvent event) {
-
-	}
 
 	@FXML
 	void abrirEquipo(ActionEvent event) {
@@ -196,6 +210,22 @@ public class MenuController {
 	@FXML
 	public void salir(ActionEvent event) {
 		guardarProgreso();
+		
+	    try {
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
+	        Parent root = loader.load();
+
+	        ControladorLogin loginController = loader.getController();
+	        loginController.setPrimaryStage((Stage) ((Node) event.getSource()).getScene().getWindow()); // Importante
+
+	        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	        stage.setScene(new Scene(root));
+	        stage.setTitle("Inicio de Sesión");
+	        stage.show();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
 	
 	public void guardarProgreso() {
 	    try (Connection conn = ConexionBD.establecerConexion()) {
@@ -229,7 +259,6 @@ public class MenuController {
 		}
 	}
 
-	// Permite iniciar menu desde otras pantallas
 	public void init(Stage Stage) {
 		this.primaryStage = Stage;
 	}
@@ -241,25 +270,6 @@ public class MenuController {
 			ControladorLogin.mediaPlayer.stop();
 			ControladorLogin.mediaPlayer.dispose();
 			ControladorLogin.mediaPlayer = null;
-		}
-	}
-
-	// Getters & Setters
-	public Stage getPrimaryStage() {
-		return primaryStage;
-	}
-
-	public void setPrimaryStage(Stage primaryStage) {
-		this.primaryStage = primaryStage;
-	}
-
-	public void setEntrenador(Entrenador entrenador) {
-		this.entrenador = entrenador;
-
-		// Actualizar los labels con el nombre y los pokedollars
-		if (lblEntrenador != null && lblPokedolares != null) {
-			lblEntrenador.setText(entrenador.getNombre());
-			lblPokedolares.setText(entrenador.getPokedollars() + " ₽");
 		}
 	}
 }

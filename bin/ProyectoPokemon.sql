@@ -45,7 +45,7 @@ CREATE TABLE Mochila (
     id_entrenador INT, 
     id_objeto INT, 
     cantidad INT NOT NULL, 
-    PRIMARY KEY (id_entrenador, id_objeto), 
+    PRIMARY KEY (id_entrenador, id_objeto)
 ); 
 
 /*Constantes*/
@@ -300,26 +300,19 @@ ALTER TABLE Entrenadores MODIFY COLUMN id_entrenador INT NOT NULL AUTO_INCREMENT
 ALTER TABLE Entrenadores
 MODIFY COLUMN equipo_principal VARCHAR(255) DEFAULT NULL,
 MODIFY COLUMN equipo_secundario VARCHAR(255) DEFAULT NULL;
-ALTER TABLE Entrenadores ADD pokeballs INT DEFAULT 0;
-ALTER TABLE pokemon ADD estamina INT DEFAULT 0;
+--ALTER TABLE Entrenadores ADD pokeballs INT DEFAULT 0;
+ALTER TABLE Entrenadores
+MODIFY COLUMN equipo_principal VARCHAR(255) DEFAULT NULL,
+MODIFY COLUMN equipo_secundario VARCHAR(255) DEFAULT NULL;
 
 -- Reemplaza los tipos incorrectos por tipos reales del enum Tipo
 UPDATE movimiento SET tipo_mov = 'NORMAL' WHERE tipo_mov = 'Físico';
 UPDATE movimiento SET tipo_mov = 'NORMAL' WHERE tipo_mov = 'Especial';
 UPDATE movimiento SET tipo_mov = 'NORMAL' WHERE tipo_mov = 'Estado';
-ALTER TABLE pokemon ADD ps INT(11) DEFAULT 0;
-
-
-ALTER TABLE entrenadores ADD pokedolares INT DEFAULT 0;
-
-ALTER TABLE pokemon ADD ps INT(11) DEFAULT 0;
-
 
 DELETE FROM pokemon WHERE id_entrenador IS NULL;
 
-
 ALTER TABLE pokemon MODIFY id_entrenador INT NOT NULL;
-
 
 CREATE TABLE entrenador_objeto (
     id_entrenador INT NOT NULL,
@@ -330,8 +323,13 @@ CREATE TABLE entrenador_objeto (
     FOREIGN KEY (id_objeto) REFERENCES objetos(id_objeto) ON DELETE CASCADE
 );
 
-
 ALTER TABLE pokemon
 ADD CONSTRAINT fk_pokemon_entrenador
 FOREIGN KEY (id_entrenador) REFERENCES entrenadores(id_entrenador)
 ON DELETE CASCADE;
+
+UPDATE movimiento
+SET estado = 'DORMIDO'
+WHERE nom_movimiento = 'Somnífero';
+UPDATE movimiento SET estado = 'ENVENENADO', turnos = NULL WHERE nom_movimiento = 'Polvo Veneno';
+UPDATE movimiento SET estado = 'DORMIDO', turnos = 3 WHERE nom_movimiento = 'Canto';

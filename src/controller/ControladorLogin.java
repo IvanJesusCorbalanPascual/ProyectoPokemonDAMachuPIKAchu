@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import model.ConexionBD;
 import model.Entrenador;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -16,7 +17,6 @@ import javafx.scene.media.MediaPlayer;
 import java.io.File;
 import java.sql.*;
 
-import dao.ConexionBDDAO;
 import dao.ObjetoDAO;
 
 public class ControladorLogin {
@@ -59,7 +59,7 @@ public class ControladorLogin {
 	}
 
 	private Connection conectar() throws SQLException {
-		return ConexionBDDAO.establecerConexion();
+		return ConexionBD.establecerConexion();
 	}
 
 	public void init(Entrenador entrenador, Connection conexion) {

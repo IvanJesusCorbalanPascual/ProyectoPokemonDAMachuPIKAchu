@@ -178,6 +178,11 @@ public class Entrenador {
 	    }
 	    return 0;
 	}
+	
+	public void añadirPokeball() {
+	    this.pokeballs++;
+	    guardarPokeballsEnBD(BDConnection.getConnection());
+	}
 
 	public void cargarPokemonsDesdeBD(Connection conexion) {
         equipoPrincipal.clear();
@@ -243,16 +248,17 @@ public class Entrenador {
         }
     }
     
-	public void eliminarPokemonDeBD(Pokemon p) {
-		String sql = "DELETE FROM Pokemon WHERE id = ?";
-		try (Connection conn = BDConnection.getConnection();
-			 PreparedStatement stmt = conn.prepareStatement(sql)) {
-			stmt.setInt(1, p.getIdPokemon());
-			stmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+	public void eliminarPokemonDeBD(Pokemon pokemon) {
+	    String sql = "DELETE FROM pokemon WHERE id_pokemon = ?";
+	    try (Connection conn = ConexionBD.establecerConexion();
+	         PreparedStatement stmt = conn.prepareStatement(sql)) {
+	        stmt.setInt(1, pokemon.getIdPokemon());
+	        stmt.executeUpdate();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
 	}
+
 	
 	public Pokemon obtenerPrimerPokemonConVida() {
 	    for (Pokemon p : equipoPrincipal) {

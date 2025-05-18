@@ -35,9 +35,11 @@ public class CentroPokemonController {
 	private ImageView pkm1, pkm2, pkm3, pkm4, pkm5, pkm6;
 	@FXML
 	private Label pkmlbl1, pkmlbl2, pkmlbl3, pkmlbl4, pkmlbl5, pkmlbl6;
-
-	// Metodos
+	@FXML
+	private Label lblResultado;
 	
+	// Metodos
+
 	// Para que salgan los mismo pokemon del equipo en el centro pokemon
 	private void actualizarVista() {
 		if (entrenador == null)
@@ -85,6 +87,26 @@ public class CentroPokemonController {
 	}
 
 	@FXML
+	private void curarEquipo(MouseEvent event) {
+		if (entrenador == null)
+			return;
+
+		entrenador.curarEquipo();
+
+		try (var conn = model.ConexionBD.establecerConexion()) {
+			entrenador.actualizarEquipoEnBD(conn);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		actualizarVista(); // Actualizando la interfaz para reflejar los cambios
+
+		if (lblResultado != null) {
+			lblResultado.setText("¡Pokémons curados con éxito!");
+		}
+	}
+	
+	@FXML
 	void salir(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/menu.fxml"));
@@ -104,21 +126,6 @@ public class CentroPokemonController {
 		}
 	}
 
-	@FXML
-	private void curarEquipo(MouseEvent event) {
-		if (entrenador == null)
-			return;
-
-		entrenador.curarEquipo();
-
-		try (var conn = model.ConexionBD.establecerConexion()) {
-			entrenador.actualizarEquipoEnBD(conn);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		actualizarVista(); // Actualizando la interfaz para reflejar los cambios
-	}
 
 	// Getters & Setters
 	public void setEntrenador(Entrenador entrenador) {

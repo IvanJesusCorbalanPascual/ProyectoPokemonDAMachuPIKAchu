@@ -172,6 +172,11 @@
                   <Font name="Yu Gothic Regular" size="16.0" />
                </font>
             </Label>
+            <Label fx:id="lblResultado" alignment="CENTER" layoutX="165.0" layoutY="29.0" prefHeight="100.0" prefWidth="364.0">
+               <font>
+                  <Font name="Pokemon Classic Regular" size="12.0" />
+               </font>
+            </Label>
       </children>
     </AnchorPane>
   </children>

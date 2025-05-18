@@ -24,12 +24,13 @@ import model.Pokemon;
 
 public class ControladorCaja {
 
+	// Variables 
 	private Stage primaryStage;
 	private Entrenador entrenador;
-
 	private int cajaActual = 0;
 	private static final int POKEMONS_POR_CAJA = 24;
 
+	// Variables FXML
 	@FXML
 	private Button btnAnteriorCaja;
 	@FXML
@@ -48,11 +49,8 @@ public class ControladorCaja {
 			imgPoke10, imgPoke11, imgPoke12, imgPoke13, imgPoke14, imgPoke15, imgPoke16, imgPoke17, imgPoke18,
 			imgPoke19, imgPoke20, imgPoke21, imgPoke22, imgPoke23, imgPoke24;
 
-	public void setEntrenador(Entrenador entrenador) {
-		this.entrenador = entrenador;
-		actualizarVista();
-	}
-
+	// Metodos
+	
 	public void actualizarVista() {
 		ImageView[] imageViews = { imgPoke1, imgPoke2, imgPoke3, imgPoke4, imgPoke5, imgPoke6, imgPoke7, imgPoke8,
 				imgPoke9, imgPoke10, imgPoke11, imgPoke12, imgPoke13, imgPoke14, imgPoke15, imgPoke16, imgPoke17,
@@ -397,8 +395,18 @@ public class ControladorCaja {
 		else
 			moverAequipo(23);
 	}
+	
+	// Getters & Setters
+	
+	public void setEntrenador(Entrenador entrenador) {
+		this.entrenador = entrenador;
+		actualizarVista();
+	}
+
 
 	public void setPrimaryStage(Stage stage) {
 		this.primaryStage = stage;
 	}
+	
+	
 }

@@ -104,7 +104,9 @@ public class TiendaController {
 	@FXML
 	void comprarPokeball(ActionEvent event) {
 		comprarObjeto(event, 8);
+		entrenador.añadirPokeball(); // Suma una pokeball al inventario de captura
 	}
+
 
 	private void actualizarPokedollars() {
 		lblPokedollars.setText(entrenador.getPokedollars() + "");

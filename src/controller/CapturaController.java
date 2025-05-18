@@ -46,6 +46,7 @@ public class CapturaController {
 	private ImageView pokeball;
 
 	// Metodos
+	
 	public void init(Stage stage) {
 		this.primaryStage = stage;
 	}

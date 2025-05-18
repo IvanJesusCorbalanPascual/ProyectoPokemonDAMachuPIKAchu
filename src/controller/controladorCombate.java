@@ -421,8 +421,8 @@ public class controladorCombate {
 		}
 		}
 		if (psActualJugador <= 0) {
-			psActualJugador = 0; // Asegura que sea 0 exacto
-			pokemonJugador.setPs(0); //Esto es clave en el caso de 0 ps
+			psActualJugador = 0; // Asegura que la vida quede en un 0 exacto
+			pokemonJugador.setPs(0); // En el caso de que la vida sea 0...
 			logCombate(pokemonJugador.getNombre() + " ha sido derrotado.");
 			pokemonsDerrotadosJugador++;
 			
@@ -518,7 +518,7 @@ public class controladorCombate {
 		double multiplicador = Tipo.calcularMultiplicador(movimiento.getTipoElemento(), defensor.getTipo1(),
 				defensor.getTipo2());
 
-		int nivel = 50; // puedes cambiarlo si tienes una lógica de niveles
+		int nivel = 50;
 
 		double base = (((2.0 * nivel) / 5 + 2) * movimiento.getPotencia() * atacante.getAtaque())
 				/ (double) defensor.getDefensa();

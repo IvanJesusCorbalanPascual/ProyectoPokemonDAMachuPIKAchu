@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.ConexionBD;
 import model.Movimiento;
 
 public class MovimientoDAO {
@@ -14,7 +15,7 @@ public class MovimientoDAO {
         // Carga de la base de datos el movimiento que tiene el pokemon con el mismo numero de pokedex (num)
         String query = "SELECT * FROM movimiento WHERE num = ? ORDER BY nivel_aprendizaje ASC LIMIT 4";
 
-        try (Connection conn = ConexionBDDAO.establecerConexion();
+        try (Connection conn = ConexionBD.establecerConexion();
              PreparedStatement stmt = conn.prepareStatement(query)) {
         	
         	// Reemplaza el simbolo "?" por la respuesta de la consulta

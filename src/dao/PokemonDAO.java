@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import model.ConexionBD;
 import model.Pokemon;
 
 public class PokemonDAO {
+	// Refresca las estadisticas de los pokemons cuando estas se mejoran
 	public static void actualizarEstadisticas(Pokemon p) {
 	    String sql = "UPDATE pokemon SET nivel = ?, ps = ?, ataque = ?, defensa = ?, velocidad = ? WHERE id_pokemon = ?";
 
@@ -15,7 +15,7 @@ public class PokemonDAO {
 	    PreparedStatement stmt = null;
 
 	    try {
-	        conn = ConexionBD.establecerConexion();
+	        conn = ConexionBDDAO.establecerConexion();
 	        stmt = conn.prepareStatement(sql);
 
 	        stmt.setInt(1, p.getNivel());
@@ -41,5 +41,4 @@ public class PokemonDAO {
 	        }
 	    }
 	}
-
 }

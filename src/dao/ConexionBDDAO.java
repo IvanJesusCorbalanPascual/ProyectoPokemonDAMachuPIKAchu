@@ -1,12 +1,12 @@
-package model;
+package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConexionBD {
+public class ConexionBDDAO {
 	public static Connection establecerConexion() {
         try {
-            // Asegúrate de que estas rutas y credenciales coincidan con tu configuración XAMPP
+            // Clase de conexion a la BD para las Clases DAO
             String url = "jdbc:mysql://localhost:3306/proyectopokemon";
             String usuario = "root";
             String contrasena = "";

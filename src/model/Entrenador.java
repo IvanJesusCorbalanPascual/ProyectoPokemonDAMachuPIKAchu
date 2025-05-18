@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
+import bd.BDConnection;
+import dao.PokemonDAO;
+
 public class Entrenador {
 
 	private String nombre;
@@ -240,6 +243,18 @@ public class Entrenador {
         }
     }
     
+	public void eliminarPokemonDeBD(Pokemon p) {
+		String sql = "DELETE FROM Pokemon WHERE id = ?";
+		try (Connection conn = BDConnection.getConnection();
+			 PreparedStatement stmt = conn.prepareStatement(sql)) {
+			stmt.setInt(1, p.getIdPokemon());
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	
     public void actualizarEquipoEnBD(Connection conexion) {
         try {
             // Primero, marcar todos los Pokémon del entrenador como sin equipo (0 opcional, lo eliminamos)
@@ -340,6 +355,5 @@ public class Entrenador {
     public void setObjetos(List<Objeto> objetos) {
         this.objetos = objetos;
     }
-    
     
 }

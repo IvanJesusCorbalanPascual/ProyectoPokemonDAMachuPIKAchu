@@ -21,9 +21,11 @@ import model.Pokemon;
 
 public class ControladorEquipo {
 
+	// Variables
 	private Stage primaryStage;
     private Entrenador entrenador;
 
+	// Metodos FXML
     public void setEntrenador(Entrenador entrenador) {
         this.entrenador = entrenador;
     }
@@ -36,6 +38,7 @@ public class ControladorEquipo {
         return primaryStage;
     }
 
+    // Actualiza los pokemon al entrar al equipo
     public void actualizarVista() {
         List<Pokemon> equipo = entrenador.getEquipo();
         System.out.println("Pokémon en equipo: " + equipo.size());
@@ -46,6 +49,7 @@ public class ControladorEquipo {
         actualizarPokemon(4, equipo);
         actualizarPokemon(5, equipo);
     }
+    
     
     private void actualizarPokemon(int index, List<Pokemon> equipo) {
         ImageView[] imgs = {imgPoke1, imgPoke2, imgPoke3, imgPoke4, imgPoke5, imgPoke6};
@@ -94,7 +98,7 @@ public class ControladorEquipo {
     }
 
 
-    
+    // Variables FXML
     @FXML private ImageView btnMoverCaja1, btnMoverCaja2, btnMoverCaja3, btnMoverCaja4, btnMoverCaja5, btnMoverCaja6;
     @FXML private ImageView btnVerCaja, btnVolver;
     @FXML private ImageView fondoEquipo;
@@ -177,10 +181,4 @@ public class ControladorEquipo {
             e.printStackTrace();
         }
     }
-
-
-
-
-    // Métodos de eventos de botones (mismo código que ya tienes, no se repite aquí por brevedad)
-    // ...
 }

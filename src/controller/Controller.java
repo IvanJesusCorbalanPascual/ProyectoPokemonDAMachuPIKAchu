@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class Controller {
-
+	// Clase controller por defecto de JavaFX, esta sin tocar :)
     @FXML
     private Label label;
 

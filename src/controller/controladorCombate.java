@@ -22,7 +22,6 @@ import model.Estado;
 import model.Movimiento;
 import model.Pokemon;
 import model.Tipo;
-import model.TipoMovimiento;
 import dao.MovimientoDAO;
 import dao.PokemonDAO;
 
@@ -41,8 +40,6 @@ public class controladorCombate {
 	private int pokemonsDerrotadosEnemigo = 0;
 	private boolean turnoJugadorPrimero;
 	private int turno = 0;
-	private static javafx.scene.control.TextArea logAreaStatic;
-
 	@FXML
 	private Button attackBtn1;
 	@FXML

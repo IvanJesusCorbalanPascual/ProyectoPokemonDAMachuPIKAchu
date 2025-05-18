@@ -18,17 +18,11 @@ import model.Entrenador;
 import model.Objeto;
 
 public class MochilaController {
-	
+	// Variables
 	private Entrenador entrenador;
 	private ObjetoDAO objetoDAO;
-	
-	public void init(Entrenador entrenador, Connection conexion) {
-	    this.entrenador = entrenador;
-	    this.objetoDAO = new ObjetoDAO(conexion);
-	    entrenador.setObjetos(objetoDAO.obtenerObjetosPorEntrenador(entrenador.getId()));
-	    cargarObjetos(); // Actualiza los labels con el numero de objetos
-	}
 
+	// Variables FXML
     @FXML
     private ImageView btnSalir;
 
@@ -53,6 +47,7 @@ public class MochilaController {
     @FXML
     private Label lblPluma;
     
+    // Carga los objetos que posee el Entrenador desde la base de datos
     private void cargarObjetos() {
         entrenador.setObjetos(objetoDAO.obtenerObjetosPorEntrenador(entrenador.getId()));
 
@@ -61,13 +56,13 @@ public class MochilaController {
             System.out.println("- " + o.getNombre() + " x" + o.getCantidad());
         }
 
-        lblEter.setText("x" + entrenador.getCantidadObjeto("eter"));
-        lblPluma.setText("x" + entrenador.getCantidadObjeto("pluma"));
-        lblPesa.setText("x" + entrenador.getCantidadObjeto("pesa"));
-        lblChaleco.setText("x" + entrenador.getCantidadObjeto("chaleco"));
-        lblBaston.setText("x" + entrenador.getCantidadObjeto("baston"));
-        lblPilas.setText("x" + entrenador.getCantidadObjeto("pilas"));
-        lblAnillo.setText("x" + entrenador.getCantidadObjeto("anillo único"));
+        lblEter.setText("" + entrenador.getCantidadObjeto("eter"));
+        lblPluma.setText("" + entrenador.getCantidadObjeto("pluma"));
+        lblPesa.setText("" + entrenador.getCantidadObjeto("pesa"));
+        lblChaleco.setText("" + entrenador.getCantidadObjeto("chaleco"));
+        lblBaston.setText("" + entrenador.getCantidadObjeto("baston"));
+        lblPilas.setText("" + entrenador.getCantidadObjeto("pilas"));
+        lblAnillo.setText("" + entrenador.getCantidadObjeto("anillo único"));
     }
 
 
@@ -89,5 +84,12 @@ public class MochilaController {
 			e.printStackTrace();
 		}
     }
+    
+    public void init(Entrenador entrenador, Connection conexion) {
+	    this.entrenador = entrenador;
+	    this.objetoDAO = new ObjetoDAO(conexion);
+	    entrenador.setObjetos(objetoDAO.obtenerObjetosPorEntrenador(entrenador.getId()));
+	    cargarObjetos(); // Actualiza los labels con el numero de objetos que tiene el Entrenador
+	}
 
 }

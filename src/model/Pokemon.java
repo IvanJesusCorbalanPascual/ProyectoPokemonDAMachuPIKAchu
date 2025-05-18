@@ -405,4 +405,6 @@ public class Pokemon {
 	    this.psMax = psMax;
 	    if (this.ps > psMax) this.ps = psMax;
 	}
+	
+	
 }

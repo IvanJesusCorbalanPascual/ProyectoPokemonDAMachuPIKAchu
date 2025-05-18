@@ -62,7 +62,7 @@
                   <Image url="@../imagenes/otros/pokeLogo.png" />
                </image>
             </ImageView>
-            <Label fx:id="lblResultado" alignment="CENTER" layoutX="257.0" layoutY="167.0" prefHeight="27.0" prefWidth="331.0" textFill="RED">
+            <Label fx:id="lblResultado" alignment="CENTER" layoutX="276.0" layoutY="159.0" prefHeight="27.0" prefWidth="331.0" textFill="RED">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

@@ -137,7 +137,7 @@
                   <Image url="@../imagenes/Pokemon/gifSquirtle.gif" />
                </image>
             </ImageView>
-            <Label fx:id="lblResultado" alignment="CENTER" layoutX="187.0" layoutY="108.0" prefHeight="60.0" prefWidth="370.0">
+            <Label fx:id="lblResultado" alignment="CENTER" layoutX="5.0" layoutY="69.0" prefHeight="60.0" prefWidth="772.0">
                <font>
                   <Font name="Pokemon Classic Regular" size="18.0" />
                </font>

@@ -19,19 +19,11 @@ import model.Entrenador;
 import model.Objeto;
 
 public class TiendaController {
-
+	// Variables
 	private Entrenador entrenador;
 	private ObjetoDAO objetoDAO;
 
-	public void init(Entrenador entrenador, Connection conexion) {
-	    this.entrenador = entrenador;
-	    this.objetoDAO = new ObjetoDAO(conexion);
-	    
-	    // Mostrar los pokedollars al entrar a la Tienda
-	    actualizarPokedollars();
-	}
-
-
+	// Variables FXML
 	@FXML
 	private Button btnAnillo;
 	@FXML
@@ -53,8 +45,7 @@ public class TiendaController {
 	@FXML
 	private Label lblResultado;
 
-	// Metodo comprarObjeto reutilizable para todos los objetos
-
+	// Metodo reutilizable para comprar cada objeto
 	private void comprarObjeto(ActionEvent event, int idObjeto) {
 		Objeto objeto = objetoDAO.obtenerObjetoPorId(idObjeto);
 		if (objeto == null) {
@@ -76,33 +67,8 @@ public class TiendaController {
 	}
 
 	@FXML
-	void comprarAnillo(ActionEvent event) {
-		comprarObjeto(event, 7);
-	}
-
-	@FXML
-	void comprarBaston(ActionEvent event) {
-		comprarObjeto(event, 4);
-	}
-
-	@FXML
-	void comprarChaleco(ActionEvent event) {
-		comprarObjeto(event, 3);
-	}
-
-	@FXML
-	void comprarEter(ActionEvent event) {
-		comprarObjeto(event, 6);
-	}
-
-	@FXML
 	void comprarPesa(ActionEvent event) {
 		comprarObjeto(event, 1);
-	}
-
-	@FXML
-	void comprarPilas(ActionEvent event) {
-		comprarObjeto(event, 5);
 	}
 
 	@FXML
@@ -111,26 +77,41 @@ public class TiendaController {
 	}
 
 	@FXML
+	void comprarChaleco(ActionEvent event) {
+		comprarObjeto(event, 3);
+	}
+
+	@FXML
+	void comprarBaston(ActionEvent event) {
+		comprarObjeto(event, 4);
+	}
+
+	@FXML
+	void comprarPilas(ActionEvent event) {
+		comprarObjeto(event, 5);
+	}
+
+	@FXML
+	void comprarEter(ActionEvent event) {
+		comprarObjeto(event, 6);
+	}
+
+	@FXML
+	void comprarAnillo(ActionEvent event) {
+		comprarObjeto(event, 7);
+	}
+
+	@FXML
 	void comprarPokeball(ActionEvent event) {
-		int precio = 200;
-		if (entrenador.getPokedollars() >= precio) {
-			entrenador.restarPokedollars(precio);
-			entrenador.añadirPokeballs(5); // +5 Pokeballs
-			entrenador.guardarPokeballsEnBD(objetoDAO.getConexion());
-			entrenador.guardarPokedollarsEnBD(objetoDAO.getConexion());
-			lblResultado.setText("¡Has comprado 5 Pokéballs por " + precio + "₽!");
-		} else {
-			lblResultado.setText("No tienes suficiente dinero para comprar Pokéballs.");
-		}
-		actualizarPokedollars();
+		comprarObjeto(event, 8);
 	}
 
 	private void actualizarPokedollars() {
 		lblPokedollars.setText(entrenador.getPokedollars() + "");
 	}
-	
+
 	@FXML
-    void abrirMochila(MouseEvent event) {
+	void abrirMochila(MouseEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/mochila.fxml"));
 			Parent root = loader.load();
@@ -146,7 +127,7 @@ public class TiendaController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    }
+	}
 
 	@FXML
 	void salir(ActionEvent event) {
@@ -166,5 +147,13 @@ public class TiendaController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void init(Entrenador entrenador, Connection conexion) {
+		this.entrenador = entrenador;
+		this.objetoDAO = new ObjetoDAO(conexion);
+
+		// Actualizando y mostrando los pokedollars al entrar a la Tienda
+		actualizarPokedollars();
 	}
 }

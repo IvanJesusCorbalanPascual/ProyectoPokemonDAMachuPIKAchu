@@ -5,6 +5,7 @@ import java.sql.*;
 
 public class Captura {
 
+	// Genera un pokemon aleatorio a ser capturado
 	public static Pokemon generarPokemonAleatorio() {
 		// Paso 1: Obtener un número de pokédex aleatorio
 		String sql = "SELECT * FROM pokemon ORDER BY RAND() LIMIT 1";
@@ -28,29 +29,32 @@ public class Captura {
 				int ataqueEsp = rs.getInt("ataque_especial");
 				int defensaEsp = rs.getInt("defensa_especial");
 				int velocidad = rs.getInt("velocidad");
-
+				
+				// Asigna el sexo desde la base de datos ignorando si es mayuscula o minuscula
 				Sexo sexo = sexoBD.equalsIgnoreCase("H") ? Sexo.MACHO : Sexo.HEMBRA;
-
+ 
+				// Recibe el tipo de la BD y aplicamos el metodo quitarTildes para evitar errores
 				Tipo tipo1 = Tipo.valueOf(quitarTildes(tipo1BD.toUpperCase()));
 				Tipo tipo2 = (tipo2BD != null && !tipo2BD.isEmpty()) ? Tipo.valueOf(quitarTildes(tipo2BD.toUpperCase()))
 						: Tipo.NORMAL;
 
+				// Creando el con los valores 
 				Pokemon p = new Pokemon(nombre, sexo, tipo1, tipo2);
 				p.setNumPokedex(num);
 				p.setNivel(nivel);
 				p.setEstamina(estamina);
 
-				// Asignando las estadisticas
+				// Asignando las estadisticas al pokemon
 				p.setVitalidad(vitalidad);
 				p.setAtaque(ataque);
 				p.setDefensa(defensa);
 				p.setAtaqueEspecial(ataqueEsp);
 				p.setDefensaEspecial(defensaEsp);
 				p.setVelocidad(velocidad);
-
+				
 				return p;
 			}
-
+			// Atrapando el posible error de BD
 		} catch (SQLException | IllegalArgumentException e) {
 			System.err.println("Error al generar Pokémon aleatorio:");
 			e.printStackTrace();

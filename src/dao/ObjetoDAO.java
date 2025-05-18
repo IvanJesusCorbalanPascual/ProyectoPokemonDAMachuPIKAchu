@@ -20,7 +20,7 @@ public class ObjetoDAO {
         return this.conexion;
     }
 
-    // Añade 1 unidad del objeto a la mochila del entrenador
+    // Añade 1 unidad del objeto a la mochila del Entrenador
     public void añadirObjetoAMochila(int idEntrenador, int idObjeto) {
         try {
             String sql = """
@@ -40,7 +40,7 @@ public class ObjetoDAO {
         }
     }
 
-    // Devuelve un objeto por su ID, usando el constructor actual
+    // Devuelve un objeto por su ID cargandolo desde la BD, usando el constructor
     public Objeto obtenerObjetoPorId(int idObjeto) {
         String sql = "SELECT nombre, precio FROM objetos WHERE id_objeto = ?";
         try (PreparedStatement stmt = conexion.prepareStatement(sql)) {
@@ -57,9 +57,11 @@ public class ObjetoDAO {
         return null;
     }
     
+    // Carga los objetos que el Entrenador tenga en su mochila
     public List<Objeto> obtenerObjetosPorEntrenador(int idEntrenador) {
         List<Objeto> objetos = new ArrayList<>();
 
+        // Juntando las tablas Objetos y Mochila con INNER JOIN
         String sql = """
             SELECT o.id_objeto, o.nombre, o.precio, m.cantidad
             FROM Objetos o
@@ -67,6 +69,7 @@ public class ObjetoDAO {
             WHERE m.id_entrenador = ?
         """;
 
+        // Prepara y ejectuta la consulta
         try (PreparedStatement stmt = conexion.prepareStatement(sql)) {
             stmt.setInt(1, idEntrenador);
             ResultSet rs = stmt.executeQuery();
@@ -75,7 +78,7 @@ public class ObjetoDAO {
                 int id = rs.getInt("id_objeto");
                 String nombre = rs.getString("nombre");
                 int precio = rs.getInt("precio");
-                int cantidad = rs.getInt("cantidad"); // ← aquí puede fallar si no hay campo
+                int cantidad = rs.getInt("cantidad");
 
                 Objeto objeto = new Objeto(nombre, precio, id, cantidad);
                 objetos.add(objeto);

@@ -65,7 +65,7 @@ public class CapturaController {
 			return;
 		}
 
-		// Gasta una Pokeball
+		// Gastando una Pokeball
 		entrenador.setPokeballs(entrenador.getPokeballs() - 1);
 		actualizarContadorPokeballs();
 
@@ -73,14 +73,14 @@ public class CapturaController {
 
 		if (exito) {
 			lblResultado.setText("¡Has capturado a " + pokemonActual.getNombre() + "!");
-			// Aquí puedes añadir el Pokémon al equipo/caja si quieres
+			// Añadiendo el Pokemon al equipo/caja 
 			entrenador.añadirPokemon(pokemonActual);
 			generar(event);
 		} else {
 			lblResultado.setText("¡" + pokemonActual.getNombre() + " ha escapado!");
 		}
 
-		// Guardar pokéballs actualizadas
+		// Guardar pokeballs actualizadas
 		entrenador.guardarPokeballsEnBD(BDConnection.getConnection());
 	}
 
@@ -91,9 +91,8 @@ public class CapturaController {
 
 		if (pokemonActual != null) {
 			// Asignar sexo aleatorio
-			if (pokemonActual.getSexo() == null) {
-				pokemonActual.setSexo(Math.random() < 0.5 ? Sexo.MACHO : Sexo.HEMBRA);
-			}
+			pokemonActual.setSexo(Math.random() < 0.5 ? Sexo.MACHO : Sexo.HEMBRA);
+
 
 			// Mostrar nombre y sexo
 			lblPokemonGenerado.setText(pokemonActual.getNombre() + " (" + pokemonActual.getSexo() + ")");
@@ -151,4 +150,6 @@ public class CapturaController {
 		this.entrenador = entrenador;
 		actualizarContadorPokeballs();
 	}
+	
+	
 }

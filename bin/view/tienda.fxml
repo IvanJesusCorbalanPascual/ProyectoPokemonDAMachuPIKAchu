@@ -50,57 +50,57 @@
             <Font size="18.0" />
           </font>
         </Label>
-            <ImageView fitHeight="475.0" fitWidth="855.0" layoutX="-13.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="423.0" fitWidth="842.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/fondo/fondo_tienda.png" />
                </image>
             </ImageView>
             <Button fx:id="btnSalir" layoutX="732.0" layoutY="337.0" mnemonicParsing="false" onAction="#salir" opacity="0.0" prefHeight="62.0" prefWidth="96.0" text="btnSalir">
                <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
             <Button fx:id="btnEter" layoutY="69.0" mnemonicParsing="false" onAction="#comprarEter" opacity="0.0" prefHeight="55.0" prefWidth="404.0" text="btnEter">
                <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
             <Button fx:id="btnPluma" layoutY="132.0" mnemonicParsing="false" onAction="#comprarPluma" opacity="0.0" prefHeight="55.0" prefWidth="404.0" text="btnPluma">
                <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
             <Button fx:id="btnPesa" layoutY="198.0" mnemonicParsing="false" onAction="#comprarPesa" opacity="0.0" prefHeight="55.0" prefWidth="404.0" text="btnPesa">
                <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
             <Button fx:id="btnChaleco" layoutY="262.0" mnemonicParsing="false" onAction="#comprarChaleco" opacity="0.0" prefHeight="55.0" prefWidth="404.0" text="btnChaleco">
                <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
             <Button fx:id="btnBaston" layoutX="427.0" layoutY="71.0" mnemonicParsing="false" onAction="#comprarBaston" opacity="0.0" prefHeight="55.0" prefWidth="404.0" text="btnBaston">
                <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
             <Button fx:id="btnPilas" layoutX="427.0" layoutY="134.0" mnemonicParsing="false" onAction="#comprarPilas" opacity="0.0" prefHeight="55.0" prefWidth="404.0" text="btnPilas">
                <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
             <Button fx:id="btnAnillo" layoutX="427.0" layoutY="200.0" mnemonicParsing="false" onAction="#comprarAnillo" opacity="0.0" prefHeight="55.0" prefWidth="404.0" text="btnAnillo">
                <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
             <Button fx:id="btnPokeball" layoutX="427.0" layoutY="264.0" mnemonicParsing="false" onAction="#comprarPokeball" opacity="0.0" prefHeight="55.0" prefWidth="404.0" text="btnPokeball">
                <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label fx:id="lblResultado" layoutX="35.0" layoutY="337.0" prefHeight="55.0" prefWidth="658.0" text="Bienvenido a la tienda!" wrapText="true">
+            <Label fx:id="lblResultado" layoutX="50.0" layoutY="347.0" prefHeight="55.0" prefWidth="627.0" text="Bienvenido a la tienda!" wrapText="true">
                <font>
                   <Font name="Verdana Italic" size="19.0" />
                </font>
@@ -115,7 +115,7 @@
                   <Font name="Pokemon Classic Regular" size="12.0" />
                </font>
             </Label>
-            <ImageView fx:id="btnAbrirMochila" fitHeight="62.0" fitWidth="155.0" layoutX="31.0" layoutY="10.0" onMouseClicked="#abrirMochila" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btnAbrirMochila" fitHeight="62.0" fitWidth="155.0" layoutX="44.0" layoutY="17.0" onMouseClicked="#abrirMochila" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/boton/btnAbrirMochila.png" />
                </image>

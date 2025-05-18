@@ -18,7 +18,10 @@ import java.util.List;
 import dao.MovimientoDAO;
 
 public class SeleccionarPokemonController {
+	// Clase de controlador para el combate. sirve para cambiar pokemon durante un
+	// combate
 
+	// Variables
 	private List<Pokemon> equipo;
 	private Entrenador entrenador;
 	private Pokemon pokemonActual;
@@ -29,14 +32,13 @@ public class SeleccionarPokemonController {
 	private int indiceEnemigo;
 	private Stage primaryStage;
 
+	// Variables FMXL
 	@FXML
 	private ImageView btnUsar1, btnUsar2, btnUsar3, btnUsar4, btnUsar5, btnUsar6;
 	@FXML
 	private ImageView btnVolver;
-
 	@FXML
 	private Label eligePokeLbl;
-
 	@FXML
 	private ImageView imgPoke1, imgPoke2, imgPoke3, imgPoke4, imgPoke5, imgPoke6;
 	@FXML
@@ -48,6 +50,7 @@ public class SeleccionarPokemonController {
 	@FXML
 	private Label vidaTxtPoke1, vidaTxtPoke2, vidaTxtPoke3, vidaTxtPoke4, vidaTxtPoke5, vidaTxtPoke6;
 
+	// Carga el equipo del Entrenador
 	public void setEquipo(List<Pokemon> equipo) {
 		this.equipo = equipo;
 		cargarEquipo();
@@ -55,7 +58,7 @@ public class SeleccionarPokemonController {
 
 	public void setEntrenador(Entrenador entrenador) {
 		this.entrenador = entrenador;
-		mostrarEquipo(); // O cualquier método para rellenar los datos de la vista
+		mostrarEquipo();
 	}
 
 	public void setContextoCompleto(Entrenador entrenador, Pokemon actual, Pokemon enemigo, int psJugador,
@@ -80,6 +83,7 @@ public class SeleccionarPokemonController {
 		}
 	}
 
+	// Este metodo carga la imagen, nombre, nivel, vida en forma de progress bar y vida en forma de numeros
 	private void cargarEquipo() {
 		ImageView[] imgs = { imgPoke1, imgPoke2, imgPoke3, imgPoke4, imgPoke5, imgPoke6 };
 		Label[] nombres = { nombrePoke1, nombrePoke2, nombrePoke3, nombrePoke4, nombrePoke5, nombrePoke6 };
@@ -87,6 +91,7 @@ public class SeleccionarPokemonController {
 		ProgressBar[] barras = { vidaPoke1, vidaPoke2, vidaPoke3, vidaPoke4, vidaPoke5, vidaPoke6 };
 		Label[] vidaTxt = { vidaTxtPoke1, vidaTxtPoke2, vidaTxtPoke3, vidaTxtPoke4, vidaTxtPoke5, vidaTxtPoke6 };
 
+		// Bucle que asigna los valores ya cargados a cada pokemon
 		for (int i = 0; i < equipo.size(); i++) {
 			Pokemon p = equipo.get(i);
 			nombres[i].setText(p.getMote());
@@ -103,6 +108,8 @@ public class SeleccionarPokemonController {
 		}
 	}
 
+	// Si el pokemon esta debilitado, este no podra usarse
+	// Si no quedan pokemons enemigos el combate termina
 	private void usarPokemon(int index) {
 		Pokemon seleccionado = equipo.get(index);
 		if (seleccionado.estaDebilitado()) {
@@ -155,25 +162,24 @@ public class SeleccionarPokemonController {
 				niveles[i].setText("Nv: " + p.getNivel());
 
 				if (p.estaDebilitado()) {
-				    textosVida[i].setText("DEBILITADO");
-				    barrasVida[i].setProgress(0);
-				    barrasVida[i].setStyle("-fx-accent: grey;");
+					textosVida[i].setText("DEBILITADO");
+					barrasVida[i].setProgress(0);
+					barrasVida[i].setStyle("-fx-accent: grey;");
 
-				    botonesUsar[i].setOpacity(0.3); // Se ve desactivado
-				    botonesUsar[i].setOnMouseClicked(null); // Elimina el evento
-				    botonesUsar[i].setMouseTransparent(true); // Evita que se le pueda hacer clic
+					botonesUsar[i].setOpacity(0.3); // Se ve desactivado
+					botonesUsar[i].setOnMouseClicked(null); // Elimina el evento
+					botonesUsar[i].setMouseTransparent(true); // Evita que se le pueda hacer clic
 				} else {
-				    textosVida[i].setText(p.getPs() + " / " + p.getPsMax() + " HP");
-				    double porcentajeVida = (double) p.getPs() / p.getPsMax();
-				    barrasVida[i].setProgress(porcentajeVida);
-				    barrasVida[i].setStyle("");
+					textosVida[i].setText(p.getPs() + " / " + p.getPsMax() + " HP");
+					double porcentajeVida = (double) p.getPs() / p.getPsMax();
+					barrasVida[i].setProgress(porcentajeVida);
+					barrasVida[i].setStyle("");
 
-				    int index = i;
-				    botonesUsar[i].setOpacity(1.0);
-				    botonesUsar[i].setMouseTransparent(false); // << Habilita clic
-				    botonesUsar[i].setOnMouseClicked(event -> usarPokemon(index));
+					int index = i;
+					botonesUsar[i].setOpacity(1.0);
+					botonesUsar[i].setMouseTransparent(false); // << Habilita clic
+					botonesUsar[i].setOnMouseClicked(event -> usarPokemon(index));
 				}
-
 
 				try {
 					String path = "/imagenes/Pokemon/Front/" + p.getNumPokedex() + ".png";
@@ -192,7 +198,7 @@ public class SeleccionarPokemonController {
 		}
 	}
 
-	// Botones Usar
+	// Botones FXML Usar
 	@FXML
 	void btnUsar1Click(MouseEvent e) {
 		usarPokemon(0);
@@ -223,7 +229,7 @@ public class SeleccionarPokemonController {
 		usarPokemon(5);
 	}
 
-	// Botón Volver
+	// Boton Volver
 	@FXML
 	void btnVolverClick(MouseEvent event) {
 		try {

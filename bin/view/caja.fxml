@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,22 +12,12 @@
             <Image url="@../Imagenes/fondo/fondo_caja.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="btnMover" fitHeight="173.0" fitWidth="200.0" layoutX="220.0" layoutY="302.0" onMouseClicked="#btnMoverClick" onMouseEntered="#btnMoverEnter" onMouseExited="#btnMoverExit" style="-fx-cursor: hand; -fx-opacity: 1.0;">
-         <image>
-            <Image url="@../Imagenes/boton/boton_mover.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="139.0" fitWidth="246.0" layoutX="-5.0" layoutY="316.0">
-         <image>
-            <Image url="@../Imagenes/boton/boton_equipo.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="btnVolver" fitHeight="157.0" fitWidth="222.0" layoutX="393.0" layoutY="307.0" onMouseClicked="#btnVolverClick" onMouseEntered="#btnVolverEnter" onMouseExited="#btnVolverExit" style="-fx-cursor: hand; -fx-opacity: 1.0;">
+      <ImageView fx:id="btnVolver" fitHeight="155.0" fitWidth="228.0" layoutX="299.0" layoutY="315.0" onMouseClicked="#btnVolverClick" onMouseEntered="#btnVolverEnter" onMouseExited="#btnVolverExit" preserveRatio="true" style="-fx-cursor: hand; -fx-opacity: 1.0;">
          <image>
             <Image url="@../Imagenes/boton/btnVolverCaja.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="btnEquipo" fitHeight="186.0" fitWidth="246.0" layoutX="-5.0" layoutY="293.0" onMouseClicked="#btnEquipoClick" onMouseEntered="#btnEquipoEnter" onMouseExited="#btnEquipoExit" style="-fx-cursor: hand; -fx-opacity: 1.0;">
+      <ImageView fx:id="btnEquipo" fitHeight="186.0" fitWidth="246.0" layoutX="70.0" layoutY="298.0" onMouseClicked="#btnEquipoClick" onMouseEntered="#btnEquipoEnter" onMouseExited="#btnEquipoExit" style="-fx-cursor: hand; -fx-opacity: 1.0;">
          <image>
             <Image url="@../Imagenes/boton/boton_equipo.png" />
          </image>
@@ -36,7 +27,7 @@
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgPoke2" layoutX="118.0" layoutY="75.0" onContextMenuRequested="#imgPoke2Click" style="-fx-cursor: hand;">
+      <ImageView fx:id="imgPoke2" layoutX="118.0" layoutY="75.0" onMouseClicked="#imgPoke2Click" style="-fx-cursor: hand;">
          <image>
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
@@ -151,5 +142,7 @@
             <Image url="@../Imagenes/Pokemon/Front/1.png" />
          </image>
       </ImageView>
+      <Button fx:id="btnAnteriorCaja" layoutX="55.0" layoutY="42.0" mnemonicParsing="false" onAction="#anteriorCaja" opacity="0.0" prefHeight="35.0" prefWidth="42.0" />
+      <Button fx:id="btnSiguienteCaja" layoutX="486.0" layoutY="42.0" mnemonicParsing="false" onAction="#siguienteCaja" opacity="0.0" prefHeight="35.0" prefWidth="42.0" />
    </children>
 </AnchorPane>
